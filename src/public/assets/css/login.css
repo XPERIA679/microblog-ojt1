@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('assets/images/bg.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+}
+
+.box {
+    background: #F5F1ED;
+    box-shadow: 0 8px 32px 0 rgba( 0.15, 0.14, 0.14, 0.37 );
+    backdrop-filter: blur( 0px );
+    -webkit-backdrop-filter: blur( 0px );
+    border-radius: 25px;
+    padding: 75px 50px;
+    border: none;
+}
+
+.form-box header{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.inputBox {
+    position: relative;
+    width: 250px;
+    margin: 8px 8px 8px 8px;
+
+}
+
+.inputBox input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #70798c;
+    background: #252323;
+    border-radius: 15px;
+    outline: none;
+    color: #f5f1ed;
+    font-size: 1em;
+    transition: 0.5s;
+}
+
+.inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    color: #70798c;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+.inputBox input:valid~span,
+.inputBox input:focus~span {
+    color: #f5f1ed;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 8px;
+    background: #252323;
+    letter-spacing: 0.2em;
+    border-radius: 20px;
+}
+
+.inputBox:nth-child(3) input:valid~span,
+.inputBox:nth-child(3) input:focus~span {
+    background: #f5f1ed;
+    color: #252323;
+    border-radius: 20px;
+}
+
+.inputBox input:valid,
+.inputBox input:focus {
+    border: 1px solid #f5f1ed;
+}
+
+.btn {
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #252323;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #252323;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 60px;
+    min-width: 0;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+    will-change: transform;
+  }
+
+  .btn:disabled {
+    pointer-events: none;
+  }
+
+  .btn:hover {
+    color: #F5F1ED;
+    background-color: #252323;
+    border: 2px solid #F5F1ED;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+
+  .btn:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+
+
+.btn1 {
+  appearance: none;
+  background-color: #252323;
+  border: 2px solid #252323;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #F5F1ED;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+}
+
+.btn1:disabled {
+  pointer-events: none;
+}
+
+.btn1:hover {
+  color: #252323;
+  background-color: #F5F1ED;
+  border: 2px solid #252323;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.btn1:active {
+  box-shadow: none;
+  transform: translateY(0);
+}

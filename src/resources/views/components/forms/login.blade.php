@@ -15,37 +15,32 @@
 
 <body>
     <div class="container">
-        <div class="box form-box">
-            <form action="#">
-                <header>
-                    <h1>Sign In</h1>
-                </header>
-                <div class="inputBox">
-                    <input type="text" required="required">
-                    <span>Email</span>
+        <div class="title">
+            <h3>Sign In</h3>
+        </div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <input type="text" autocomplete="off" required="required">
+                    <span>Username</span>
                 </div>
-                <div class="inputBox">
+
+                <div class="input-box">
                     <input type="password" required="required">
                     <span>Password</span>
                 </div>
 
-                <div>
-                    <button class="btn">
-                        Sign In
-                    </button>
-                    <button class="btn1">
-                        Forgot password?
-                    </button>
+                <div class="input-box">
+                    <button class="button">Sign In</button>
+                    <hr style="width:40%;margin:10px;" >
+                    <button class="button1">Don't have an account?</button>
                 </div>
-                <div>
-                    <p>Don't have an account?
-                        <a href="#">
-                            Sign Up
-                        </a>
-                    </p>
+
+                <div class="input-box">
+
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 </body>
 

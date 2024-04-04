@@ -69,8 +69,8 @@
                 </div>
 
                 <div class="input-box ">
-                    <input type="text" placeholder="ZIP/Postal Code" autocomplete="off" required="required">
-                    <span>ZIP/Postal Code</span>
+                    <input type="text" placeholder="Country" autocomplete="off" required="required">
+                    <span>Country</span>
                 </div>
 
                 <div class="input-box">
@@ -78,18 +78,25 @@
                     <span>Password</span>
                 </div>
 
+                <div class="input-box ">
+                    <input type="text" placeholder="ZIP/Postal Code" autocomplete="off" required="required">
+                    <span>ZIP/Postal Code</span>
+                </div>
+
+
                 <div class="input-box">
                     <input type="password" required="required">
                     <span>Confirm Password</span>
                 </div>
 
-                <div>
+                <div class="input-box">
+                    <button class="button1">Already have an account?</button>
+                </div>
+
+                <div class="input-box">
                     <button class="button">Create Account</button>
                 </div>
 
-                <div>
-                    <button class="button1">Already have an account?</button>
-                </div>
             </div>
         </form>
     </div>

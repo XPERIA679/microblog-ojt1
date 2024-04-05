@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ url('assets/css/registration.css') }}">
+    {{-- <link rel="stylesheet" href="{{ url('assets/css/registration.css') }}"> --}}
     <title>Sign Up</title>
+    @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
 </head>
 
 
 <body>
 
 
-    <div class="container">
+ <div class="container">
         <div class="title">
             <h3>Sign Up</h3>
         </div>
@@ -90,11 +91,11 @@
                 </div>
 
                 <div class="input-box">
-                    <button class="button1">Already have an account?</button>
+                    <button class="button1" href="login">Already have an account?</button>
                 </div>
 
                 <div class="input-box">
-                    <button class="button">Create Account</button>
+                    <button class="button" href="home">Create Account</button>
                 </div>
 
             </div>

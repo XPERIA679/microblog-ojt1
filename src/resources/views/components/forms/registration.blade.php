@@ -10,98 +10,48 @@
     @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
 </head>
 
-
 <body>
-
-
- <div class="container">
+    <div class="container">
         <div class="title">
             <h3>Sign Up</h3>
         </div>
 
-        <form action="#">
+        <form action="#" id="signup-form">
             <div class="user-details">
 
-                <div class="input-box ">
-                    <input type="text" placeholder="Juan" autocomplete="off" required="required">
-                    <span>First Name</span>
+                <div class="input-box">
+                    <input type="email" placeholder="example@gmail.com" autocomplete="off" required>
+                    <span>Email</span>
                 </div>
 
                 <div class="input-box">
-                    <input type="text" placeholder="Dela Cruz" autocomplete="off" required="required">
-                    <span>Last Name</span>
-                </div>
-
-                <div class="input-box">
-                    <input type="email" placeholder="example@gmail.com" autocomplete="off" required="required">
-                    <span>Email address</span>
-                </div>
-
-                <div class="input-box">
-                    <input type="text" placeholder="juandelacruz" autocomplete="off" required="required">
+                    <input type="text" placeholder="juandelacruz" autocomplete="off" required>
                     <span>Username</span>
                 </div>
 
                 <div class="input-box">
-                    <input type="tel" placeholder="09669513998" autocomplete="off" pattern="[0-9]{11}"
-                        required="required">
-                    <span>Phone Number</span>
-                </div>
-
-                <div class="input-box">
-                    <input type="text" placeholder="dd/mm/yyyy" onfocus="type='date'" onblur="type='text'"
-                        required="required">
-                    <span>Date of Birth</span>
-                </div>
-
-                <div class="input-box ">
-                    <input type="text" placeholder="blk# & lot#, Street" autocomplete="off" required="required">
-                    <span>Address</span>
-                </div>
-
-                <div class="input-box ">
-                    <input type="text" placeholder="City" autocomplete="off" required="required">
-                    <span>City</span>
-                </div>
-
-                <div class="input-box ">
-                    <input type="text" placeholder="State/Province" autocomplete="off" required="required">
-                    <span>State/Province</span>
-                </div>
-
-                <div class="input-box ">
-                    <input type="text" placeholder="Country" autocomplete="off" required="required">
-                    <span>Country</span>
-                </div>
-
-                <div class="input-box">
-                    <input type="password" required="required">
+                    <input type="password" required>
                     <span>Password</span>
                 </div>
 
-                <div class="input-box ">
-                    <input type="text" placeholder="ZIP/Postal Code" autocomplete="off" required="required">
-                    <span>ZIP/Postal Code</span>
-                </div>
-
-
                 <div class="input-box">
-                    <input type="password" required="required">
+                    <input type="password" required>
                     <span>Confirm Password</span>
-                </div>
-
-                <div class="input-box">
-                    <button class="button1" href="login">Already have an account?</button>
                 </div>
 
                 <div class="input-box">
                     <button class="button" href="home">Create Account</button>
                 </div>
 
+                <div class="input-box">
+                    <button class="button1" href="login">Already have an account?</button>
+                </div>
+
             </div>
         </form>
     </div>
-    </div>
+
+    <script src="{{ asset('js/script.js') }}"></script>
 
 </body>
 

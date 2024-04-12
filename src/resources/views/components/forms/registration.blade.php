@@ -22,7 +22,7 @@
 
 
                 <div class="input-box">
-                    <input type="email" name="email" placeholder="example@gmail.com" autocomplete="off" required="required">
+                    <input type="email" name="email" placeholder="example@gmail.com" autocomplete="off">
                     <span>Email address</span>
                     @error('email')
                         <div style="color: red;">{{ $message }}</div>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="input-box">
-                    <input type="text" name="username" placeholder="juandelacruz" autocomplete="off" required="required">
+                    <input type="text" name="username" placeholder="juandelacruz" autocomplete="off">
                     <span>Username</span>
                     @error('username')
                         <div style="color: red;">{{ $message }}</div>
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="input-box">
-                    <input type="password" name ="password" required>
+                    <input type="password" name="password">
                     <span>Password</span>
                     @error('password')
                         <div style="color: red;">{{ $message }}</div>
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="input-box">
-                    <input type="password" name="password_confirmation" required="required">
+                    <input type="password" name="password_confirmation">
                     <span>Confirm Password</span>
                     @error('password_confirmation')
                         <div style="color: red;">{{ $message }}</div>
@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="input-box">
-                    <button class="button" href="home">Create Account</button>
+                    <button class="button">Create Account</button>
                 </div>
 
                 <div class="input-box">

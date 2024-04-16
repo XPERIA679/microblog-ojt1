@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\RegisterRequest;
@@ -21,6 +22,10 @@ class UserController extends Controller
             'email' => $requestData['email']
         ]);
 
+        Profile::create([
+            'user_id' => $user->id,
+        ]);
+        
         auth()->login($user);
         $user->sendEmailVerificationNotification();
 

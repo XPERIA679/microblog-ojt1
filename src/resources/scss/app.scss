@@ -1,0 +1,87 @@
+* {
+    @apply p-0 m-0 box-border no-underline font-heading
+}
+
+
+body {
+    @apply h-body-height bg-center  bg-bgbody bg-gradient animate-gradient
+}
+
+.button {
+    @apply justify-center items-center appearance-none bg-darkcolor shadow-boxshadow box-border  text-whiteish cursor-pointer inline-flex fill-[currentcolor] text-sm font-medium h-12 tracking-[0.25px] leading-[normal] max-w-full overflow-visible relative text-center normal-case select-none touch-manipulation w-[300px] will-change-[transform,opacity] z-0 mb-[50px] px-6 py-0.5 rounded-3xl border-none
+    transition-shadow-opacity-transform
+    ease-tTF
+    delay-tDelay
+    duration-tD
+}
+
+.button:hover {
+    @apply text-darkcolor bg-purewhite
+}
+
+.button:active {
+    @apply shadow-lg;
+    outline: none;
+}
+
+.button:focus {
+    @apply border-2 border-solid border-darkcolor;
+    outline: none;
+}
+
+.button:not(:disabled) {
+    @apply shadow-md hover:shadow-[rgba(60,64,67,0.3)_0_2px_3px_0,rgba(60,64,67,0.15)_0_6px_10px_4px] focus:shadow-[rgba(60,64,67,0.3)_0_1px_3px_0,rgba(60,64,67,0.15)_0_4px_8px_3px] active:shadow-[rgba(60,64,67,0.3)_0_4px_4px_0,rgba(60,64,67,0.15)_0_8px_12px_6px];
+}
+
+  .button:disabled {
+    @apply shadow-md;
+}
+
+.button1 {
+    @apply justify-center items-center appearance-none bg-whiteish shadow-lg box-border text-darkcolor cursor-pointer inline-flex fill-[currentcolor] text-sm font-medium h-12 tracking-[0.25px] leading-[normal] max-w-full overflow-visible relative text-center normal-case select-none touch-manipulation w-[300px] will-change-[transform,opacity] z-0 mr-3 px-6 py-0.5 rounded-3xl border-none
+    transition-shadow-opacity-transform
+    duration-tD
+    ease-tTF
+    delay-tDelay;
+}
+
+
+.button1:hover {
+    @apply text-darkcolor bg-mygray
+}
+
+.button1:active {
+    @apply shadow-md;
+    outline: none;
+}
+
+.button1:focus {
+    @apply border-2 border-solid border-darkcolor;
+    outline: none;
+}
+
+.button1:not(:disabled) {
+    @apply shadow-[rgba(60,64,67,0.3)_0_1px_3px_0,rgba(60,64,67,0.15)_0_4px_8px_3px] hover:shadow-[rgba(60,64,67,0.3)_0_2px_3px_0,rgba(60,64,67,0.15)_0_6px_10px_4px] focus:shadow-[rgba(60,64,67,0.3)_0_1px_3px_0,rgba(60,64,67,0.15)_0_4px_8px_3px] active:shadow-[rgba(60,64,67,0.3)_0_4px_4px_0,rgba(60,64,67,0.15)_0_8px_12px_6px];
+}
+
+.button1:disabled {
+    @apply shadow-[rgba(60,64,67,0.3)_0_1px_3px_0,rgba(60,64,67,0.15)_0_4px_8px_3px];
+}
+
+@keyframes lightning {
+    0% {
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    50% {
+        background-color: #fff;
+        box-shadow: 0 0 10px 5px #fff;
+    }
+
+    100% {
+        background-color: transparent;
+        box-shadow: none;
+    }
+}
+

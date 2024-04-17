@@ -32,11 +32,9 @@
                 </div>
 
                 <div class="input-box">
-                    <button class="button" href="home">Create Account</button>
-                </div>
-
-                <div class="input-box">
-                    <button class="button1" href="login">Already have an account?</button>
+                    <button class="button" href="signin">Create Account</button>
+                    <hr class="w-3/5 m-2.5">
+                    <button class="button1" href="signin">Already have an account?</button>
                 </div>
 
             </div>

@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign In</title>
-    @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
-</head>
+@section('title', 'Sign In')
 
-<body>
-    <div class="container">
+@section('content')
+    <div class="form-container">
         <div class="title">
             <h3>Sign In</h3>
         </div>
@@ -34,6 +27,4 @@
             </div>
         </form>
     </div>
-</body>
-
-</html>
+@endsection

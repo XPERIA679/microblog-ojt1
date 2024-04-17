@@ -26,35 +26,36 @@ body {
     }
 }
 
-.container {
-    @apply max-w-2xl w-full overflow-hidden px-8 py-6 rounded-3xl;
+.form-container {
+    @apply max-w-sm w-full overflow-hidden px-7 py-6 rounded-3xl;
     background: linear-gradient(60deg, #DAD2BC, #252323, #70798C);
-    animation: gradient 15s ease infinite;
     background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
 }
 
-.container .title {
+.form-container .title {
     @apply text-3xl font-medium relative;
 }
+
 
 h3 {
     @apply text-[#F5F1ED] mix-blend-overlay;
 }
 
-.container .title::before {
-    content: '';
-    @apply absolute h-1 w-6 left-0 bottom-0;
-    background: linear-gradient(-60deg, #DAD2BC, #252323, #70798C);
+
+.form-container .title::before {
+    @apply content-[''] absolute h-1 w-5 left-0 bottom-0;
     animation: gradient 8s ease infinite;
+    background: linear-gradient(-60deg, #DAD2BC, #252323, #70798C);
     background-size: 400% 400%;
 }
 
-.container form .user-details {
+.form-container form .user-details {
     @apply flex flex-wrap justify-between mt-5 mb-3 mx-0;
 }
 
 form .user-details .input-box {
-    @apply w-[calc(100%_/_2_-_20px)] mb-3.5;
+    @apply w-full mb-4;
 }
 
 .user-details .input-box .details {

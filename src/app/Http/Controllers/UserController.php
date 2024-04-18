@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\RegisterRequest;
 
 class UserController extends Controller
 {
-    public function register(RegisterRequest $request) 
+    /**
+     * Register a new user.
+     */
+        public function register(RegisterRequest $request): View
     {
         $requestData = $request->all();
         unset($requestData["password_confirmation"]);
@@ -32,13 +37,19 @@ class UserController extends Controller
         return view('components.auth.verify-email');
     }
     
-    public function logout()
+    /**
+     * Logout currently logged in user.
+     */
+    public function logout(): RedirectResponse
     {
         auth()->logout();
         return redirect('/');
     }
 
-    public function verifyEmail($id, $hash)
+    /**
+     * Mark the user as verified after clicking 'verify button'.
+     */
+    public function verifyEmail($id, $hash): View
     {
         Log::info('Verification request parameters:', [
             'id' => $id,
@@ -51,13 +62,16 @@ class UserController extends Controller
             if (!$user->hasVerifiedEmail()) {
                 $user->markEmailAsVerified();
             }
-            return view('test-login');
+            return view('verification-sucess');
         } else {
-            Log::error('User not found');
+            return view('verification-failed');
         }
     }
 
-    public function sendVerificationNotification(Request $request)
+    /**
+     * Send a verification email to user's email address.
+     */
+    public function sendVerificationNotification(Request $request): View
     {
         if ($request->user()->hasVerifiedEmail()) {
             return view('test-login');

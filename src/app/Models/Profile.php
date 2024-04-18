@@ -19,8 +19,11 @@ class Profile extends Model
         'contact'
     ];
 
+    /**
+     * Get the user associated with the profile.
+     */
     public function user(): HasOne
     {
-        return $this->hasOne(Profile::class);
+        return $this->hasOne(User::class);
     }
 }

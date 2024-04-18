@@ -1,1 +1,125 @@
-@use './forms/signin.scss'
+
+* {
+    @apply box-border m-0 p-0 font-heading;
+}
+
+body {
+    @apply justify-center items-center h-screen bg-bgsize bg-ngradient animate-gradient;
+}
+
+.form-container {
+    @apply max-w-2xl w-full overflow-hidden px-8 py-6 rounded-3xl bg-bgsize bg-pgradient animate-gradient;
+}
+
+.form-container1 {
+    @apply max-w-sm w-full overflow-hidden px-7 py-6 rounded-3xl bg-bgsize bg-pgradient animate-gradient;
+}
+
+.form-container .title {
+    @apply text-3xl font-medium relative w-full mb-6;
+}
+
+.form-container1 .title {
+    @apply text-3xl font-medium relative w-full mb-6;
+}
+
+.form-container .title::before {
+    @apply content-[''] absolute h-1 w-6 left-0 bottom-0 bg-bgsize bg-ngradient animate-gradient;
+}
+
+.form-container1 .title::before {
+    @apply content-[''] absolute h-1 w-6 left-0 bottom-0 bg-bgsize bg-ngradient animate-gradient;
+}
+
+.form-container form .user-details {
+    @apply flex flex-wrap justify-between mt-5 mb-3 mx-0;
+}
+
+.form-container1 form .user-details {
+    @apply flex flex-wrap justify-between mt-5 mb-3 mx-0;
+}
+
+form .user-details .input-box {
+    @apply w-[calc(100%_/_2_-_20px)] mb-3.5;
+}
+
+.user-details .input-box .details {
+    @apply block font-medium mb-1.5;
+}
+
+.user-details .input-box input {
+    @apply bg-mydark text-mywhite text-base h-8 w-full pl-4 rounded-3xl border border-solid border-mygray transition-[0.5s];
+}
+
+.input-box span {
+    @apply relative pointer-events-none text-xs text-mywhite uppercase p-2.5 left-0 transition-[0.5s];
+}
+
+.input-box input:valid~span,
+.input-box input:focus~span {
+    @apply bg-mydark text-mywhite translate-x-2.5 translate-y-1.5 text-xs tracking-wide mix-blend-overlay px-2 py-0 rounded-3xl;
+}
+
+.form-container form .user-details1 {
+    @apply flex flex-wrap justify-between mt-5 mb-3 mx-0;
+}
+
+.user-details1 .input-box1 .details {
+    @apply block font-medium mb-1.5;
+}
+
+form .user-details1 .input-box1 {
+    @apply w-[calc(100%_/_3_-_20px)] mb-3.5;
+}
+
+.user-details1 .input-box1 input {
+    @apply bg-mydark text-mywhite text-base h-8 w-full pl-4 rounded-3xl border border-solid border-mygray transition-[0.5s];
+}
+
+.input-box1 span {
+    @apply relative pointer-events-none text-xs text-mywhite uppercase p-2.5 left-0 transition-[0.5s];
+}
+
+.input-box1 input:valid~span,
+.input-box1 input:focus~span {
+    @apply bg-mydark text-mywhite translate-x-2.5 translate-y-1.5 text-xs tracking-wide mix-blend-overlay px-2 py-0 rounded-3xl;
+}
+
+form .user-details2 .input-box2 {
+    @apply w-full mb-3.5;
+}
+
+.user-details2 .input-box2 .details {
+    @apply block font-medium mb-1.5;
+}
+
+.user-details2 .input-box2 input {
+    @apply bg-mydark text-mywhite text-base h-8 w-full pl-4 rounded-3xl border border-solid border-mygray transition-[0.5s];
+}
+
+.input-box2 span {
+    @apply relative pointer-events-none text-xs text-mywhite uppercase p-2.5 left-0 transition-[0.5s];
+}
+
+.input-box2 input:valid~span,
+.input-box2 input:focus~span {
+    @apply bg-mydark text-mywhite translate-x-2.5 translate-y-1.5 text-xs tracking-wide mix-blend-overlay px-2 py-0 rounded-3xl;
+}
+
+@media (max-width: 584px) {
+    .form-container {
+        @apply max-w-full;
+    }
+
+    form .user-details .input-box {
+        @apply w-full mb-4;
+    }
+
+    .form-container form .user-details {
+        @apply max-h-80 overflow-y-scroll;
+    }
+
+    .user-details::-webkit-scrollbar {
+        @apply w-0;
+    }
+}

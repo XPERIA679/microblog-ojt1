@@ -1,8 +1,12 @@
 <?php
 
+use App\Models\Profile;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\ProfileController;
 
-Route::get('/signup', [SignupController::class, 'showSignup']);
-Route::get('/signin', [SigninController::class, 'showSignin']);
-Route::get('/create', [UserProfileController::class, 'showProfile']);
+Route::get('/update-profile', function () {
+    $profile = Profile::where('user_id', auth()->user()->id)->firstOrFail();
+    return view('components.create-profile', ['profile' => $profile]);
+});
+
+Route::post('/update-profile', [ProfileController::class, 'update']);

@@ -25,7 +25,6 @@ class ProfileService
 
         $profile = Profile::where('user_id', auth()->id())->firstOrFail();        
         $profile->update($validatedData);
-        //dd($validatedData);
 
         return redirect('/'); 
     }   

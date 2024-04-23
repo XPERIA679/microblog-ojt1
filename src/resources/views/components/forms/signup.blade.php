@@ -1,4 +1,4 @@
-@extends('layouts.app')
+    @extends('layouts.app')
 
 @section('title', 'Sign Up')
 
@@ -45,9 +45,9 @@
                 </div>
 
                 <div class="input-box">
-                    <button class="button" href="signin">Create Account</button>
+                    <button class="items-center text-mydark bg-mycream box-border cursor-pointer inline-flex text-sm font-medium h-12 max-w-full overflow-hidden relative text-center w-auto px-6 py-0.5 rounded-3xl hover:bg-mygray text-mycream focus:border-2 border-solid border-mydark" href="signin">Create Account</button>
                     <hr class="w-3/5 m-2.5">
-                    <button class="button1" href="signin">Already have an account?</button>
+                    <button class="items-center text-mycream bg-mydark box-border cursor-pointer inline-flex text-sm font-medium h-12 max-w-full overflow-hidden relative text-center w-auto px-6 py-0.5 rounded-3xl hover:bg-mygray text-mycream focus:border-2 border-solid border-mydark" href="signin">Already have an account?</button>
                 </div>
 
             </div>

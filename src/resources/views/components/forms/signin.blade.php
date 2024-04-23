@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="input-box">
-                    <input type="password" type="password" name='password' id="password" required="required">
+                    <input type="password" name='password' required="required">
                     <span>Password</span>
                     @error('password')
                     <div style="color: red;">{{ $message }}</div>

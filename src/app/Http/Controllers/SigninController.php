@@ -5,21 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Http\Requests\SigninRequest;
+use Illuminate\Http\RedirectResponse;
 
 class SigninController extends Controller
 {
     /**
      * Return view user to sign in page.
      */
-    public function showSignin(): view
+    public function showSignin(): View
     {
-        return view('auth.signin');
+        return view('components.forms.signin');
     }
 
     /**
      * Verify user credentials and log them in.
      */
-    public function login(SigninRequest $request)
+    public function login(SigninRequest $request): RedirectResponse
     {
         $credentials = $request->only('username', 'password');
 
@@ -33,7 +34,7 @@ class SigninController extends Controller
     /**
      * Logout currently logged in user.
      */
-    public function logout()
+    public function logout(): RedirectResponse
     {
         auth()->logout();
         return redirect('/signin');

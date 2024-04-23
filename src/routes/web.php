@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
+use App\Models\Profile;
 
 
 Route::get('/', [
@@ -26,6 +27,11 @@ Route::get('/resend-email', [
     SignupController::class,
     'sendVerificationNotification'
 ]);
+
+Route::get('/update-profile', function () {
+    $profile = Profile::where('user_id', auth()->user()->id)->firstOrFail();
+    return view('components.create-profile', ['profile' => $profile]);
+});
 
 Route::post('/email/verification-notification', [
     SignupController::class,

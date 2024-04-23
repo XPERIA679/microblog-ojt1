@@ -7,6 +7,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\SignupRequest;
 
 class SignupController extends Controller
@@ -17,19 +18,18 @@ class SignupController extends Controller
      */
     public function showSignup(): view
     {
-        return view('auth.signup');
+        return view('components.forms.signup');
     }
 
 
     /**
      * Register a new user.
      */
-    public function register(SignupRequest $request)
+    public function register(SignupRequest $request): View
     {
         $requestData = $request->all();
-
         unset($requestData["password_confirmation"]);
-        //$debugData = DD($requestData);
+
         $user = User::create([
             'status' => 0,
             'username' => $requestData['username'],
@@ -43,13 +43,13 @@ class SignupController extends Controller
 
         $user->sendEmailVerificationNotification();
 
-        return view('auth.verify-email');
+        return view('components.auth.verify-email');
     }
 
     /**
      * Logout currently logged in user.
      */
-    public function logout()
+    public function logout(): RedrectResponse
     {
         auth()->logout();
         return redirect('/');
@@ -58,7 +58,7 @@ class SignupController extends Controller
     /**
      * Mark the user as verified after clicking 'verify button'.
      */
-    public function verifyEmail($id, $hash)
+    public function verifyEmail($id, $hash): View
     {
         Log::info('Verification request parameters:', [
             'id' => $id,
@@ -71,19 +71,19 @@ class SignupController extends Controller
             if (!$user->hasVerifiedEmail()) {
                 $user->markEmailAsVerified();
             }
-            return view('auth.signin');
+            return view('components.forms.signin');
         } else {
-            Log::error('User not found');
+            return view('components.auth.verify-email');
         }
     }
 
     /**
      * Send a verification email to user's email address.
      */
-    public function sendVerificationNotification(Request $request)
+    public function sendVerificationNotification(Request $request): view
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return view('auth.signin');
+            return view('components.forms.signin');
         }
         $request->user()->sendEmailVerificationNotification();
 

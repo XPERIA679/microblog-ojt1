@@ -24,6 +24,6 @@ class Profile extends Model
      */
     public function user(): HasOne
     {
-        return $this->hasOne(Profile::class);
+        return $this->hasOne(User::class);
     }
 }

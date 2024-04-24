@@ -5,42 +5,55 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Http\Request;
-use Illuminate\Contracts\View\View;
+use Illuminate\View\View;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\SignupRequest;
+use App\Services\SignupService;
 
-class UserController extends Controller
+class SignupController extends Controller
 {
+
+    protected $signupService;
+
+    /**
+     * Constructor for the SignupController.
+     *
+     * @param SignupService $userService The service responsible for user-related operations.
+     */
+    public function __construct(SignupService $signupService)
+    {
+        $this->signupService = $signupService;
+    }
+
+    /**
+     * Return view user to sign up page.
+     */
+    public function showSignup(): view
+    {
+        return view('components.forms.signup');
+    }
+
+
     /**
      * Register a new user.
      */
-        public function register(RegisterRequest $request): View
+    public function register(SignupRequest $request): View
     {
         $requestData = $request->all();
         unset($requestData["password_confirmation"]);
 
-        $user = User::create([
-            'status' => 0,
-            'username' => $requestData['username'],
-            'password' => $requestData['password'], 
-            'email' => $requestData['email']
-        ]);
+        $user = $this->signupService->registerUser($requestData);
 
-        Profile::create([
-            'user_id' => $user->id,
-        ]);
-        
-        auth()->login($user);
         $user->sendEmailVerificationNotification();
 
         return view('components.auth.verify-email');
     }
-    
+
     /**
      * Logout currently logged in user.
      */
-    public function logout(): RedirectResponse
+    public function logout(): RedrectResponse
     {
         auth()->logout();
         return redirect('/');
@@ -62,19 +75,19 @@ class UserController extends Controller
             if (!$user->hasVerifiedEmail()) {
                 $user->markEmailAsVerified();
             }
-            return view('verification-sucess');
+            return view('components.forms.signin');
         } else {
-            return view('verification-failed');
+            return view('components.auth.verify-email');
         }
     }
 
     /**
      * Send a verification email to user's email address.
      */
-    public function sendVerificationNotification(Request $request): View
+    public function sendVerificationNotification(Request $request): view
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return view('test-login');
+            return view('components.forms.signin');
         }
         $request->user()->sendEmailVerificationNotification();
 

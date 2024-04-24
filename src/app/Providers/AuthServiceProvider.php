@@ -9,9 +9,9 @@ use Illuminate\Support\ServiceProvider;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
-     * This method customizes the email verification 
-     * notification sent to users when they need to 
-     * verify their email address. 
+     * This method customizes the email verification
+     * notification sent to users when they need to
+     * verify their email address.
      */
     public function boot(): void
     {

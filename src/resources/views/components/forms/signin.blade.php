@@ -22,7 +22,7 @@
             @csrf
             <div class="user-details2">
                 <div class="input-box2">
-                    <input type="text" name='username' id="username" value="{{ old('username') }}" autocomplete="off" required="required">
+                    <input type="text" name='username' id="username" value="{{ old('username') }}" autocomplete="off">
                     <span>Username</span>
                     @error('username')
                     <div style="color: red;">{{ $message }}</div>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="input-box2">
-                    <input type="password" name='password' required="required">
+                    <input type="password" name='password'>
                     <span>Password</span>
                     @error('password')
                     <div style="color: red;">{{ $message }}</div>

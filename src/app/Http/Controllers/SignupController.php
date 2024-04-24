@@ -9,9 +9,22 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\SignupRequest;
+use App\Services\SignupService;
 
 class SignupController extends Controller
 {
+
+    protected $signupService;
+
+    /**
+     * Constructor for the SignupController.
+     *
+     * @param SignupService $userService The service responsible for user-related operations.
+     */
+    public function __construct(SignupService $signupService)
+    {
+        $this->signupService = $signupService;
+    }
 
     /**
      * Return view user to sign up page.
@@ -30,16 +43,7 @@ class SignupController extends Controller
         $requestData = $request->all();
         unset($requestData["password_confirmation"]);
 
-        $user = User::create([
-            'status' => 0,
-            'username' => $requestData['username'],
-            'password' => $requestData['password'],
-            'email' => $requestData['email']
-        ]);
-
-        Profile::create([
-            'user_id' => $user->id,
-        ]);
+        $user = $this->signupService->registerUser($requestData);
 
         $user->sendEmailVerificationNotification();
 

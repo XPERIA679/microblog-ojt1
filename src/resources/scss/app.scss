@@ -1,10 +1,9 @@
-
 * {
     @apply box-border m-0 p-0 font-heading;
 }
 
 body {
-    @apply justify-center items-center h-screen bg-bgsize bg-ngradient animate-gradient;
+    @apply justify-center h-body-height bg-center items-center h-screen bg-bgsize bg-ngradient animate-gradient;
 }
 
 .form-container {
@@ -106,6 +105,67 @@ form .user-details2 .input-box2 {
     @apply bg-mydark text-mywhite translate-x-2.5 translate-y-1.5 text-xs tracking-wide mix-blend-overlay px-2 py-0 rounded-3xl;
 }
 
+.buttonh{
+    @apply justify-center items-center appearance-none bg-mydark shadow-boxshadow box-border text-mycream cursor-pointer inline-flex fill-[currentcolor] text-sm font-medium h-12 tracking-[0.25px] leading-[normal] max-w-full overflow-visible relative text-center normal-case select-none touch-manipulation w-[300px] will-change-[transform,opacity] z-0 mb-[35px] px-6 py-0.5 rounded-3xl border-none
+    transition-shadow-opacity-transform
+    ease-transtimefunc
+    delay-transdelay
+    duration-transduration
+}
+
+.buttonh:hover {
+    @apply text-mydark bg-mywhite
+}
+
+.buttonh:active {
+    @apply shadow-lg;
+    outline: none;
+}
+
+.buttonh:focus {
+    @apply border-2 border-solid border-mydark;
+    outline: none;
+}
+
+.buttonh:not(:disabled) {
+    @apply shadow-md hover:shadow-[rgba(60,64,67,0.3)_0_2px_3px_0,rgba(60,64,67,0.15)_0_6px_10px_4px] focus:shadow-[rgba(60,64,67,0.3)_0_1px_3px_0,rgba(60,64,67,0.15)_0_4px_8px_3px] active:shadow-[rgba(60,64,67,0.3)_0_4px_4px_0,rgba(60,64,67,0.15)_0_8px_12px_6px];
+}
+
+  .buttonh:disabled {
+    @apply shadow-md;
+}
+
+.buttonh1 {
+    @apply justify-center items-center appearance-none bg-mycream shadow-lg box-border text-mydark cursor-pointer inline-flex fill-[currentcolor] text-sm font-medium h-12 tracking-[0.25px] leading-[normal] max-w-full overflow-visible relative text-center normal-case select-none touch-manipulation w-[300px] will-change-[transform,opacity] z-0 mr-3 px-6 py-0.5 rounded-3xl border-none
+    transition-shadow-opacity-transform
+    ease-transtimefunc
+    delay-transdelay
+    duration-transduration
+}
+
+.buttonh1:hover {
+    @apply text-mydark bg-mygray
+}
+
+.buttonh1:active {
+    @apply shadow-md;
+    outline: none;
+}
+
+.buttonh1:focus {
+    @apply border-2 border-solid border-mydark;
+    outline: none;
+}
+
+.buttonh1:not(:disabled) {
+    @apply shadow-[rgba(60,64,67,0.3)_0_1px_3px_0,rgba(60,64,67,0.15)_0_4px_8px_3px] hover:shadow-[rgba(60,64,67,0.3)_0_2px_3px_0,rgba(60,64,67,0.15)_0_6px_10px_4px] focus:shadow-[rgba(60,64,67,0.3)_0_1px_3px_0,rgba(60,64,67,0.15)_0_4px_8px_3px] active:shadow-[rgba(60,64,67,0.3)_0_4px_4px_0,rgba(60,64,67,0.15)_0_8px_12px_6px];
+}
+
+.buttonh1:disabled {
+    @apply shadow-[rgba(60,64,67,0.3)_0_1px_3px_0,rgba(60,64,67,0.15)_0_4px_8px_3px];
+}
+
+
 @media (max-width: 584px) {
     .form-container {
         @apply max-w-full;
@@ -121,5 +181,22 @@ form .user-details2 .input-box2 {
 
     .user-details::-webkit-scrollbar {
         @apply w-0;
+    }
+}
+
+@keyframes lightning {
+    0% {
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    50% {
+        background-color: #fff;
+        box-shadow: 0 0 10px 5px #fff;
+    }
+
+    100% {
+        background-color: transparent;
+        box-shadow: none;
     }
 }

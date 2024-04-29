@@ -10,7 +10,7 @@
             var countdownDisplay = document.getElementById("countdown");
 
             button.disabled = true; // Initially disable the button
-            var countdownSeconds = 3;
+            var countdownSeconds = 60;
             countdownDisplay.textContent = countdownSeconds;
 
             var countdownInterval = setInterval(function() {

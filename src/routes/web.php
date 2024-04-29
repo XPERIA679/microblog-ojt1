@@ -8,6 +8,10 @@ use App\Http\Controllers\SignupController;
 
 
 Route::get('/', [
+    HomeController::class,
+     'showHome']);
+
+Route::get('/signup', [
     SignupController::class,
      'showSignup']);
 
@@ -35,7 +39,7 @@ Route::get('/update-profile', function () {
 });
 
 Route::post('/update-profile', [
-    ProfileController::class, 
+    ProfileController::class,
     'update'
 ]);
 

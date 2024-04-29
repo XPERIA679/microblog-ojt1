@@ -2,24 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\SignupRequest;
 use App\Services\SignupService;
 
 class SignupController extends Controller
 {
-
     protected $signupService;
 
     /**
-     * Constructor for the SignupController.
-     *
-     * @param SignupService $userService The service responsible for user-related operations.
+     * Creates a SignUpController instance
      */
     public function __construct(SignupService $signupService)
     {
@@ -29,70 +22,38 @@ class SignupController extends Controller
     /**
      * Return view user to sign up page.
      */
-    public function showSignup(): view
+    public function showSignup(): View
     {
         return view('components.forms.signup');
     }
 
-
     /**
-     * Register a new user.
+     * Calls service to register a new user.
      */
     public function register(SignupRequest $request): View
     {
-        $requestData = $request->all();
-        unset($requestData["password_confirmation"]);
-
-        $user = $this->signupService->registerUser($requestData);
-
-        $user->sendEmailVerificationNotification();
-
-        return view('components.auth.verify-email', ['useremail' => $user->email]);
+        $userEmail = $this->signupService->register($request->all());
+        return view('components.auth.verify-email', ['userEmail' => $userEmail]);
     }
 
     /**
-     * Logout currently logged in user.
+     *  Calls service to mark the user as verified after clicking 'verify button'.
      */
-    public function logout(): RedrectResponse
+    public function verifyEmail(string $id, string $hash): View
     {
-        auth()->logout();
-        return redirect('/');
+        $view = $this->signupService->verifyEmail($id, $hash);
+        return view($view);
     }
 
     /**
-     * Mark the user as verified after clicking 'verify button'.
+     * Calls service to send verification email to user's email address.
+     * Redirects user to components.auth.verify-email or components.forms.signin
      */
-    public function verifyEmail($id, $hash): View
+    public function sendVerificationNotification(Request $request): View
     {
-        Log::info('Verification request parameters:', [
-            'id' => $id,
-            'hash' => $hash,
-        ]);
-
-        $user = User::find($id);
-
-        if ($user) {
-            if (!$user->hasVerifiedEmail()) {
-                $user->markEmailAsVerified();
-            }
-            return view('components.forms.signin');
-        } else {
-            return view('components.auth.verify-email');
+        if($this->signupService->sendVerificationNotification($request->userEmail)) {
+            return view('components.forms.signin');    
         }
-    }
-
-    /**
-     * Send a verification email to user's email address.
-     */
-    public function sendVerificationNotification(Request $request): view
-    {
-        $user = User::where('email', $request->useremail)->first();
-
-        if ($user->hasVerifiedEmail()) {
-            return view('components.forms.signin');
-        }
-        $user->sendEmailVerificationNotification();
-
-        return view('components.auth.verify-email', ['useremail' => $request->useremail]);
+        return view('components.auth.verify-email', ['userEmail' => $request->userEmail]);
     }
 }

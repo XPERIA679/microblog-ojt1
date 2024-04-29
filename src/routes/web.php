@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
-use App\Models\Profile;
 
 
 Route::get('/', [
@@ -32,10 +32,12 @@ Route::get('/resend-email', [
 Route::get('/update-profile', function () {
     $profile = Profile::where('user_id', auth()->user()->id)->firstOrFail();
     return view('components.create-profile', ['profile' => $profile]);
-Route::get('/update-profile', function () {
-    $profile = Profile::where('user_id', auth()->user()->id)->firstOrFail();
-    return view('components.create-profile', ['profile' => $profile]);
 });
+
+Route::post('/update-profile', [
+    ProfileController::class, 
+    'update'
+]);
 
 Route::post('/email/verification-notification', [
     SignupController::class,
@@ -49,4 +51,5 @@ Route::post('/register', [
 
 Route::post('/login', [
     SigninController::class,
-     'login']);
+    'login'
+]);

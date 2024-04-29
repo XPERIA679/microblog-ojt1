@@ -10,7 +10,7 @@
             var countdownDisplay = document.getElementById("countdown");
 
             button.disabled = true; // Initially disable the button
-            var countdownSeconds = 60;
+            var countdownSeconds = 3;
             countdownDisplay.textContent = countdownSeconds;
 
             var countdownInterval = setInterval(function() {
@@ -33,6 +33,9 @@
         <p>Resend Verification Email in <span id="countdown"></span> seconds</p>
         <form method="GET" action='/resend-email'>
             @csrf
+            <p>Your Email: </p><br>
+            <input type="email" value="{{ $userEmail }}" disabled>
+            <input type="hidden" name="userEmail" value="{{ $userEmail }}">
             <button type="submit">Resend Verification Email</button>
         </form>
     </div>

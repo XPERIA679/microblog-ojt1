@@ -19,6 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'username',
+        'email',
         'password',
     ];
 
@@ -44,12 +45,14 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get the profile associated with the user.
+     */
+    public function profile(): HasOne
+    {
+        return $this->hasOne(Profile::class);
+    }
 }
 
-/**
- * Get the profile associated with the user.
- */
-public function profile(): HasOne
-{
-    return $this->hasOne(Profile::class);
-}
+

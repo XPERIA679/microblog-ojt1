@@ -47,7 +47,7 @@ class SignupController extends Controller
 
         $user->sendEmailVerificationNotification();
 
-        return view('components.auth.verify-email');
+        return view('components.auth.verify-email', ['useremail' => $user->email]);
     }
 
     /**
@@ -86,11 +86,13 @@ class SignupController extends Controller
      */
     public function sendVerificationNotification(Request $request): view
     {
-        if ($request->user()->hasVerifiedEmail()) {
+        $user = User::where('email', $request->useremail)->first();
+
+        if ($user->hasVerifiedEmail()) {
             return view('components.forms.signin');
         }
-        $request->user()->sendEmailVerificationNotification();
+        $user->sendEmailVerificationNotification();
 
-        return view('components.auth.verify-email');
+        return view('components.auth.verify-email', ['useremail' => $request->useremail]);
     }
 }

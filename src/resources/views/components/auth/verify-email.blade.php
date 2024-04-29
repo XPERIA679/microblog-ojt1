@@ -33,6 +33,9 @@
         <p>Resend Verification Email in <span id="countdown"></span> seconds</p>
         <form method="GET" action='/resend-email'>
             @csrf
+            <p>Your Email: </p><br>
+            <input type="email" value="{{ $useremail }}" disabled>
+            <input type="hidden" name="useremail" value="{{ $useremail }}">
             <button type="submit">Resend Verification Email</button>
         </form>
     </div>

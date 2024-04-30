@@ -15,7 +15,7 @@
         @php
         $keys = ['lotBlk', 'street', 'city', 'province', 'country', 'zip'];
         if (!is_null($profile->address)) {
-            $values =  explode("‎", rtrim($profile->address, "‎"));
+            $values =  explode("‎", $profile->address);
             $addressInfo = array_combine($keys, $values);
         } else {
             $values = ['','','','','',''];

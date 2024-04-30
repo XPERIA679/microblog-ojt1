@@ -5,6 +5,7 @@ use App\Models\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\HomeController;
 
 
 Route::get('/', [

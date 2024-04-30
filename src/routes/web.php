@@ -5,9 +5,14 @@ use App\Models\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\HomeController;
 
 
 Route::get('/', [
+    HomeController::class,
+     'showHome']);
+
+Route::get('/signup', [
     SignupController::class,
      'showSignup']);
 
@@ -35,7 +40,7 @@ Route::get('/update-profile', function () {
 });
 
 Route::post('/update-profile', [
-    ProfileController::class, 
+    ProfileController::class,
     'update'
 ]);
 

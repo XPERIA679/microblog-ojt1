@@ -49,22 +49,19 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($userPosts as $post)
+        @foreach ($postsAndMedia as $postAndMedium)
         <tr>
-            <td>{{ $post->user_id }}</td>
-            <td>{{ $post->content }}</td>
+            <td>{{ $postAndMedium['post']->user_id }}</td>
+            <td>{{ $postAndMedium['post']->content }}</td>
             <td>
-                @if (in_array($post->id, $postMedia->pluck('post_id')->toArray()))
-                    @php
-                        $postMedia = App\Models\PostMedia::where('post_id', $post->id)->first();
-                    @endphp
-                    <img src='{{ "../../$postMedia->image" }}' alt="Post Image" style="width: 100px; height: 100px;">
+                @if ($postAndMedium['postMedium'] && $postAndMedium['postMedium']->image)
+                    <img src='{{ "../../{$postAndMedium['postMedium']->image}" }}' alt="Post Image" style="width: 100px; height: 100px;">
                 @endif
             </td>
         </tr>
         @endforeach
     </tbody>
-</table>
+    </table>
 
 </div>
 

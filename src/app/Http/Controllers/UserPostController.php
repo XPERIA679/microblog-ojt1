@@ -32,12 +32,8 @@ class UserPostController extends Controller
      */
     public function showPostsPage(): View
     {
-        $userPosts = UserPost::all();
-        $postMedia = PostMedia::all();
-
         return view('components.create-post', [
-            'userPosts' => $userPosts, 
-            'postMedia' => $postMedia
+            'postsAndMedia' => $this->userPostService->getAllPostsAndMedia()
         ]);
     }
 }

@@ -23,7 +23,7 @@ class CreateUserPostRequest extends FormRequest
     {
         return [
             'content' => 'required|string|max:255', 
-            'postMedia' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', 
+            'image' => 'nullable|mimes:jpeg,png,jpg', 
         ];
     }
 }

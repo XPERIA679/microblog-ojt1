@@ -1,12 +1,14 @@
 <?php
 
 use App\Models\Profile;
+use App\Models\UserPost;
+use App\Models\PostMedia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserPostController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserPostController;
 
 
 Route::get('/', [
@@ -61,7 +63,12 @@ Route::post('/login', [
 ]);
 
 Route::get('/create-post', function() {
-    return view('components.create-post');
+    $userPosts = UserPost::all();
+    $postMedia = PostMedia::all();
+    return view('components.create-post', [
+        'userPosts' => $userPosts, 
+        'postMedia' => $postMedia
+    ]);
 });
 
 Route::post('/create-post', [

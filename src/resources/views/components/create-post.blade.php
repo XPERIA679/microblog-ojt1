@@ -31,7 +31,7 @@
             <div class="error">{{ $message }}</div>
         @enderror
         <div id="file-input-container">
-            <input type="file" name="postMedia" accept=".jpg, .jpeg, .png">
+            <input type="file" name="image" accept=".jpg, .jpeg, .png">
             @error('postMedia')
                 <div class="error">{{ $message }}</div>
             @enderror
@@ -39,6 +39,33 @@
         <input type="text" name="user_id" value="{{ auth()->id() }}" hidden>
         <button type="submit">Post</button>
     </form>
+    <h2>Display posts for Testing</h2>
+    <table>
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Content</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($userPosts as $post)
+        <tr>
+            <td>{{ $post->user_id }}</td>
+            <td>{{ $post->content }}</td>
+            <td>
+                @if (in_array($post->id, $postMedia->pluck('post_id')->toArray()))
+                    @php
+                        $postMedia = App\Models\PostMedia::where('post_id', $post->id)->first();
+                    @endphp
+                    <img src='{{ "../../$postMedia->image" }}' alt="Post Image" style="width: 100px; height: 100px;">
+                @endif
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
 </div>
 
 </body>

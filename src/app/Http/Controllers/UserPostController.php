@@ -19,7 +19,7 @@ class UserPostController extends Controller
      */
     public function create(CreateUserPostRequest $request): RedirectResponse 
     {
-        $this->userPostService->create($request->all());
+        $this->userPostService->create($request);
         return redirect('/');
     }
 }

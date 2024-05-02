@@ -34,33 +34,24 @@ class UserPostService
             ]);
         }         
     }
-
-    public function getAllPostsAndMedia()
+    
+    /**
+     * Gets all the posts and media from database
+     */
+    public function getAllPostsAndMedia(): array
     {
         $userPosts = UserPost::all();
-        $postMedia = PostMedia::all();
+        $postsMedia = PostMedia::all();
         $postsAndMedia = [];
 
         foreach ($userPosts as $post) {
-            // Check if the post has associated media
-            $postMedium = $postMedia->where('post_id', $post->id)->first();
-            
-            if ($postMedium) { // Check if media exists for this post
-                // If media exists for this post, add both post and media to the array
-                $postsAndMedia[] = [
-                    'post' => $post,
-                    'postMedium' => $postMedium
-                ];
-            } else {
-                // If no media exists for this post, add only the post to the array
-                $postsAndMedia[] = [
-                    'post' => $post,
-                    'postMedium' => null
-                ];
-            }
+            $postMedium = $postsMedia->where('post_id', $post->id)->first();
+            $postsAndMedia[] = [
+                'post' => $post,
+                'postMedium' => $postMedium ?? null
+            ];
         }
-        return $postsAndMedia; // Convert array to Collection and return
+
+        return $postsAndMedia;
     }
-
-
 }

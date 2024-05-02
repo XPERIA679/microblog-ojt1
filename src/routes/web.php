@@ -62,12 +62,7 @@ Route::post('/login', [
     'login'
 ]);
 
-Route::get('/posts-page', [
-    UserPostController::class,
-    'showPostsPage'
-]);
-
-Route::post('/create-post', [
-    UserPostController::class, 
-    'create'
-]);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/posts-page', [UserPostController::class, 'showPostsPage']);
+    Route::post('/create-post', [UserPostController::class, 'create']);
+});

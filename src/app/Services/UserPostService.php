@@ -11,13 +11,12 @@ class UserPostService
     /**
     * create a new user post
     */
-    public function create(CreateUserPostRequest $request)
+    public function create(CreateUserPostRequest $request): void
     {
         $userPost = UserPost::create([
             'user_id' => $request['user_id'],
             'content' => $request['content']
         ]); 
-        //dd(gettype($request->all()['image']));
 
         if ($request->hasfile('image')) {
             $file = $request->file('image');
@@ -27,14 +26,11 @@ class UserPostService
 
             $path = 'uploads/images/';
             $file->move($path, $filename);
-            //dd($filename);
 
             PostMedia::create([
                 'image' => $path . $filename,
                 'post_id' => $userPost->id,
             ]);
-        } 
-
-        
+        }         
     }
 }

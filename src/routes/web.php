@@ -62,14 +62,10 @@ Route::post('/login', [
     'login'
 ]);
 
-Route::get('/create-post', function() {
-    $userPosts = UserPost::all();
-    $postMedia = PostMedia::all();
-    return view('components.create-post', [
-        'userPosts' => $userPosts, 
-        'postMedia' => $postMedia
-    ]);
-});
+Route::get('/posts-page', [
+    UserPostController::class,
+    'showPostsPage'
+]);
 
 Route::post('/create-post', [
     UserPostController::class, 

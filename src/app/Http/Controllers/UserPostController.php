@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserPost;
+use App\Models\PostMedia;
+use Illuminate\View\View;
 use App\Services\UserPostService;
-use App\Http\Requests\CreateUserPostRequest;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\CreateUserPostRequest;
 
 class UserPostController extends Controller
 {   
@@ -21,5 +24,20 @@ class UserPostController extends Controller
     {
         $this->userPostService->create($request);
         return redirect('/');
+    }
+
+    /**
+     * Gets all the posts and media
+     * Displays the posts page
+     */
+    public function showPostsPage(): View
+    {
+        $userPosts = UserPost::all();
+        $postMedia = PostMedia::all();
+
+        return view('components.create-post', [
+            'userPosts' => $userPosts, 
+            'postMedia' => $postMedia
+        ]);
     }
 }

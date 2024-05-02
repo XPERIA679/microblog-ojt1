@@ -7,7 +7,7 @@
     <title>Newsfeed</title>
 </head>
 <body>
-    <!--
+    
     <header>
         <div class="inner_header">
             <div class="logo_container">
@@ -20,7 +20,7 @@
             </ul>
         </div>
     </header>
-    -->
+   
     
 <div class="post-form">
     <h2>Create a Post</h2>

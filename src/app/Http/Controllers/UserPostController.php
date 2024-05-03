@@ -57,6 +57,9 @@ class UserPostController extends Controller
         ]);
     }
 
+    /**
+     * Calls service to delete post.
+     */
     public function delete(Request $request):RedirectResponse
     {
         $this->userPostService->delete($request);

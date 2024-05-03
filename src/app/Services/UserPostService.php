@@ -102,7 +102,11 @@ class UserPostService
         return $postsAndMedia;
     }
 
-    public function delete(Request $request) {
+    /**
+     * Delete a user post.
+     */
+    public function delete(Request $request): void 
+    {
         UserPost::destroy($request->userPostToDeleteId);
     }
 }

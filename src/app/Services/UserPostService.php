@@ -2,11 +2,12 @@
 
 namespace App\Services;
 
-use App\Http\Requests\EditUserPostRequest;
 use App\Models\UserPost;
 use App\Models\PostMedia;
-use App\Http\Requests\CreateUserPostRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use App\Http\Requests\EditUserPostRequest;
+use App\Http\Requests\CreateUserPostRequest;
 
 class UserPostService
 {
@@ -99,5 +100,13 @@ class UserPostService
         }
 
         return $postsAndMedia;
+    }
+
+    /**
+     * Delete a user post.
+     */
+    public function delete(int $userPostToDeleteId): void 
+    {
+        UserPost::destroy($userPostToDeleteId);
     }
 }

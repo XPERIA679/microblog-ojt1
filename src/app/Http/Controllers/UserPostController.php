@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 use App\Services\UserPostService;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\EditUserPostRequest;
@@ -54,5 +55,14 @@ class UserPostController extends Controller
         return view('components.edit-post', [
             'postAndMediaToEdit' => $this->userPostService->getUserPostAndMediaToEdit($post_id)
         ]);
+    }
+
+    /**
+     * Calls service to delete post.
+     */
+    public function delete(Request $request):RedirectResponse
+    {
+        $this->userPostService->delete($request->userPostToDeleteId);
+        return redirect('/');
     }
 }

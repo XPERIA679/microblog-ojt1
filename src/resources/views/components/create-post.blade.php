@@ -58,14 +58,22 @@
                     <img src='{{ "../../{$postAndMedium['postMedium']->image}" }}' alt="Post Image" style="width: 100px; height: 100px;">
                 @endif
             </td>
-            <td>
-                @php
-                @endphp
-                <form action="/edit-post-page/{{ $postAndMedium['post']->id }}" method="GET">
-                    @csrf
-                    <button type="submit">Edit</button>
-                </form>
-            </td>
+            @if(auth()->id() == $postAndMedium['post']->user_id)
+                <td>
+                    <form action="/edit-post-page/{{ $postAndMedium['post']->id }}" method="GET">
+                        @csrf
+                        <button type="submit">Edit</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/delete-post/{{ $postAndMedium['post']->id }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="text" name="userPostToDeleteId" value="{{$postAndMedium['post']->id}}" hidden>
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            @endif
         </tr>`
         @endforeach
     </tbody>

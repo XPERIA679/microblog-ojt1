@@ -41,23 +41,19 @@ class UserPostService
     */
     public function edit(EditUserPostRequest $request): void
     {
-        $postToEdit = UserPost::findOrFail($request->userPostToEditId);
-        $postToEdit->update(['content' => $request->editedContent]);
+        UserPost::findOrFail($request->userPostToEditId)->update(['content' => $request->editedContent]);
 
-        if($request->shouldRemoveImage){
-            PostMedia::find($request->postMediaToEditId)->delete();
+        if ($request->shouldRemoveImage) {
+            PostMedia::destroy($request->postMediaToEditId);
         }
 
         if ($request->hasFile('editedImage')) {
-            $file = $request->file('editedImage');
-            $extension = $file->getClientOriginalExtension(); 
-            $filename = time() . '.' . $extension;
-            $path = 'uploads/images/';
-            $file->move($path, $filename);
+            $filename = time() . '.' . $request->file('editedImage')->getClientOriginalExtension();
+            $request->file('editedImage')->move('uploads/images/', $filename);
 
             PostMedia::updateOrCreate(
-                ['post_id' => $postToEdit->id],
-                ['image' => $path . $filename]
+                ['post_id' => $request->userPostToEditId],
+                ['image' => 'uploads/images/' . $filename]
             );
         }
     }

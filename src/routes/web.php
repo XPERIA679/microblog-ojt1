@@ -65,4 +65,6 @@ Route::post('/login', [
 Route::middleware(['auth'])->group(function () {
     Route::get('/posts-page', [UserPostController::class, 'showPostsPage']);
     Route::post('/create-post', [UserPostController::class, 'create']);
+    Route::get('/edit-post-page/{post}', [UserPostController::class, 'showEditPostPage']);
+    Route::put('/edit-post', [UserPostController::class, 'edit']);
 });

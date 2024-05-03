@@ -58,7 +58,15 @@
                     <img src='{{ "../../{$postAndMedium['postMedium']->image}" }}' alt="Post Image" style="width: 100px; height: 100px;">
                 @endif
             </td>
-        </tr>
+            <td>
+                @php
+                @endphp
+                <form action="/edit-post-page/{{ $postAndMedium['post']->id }}" method="GET">
+                    @csrf
+                    <button type="submit">Edit</button>
+                </form>
+            </td>
+        </tr>`
         @endforeach
     </tbody>
     </table>

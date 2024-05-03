@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserPost;
-use App\Models\PostMedia;
 use Illuminate\View\View;
 use App\Services\UserPostService;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\EditUserPostRequest;
 use App\Http\Requests\CreateUserPostRequest;
 
 class UserPostController extends Controller
@@ -34,6 +33,26 @@ class UserPostController extends Controller
     {
         return view('components.create-post', [
             'postsAndMedia' => $this->userPostService->getAllPostsAndMedia()
+        ]);
+    }
+
+    /**
+     * Updates a post's content and/or media.
+     */
+    public function edit(EditUserPostRequest $request):RedirectResponse
+    {
+        $this->userPostService->edit($request);
+        return redirect('/');
+    }
+
+    /**
+     * Gets the post and media to Edit.
+     * Displays edit page.
+     */
+    public function showEditPostPage(int $post_id): View
+    {
+        return view('components.edit-post', [
+            'postAndMediaToEdit' => $this->userPostService->getUserPostAndMediaToEdit($post_id)
         ]);
     }
 }

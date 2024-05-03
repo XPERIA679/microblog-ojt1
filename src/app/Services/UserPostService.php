@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Requests\EditUserPostRequest;
 use App\Models\UserPost;
 use App\Models\PostMedia;
 use App\Http\Requests\CreateUserPostRequest;
@@ -35,6 +36,51 @@ class UserPostService
         }         
     }
     
+    /**
+    * Edit a new user post
+    */
+    public function edit(EditUserPostRequest $request): void
+    {
+        UserPost::findOrFail($request->userPostToEditId)->update(['content' => $request->editedContent]);
+
+        if ($request->shouldRemoveImage) {
+            PostMedia::destroy($request->postMediaToEditId);
+        }
+
+        if ($request->hasFile('editedImage')) {
+            $filename = time() . '.' . $request->file('editedImage')->getClientOriginalExtension();
+            $request->file('editedImage')->move('uploads/images/', $filename);
+
+            PostMedia::updateOrCreate(
+                ['post_id' => $request->userPostToEditId],
+                ['image' => 'uploads/images/' . $filename]
+            );
+        }
+    }
+
+
+    /**
+     * Get the specific post and media based from the id of post.
+     */
+    public function getUserPostAndMediaToEdit(int $post_id): Array
+    {   
+        $userPostToEdit = UserPost::where('id', $post_id)->firstOrFail();
+
+        $postsMediaIds = PostMedia::all()->pluck('post_id')->toArray();
+        if(in_array($post_id, $postsMediaIds)) {
+            $postMediaToEdit = PostMedia::where('post_id', $post_id)->firstOrFail();
+            return [
+                'userPostToEdit' => $userPostToEdit,
+                'postMediaToEdit' => $postMediaToEdit
+            ];
+        }
+
+        return [
+            'userPostToEdit' => $userPostToEdit,
+            'postMediaToEdit' => null
+        ];
+    }
+
     /**
      * Gets all the posts and media from database
      */

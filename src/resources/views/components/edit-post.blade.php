@@ -20,9 +20,6 @@
             </ul>
         </div>
     </header>
-    @php
-        //dd($postAndMediaToEdit);
-    @endphp
     <div class="post-form">
         <h2>Edit Post</h2>
         <form action="/edit-post" method="POST" enctype="multipart/form-data">

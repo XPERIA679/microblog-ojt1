@@ -49,7 +49,7 @@ class UserPostController extends Controller
      * Gets the post and media to Edit.
      * Displays edit page.
      */
-    public function showEditPostPage($post_id): View
+    public function showEditPostPage(int $post_id): View
     {
         return view('components.edit-post', [
             'postAndMediaToEdit' => $this->userPostService->getUserPostAndMediaToEdit($post_id)

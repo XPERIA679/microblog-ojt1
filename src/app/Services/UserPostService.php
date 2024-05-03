@@ -105,8 +105,8 @@ class UserPostService
     /**
      * Delete a user post.
      */
-    public function delete(Request $request): void 
+    public function delete(int $userPostToDeleteId): void 
     {
-        UserPost::destroy($request->userPostToDeleteId);
+        UserPost::destroy($userPostToDeleteId);
     }
 }

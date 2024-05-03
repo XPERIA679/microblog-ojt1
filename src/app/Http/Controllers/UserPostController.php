@@ -62,7 +62,7 @@ class UserPostController extends Controller
      */
     public function delete(Request $request):RedirectResponse
     {
-        $this->userPostService->delete($request);
+        $this->userPostService->delete($request->userPostToDeleteId);
         return redirect('/');
     }
 }

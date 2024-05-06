@@ -58,13 +58,18 @@
                     <img src='{{ "../../{$postAndMedium['postMedium']->image}" }}' alt="Post Image" style="width: 100px; height: 100px;">
                 @endif
             </td>
-            @php
-            
-            @endphp
             <td>
-                {{-- Check if the current user has already liked the post --}}
-                @if (in_array(auth()->id(), array_column($allLikedPosts, 'user_id')) && in_array($postAndMedium['post']->id, array_column($allLikedPosts, 'post_id')))
-                    {{-- If the user has liked the post, display a "Dislike" button --}}
+                @php
+                    $likedByCurrentUser = false;
+                    foreach ($allLikedPosts as $likedPost) {
+                        if ($likedPost['user_id'] == auth()->id() && $likedPost['post_id'] == $postAndMedium['post']->id) {
+                            $likedByCurrentUser = true;
+                            break;
+                        }
+                    }
+                @endphp
+                @if ($likedByCurrentUser)
+                    {{-- If the current user has liked the post, display a "Dislike" button --}}
                     <form action="/unlike-post/{{ $postAndMedium['post']->id }}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -78,6 +83,7 @@
                     </form>
                 @endif
             </td>
+
             @if(auth()->id() == $postAndMedium['post']->user_id)
                 <td>
                     <form action="/edit-post-page/{{ $postAndMedium['post']->id }}" method="GET">

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('post_id')->references('id')->on('user_posts')->onDelete('cascade');
             $table->timestamps(); 
             $table->unique(['user_id', 'post_id']);
+            $table->softDeletes();
         });
     }
 

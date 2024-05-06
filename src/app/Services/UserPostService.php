@@ -111,12 +111,25 @@ class UserPostService
         UserPost::destroy($userPostToDeleteId);
     }
 
+    /**
+     * Creates a new like record if no record exists.
+     * Restores a like record if soft deleted.
+     */
     public function likePost(int $userPostToLikeId): void
     {
-        PostLike::create([
-            'post_id' => $userPostToLikeId,
-            'user_id' => auth()->id()
-        ]);
+        $postLike = PostLike::withTrashed()
+                    ->where('post_id', $userPostToLikeId)
+                    ->where('user_id', auth()->id())
+                    ->first();
+
+        if ($postLike) {
+            $postLike->restore();
+        } else {
+            PostLike::create([
+                'post_id' => $userPostToLikeId,
+                'user_id' => auth()->id()
+            ]);
+        }
     }
 
     public function unlikePost(int $userPostToUnlikeId): void
@@ -127,7 +140,10 @@ class UserPostService
         PostLike::destroy($postLike);
     }
 
-    public function getAllLikedPosts()
+    /**
+     * Get all the post likes records.
+     */
+    public function getAllPostLikes()
     {
         return PostLike::all()->toArray();
     }

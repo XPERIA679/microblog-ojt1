@@ -35,7 +35,7 @@ class UserPostController extends Controller
     {
         return view('components.create-post', [
             'postsAndMedia' => $this->userPostService->getAllPostsAndMedia(),
-            'allLikedPosts' => $this->userPostService->getAllLikedPosts()
+            'allLikedPosts' => $this->userPostService->getAllPostLikes()
         ]);
     }
 

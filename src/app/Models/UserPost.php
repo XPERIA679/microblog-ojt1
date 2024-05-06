@@ -24,6 +24,9 @@ class UserPost extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Gets all like records for the user post
+     */
     public function postLike(): HasMany
     {
         return $this->hasMany(PostLike::class, 'post_id');

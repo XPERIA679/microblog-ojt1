@@ -8,9 +8,7 @@
 
 <body>
 
-    <main class="flex justify-center items-center h-screen">
         @yield('content')
-    </main>
 
     @include('layouts.scripts')
 </body>

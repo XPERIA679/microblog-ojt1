@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\PostLike;
 use App\Models\UserPost;
 use App\Models\PostMedia;
 use Illuminate\Http\Request;
@@ -108,5 +109,26 @@ class UserPostService
     public function delete(int $userPostToDeleteId): void 
     {
         UserPost::destroy($userPostToDeleteId);
+    }
+
+    public function likePost(int $userPostToLikeId): void
+    {
+        PostLike::create([
+            'post_id' => $userPostToLikeId,
+            'user_id' => auth()->id()
+        ]);
+    }
+
+    public function unlikePost(int $userPostToUnlikeId): void
+    {
+        $postLike = PostLike::where('user_id', auth()->id())
+                    ->where('post_id', $userPostToUnlikeId)
+                    ->first()->id;
+        PostLike::destroy($postLike);
+    }
+
+    public function getAllLikedPosts()
+    {
+        return PostLike::all()->toArray();
     }
 }

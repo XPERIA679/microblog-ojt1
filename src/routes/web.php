@@ -1,8 +1,6 @@
 <?php
 
 use App\Models\Profile;
-use App\Models\UserPost;
-use App\Models\PostMedia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SigninController;
@@ -68,4 +66,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/edit-post-page/{post}', [UserPostController::class, 'showEditPostPage']);
     Route::put('/edit-post', [UserPostController::class, 'edit']);
     Route::delete('/delete-post/{post}', [UserPostController::class, 'delete']);
+    Route::post('/like-post/{post}', [UserPostController::class, 'likePost']);
+    Route::delete('/unlike-post/{post}', [UserPostController::class, 'unlikePost']);
 });

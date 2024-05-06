@@ -100,6 +100,9 @@
                     </form>
                 </td>
             @endif
+            <td>
+                Likes: {{ $postAndMedium['post']->postLike()->count() }}
+            </td>
         </tr>
         @endforeach
     </tbody>

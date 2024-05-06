@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\PostLike;
 use App\Models\UserPost;
 use App\Models\PostMedia;
 use Illuminate\Http\Request;
@@ -108,5 +109,42 @@ class UserPostService
     public function delete(int $userPostToDeleteId): void 
     {
         UserPost::destroy($userPostToDeleteId);
+    }
+
+    /**
+     * Creates a new like record if no record exists.
+     * Restores a like record if soft deleted.
+     */
+    public function likePost(int $userPostToLikeId): void
+    {
+        $postLike = PostLike::withTrashed()
+                    ->where('post_id', $userPostToLikeId)
+                    ->where('user_id', auth()->id())
+                    ->first();
+
+        if ($postLike) {
+            $postLike->restore();
+        } else {
+            PostLike::create([
+                'post_id' => $userPostToLikeId,
+                'user_id' => auth()->id()
+            ]);
+        }
+    }
+
+    public function unlikePost(int $userPostToUnlikeId): void
+    {
+        $postLike = PostLike::where('user_id', auth()->id())
+                    ->where('post_id', $userPostToUnlikeId)
+                    ->first()->id;
+        PostLike::destroy($postLike);
+    }
+
+    /**
+     * Get all the post likes records.
+     */
+    public function getAllPostLikes()
+    {
+        return PostLike::all()->toArray();
     }
 }

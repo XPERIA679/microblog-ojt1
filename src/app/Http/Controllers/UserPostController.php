@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PostLike;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Services\UserPostService;
@@ -33,7 +34,8 @@ class UserPostController extends Controller
     public function showPostsPage(): View
     {
         return view('components.create-post', [
-            'postsAndMedia' => $this->userPostService->getAllPostsAndMedia()
+            'postsAndMedia' => $this->userPostService->getAllPostsAndMedia(),
+            'allLikedPosts' => $this->userPostService->getAllPostLikes()
         ]);
     }
 
@@ -53,7 +55,7 @@ class UserPostController extends Controller
     public function showEditPostPage(int $post_id): View
     {
         return view('components.edit-post', [
-            'postAndMediaToEdit' => $this->userPostService->getUserPostAndMediaToEdit($post_id)
+            'postAndMediaToEdit' => $this->userPostService->getUserPostAndMediaToEdit($post_id),
         ]);
     }
 
@@ -64,5 +66,17 @@ class UserPostController extends Controller
     {
         $this->userPostService->delete($request->userPostToDeleteId);
         return redirect('/');
+    }
+
+    public function likePost(Request $request):RedirectResponse
+    {
+        $this->userPostService->likePost($request->post);
+        return redirect('/posts-page');
+    }
+
+    public function unlikePost(Request $request):RedirectResponse
+    {
+        $this->userPostService->unlikePost($request->post);
+        return redirect('/posts-page');
     }
 }

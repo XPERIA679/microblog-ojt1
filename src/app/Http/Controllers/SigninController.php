@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\SigninService;
 use Illuminate\View\View;
 use App\Http\Requests\SigninRequest;
 use Illuminate\Http\RedirectResponse;
 
 class SigninController extends Controller
 {
+    protected $signinService;
+
+    public function __construct(SigninService $signinService)
+    {
+        $this->signinService = $signinService;
+    }
+
     /**
      * Return view user to sign in page.
      */
@@ -20,15 +27,10 @@ class SigninController extends Controller
     /**
      * Verify user credentials and log them in.
      */
-    public function login(SigninRequest $request): RedirectResponse
+    public function login(SigninRequest $request): View
     {
-        $credentials = $request->only('username', 'password');
-
-        if (auth()->attempt($credentials)) {
-            return redirect('/signin');
-        }
-
-        return redirect()->back()->withErrors(['message' => 'Invalid username or password.']);
+        $signinData = $this->signinService->login($request->only('username', 'password'));
+        return view($signinData['view'], ['userEmail' => $signinData['userEmail']]);
     }
 
     /**
@@ -36,7 +38,7 @@ class SigninController extends Controller
      */
     public function logout(): RedirectResponse
     {
-        auth()->logout();
+        $this->signinService->logout();
         return redirect('/signin');
     }
 }

@@ -42,7 +42,7 @@
     <table>
     <thead>
         <tr>
-            <th>User ID</th>
+            <th>Username</th>
             <th>Content</th>
             <th>Image</th>
             <th>Action</th>
@@ -51,7 +51,7 @@
     <tbody>
         @foreach ($postsAndMedia as $postAndMedium)
         <tr>
-            <td>{{ $postAndMedium['post']->user_id }}</td>
+            <td>{{ $postAndMedium['post']->user->username }}</td>
             <td>{{ $postAndMedium['post']->content }}</td>
             <td>
                 @if ($postAndMedium['postMedium'] && $postAndMedium['postMedium']->image)
@@ -99,9 +99,16 @@
                         <button type="submit">Delete</button>
                     </form>
                 </td>
+            @else
+                <td></td>
+                <td></td>
             @endif
             <td>
-                Likes: {{ $postAndMedium['post']->postLike()->count() }}
+                Likes: {{ $postAndMedium['post']->postLike()->count() }} <br>
+                Posted: {{ $postAndMedium['post']->created_at->diffForHumans() }}
+                @if($postAndMedium['post']->updated_at != $postAndMedium['post']->created_at)        
+                    <br>Last Edited: {{ $postAndMedium['post']->updated_at->diffForHumans()}}
+                @endif
             </td>
         </tr>
         @endforeach

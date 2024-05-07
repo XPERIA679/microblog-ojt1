@@ -29,7 +29,7 @@ class SigninController extends Controller
      */
     public function login(SigninRequest $request): View
     {
-        $signinData = $this->signinService->login($request);
+        $signinData = $this->signinService->login($request->only('username', 'password'));
         return view($signinData['view'], ['userEmail' => $signinData['userEmail']]);
     }
 

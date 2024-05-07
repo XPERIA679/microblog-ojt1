@@ -11,9 +11,8 @@ class SigninService
      * Verify user credentials and log them in.
      * If the user is not yet verified, redirect to resend verification page
      */
-    public function login(SigninRequest $request): array
+    public function login(array $credentials): array
     {
-        $credentials = $request->only('username', 'password');
         $signinData = ['view' => 'components.forms.signin', 'userEmail' => null];
 
         if (auth()->attempt($credentials)) {

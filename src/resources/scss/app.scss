@@ -59,12 +59,20 @@ form .user-details .input-box {
     @apply w-[calc(100%_/_2_-_20px)] mb-3.5;
 }
 
+.user-details .input-boxe {
+    @apply flex justify-center ;
+}
+
 .user-details .input-box .details {
     @apply block font-medium mb-1.5;
 }
 
 .user-details .input-box input {
-    @apply bg-mydark text-mywhite text-base h-8 w-full pl-4 rounded-3xl border border-solid border-mygray transition-[0.5s];
+    @apply bg-mydark text-mywhite text-base h-8 w-full pl-4 rounded-3xl border border-solid border-mygray transition-[0.5s] mt-4;
+}
+
+.user-details .input-box3 input {
+    @apply bg-mydark text-mywhite text-base h-8 w-3/5 pl-4 rounded-3xl border border-solid border-mygray transition-[0.5s] mt-4;
 }
 
 .input-box span {
@@ -73,6 +81,15 @@ form .user-details .input-box {
 
 .input-box input:valid~span,
 .input-box input:focus~span {
+    @apply bg-mydark text-mywhite translate-x-2.5 translate-y-1.5 text-xs tracking-wide mix-blend-overlay px-2 py-0 rounded-3xl;
+}
+
+.input-boxe span {
+    @apply relative pointer-events-none text-xs text-mywhite uppercase p-2.5 left-0 transition-[0.5s];
+}
+
+.input-boxe input:valid~span,
+.input-boxe input:focus~span {
     @apply bg-mydark text-mywhite translate-x-2.5 translate-y-1.5 text-xs tracking-wide mix-blend-overlay px-2 py-0 rounded-3xl;
 }
 

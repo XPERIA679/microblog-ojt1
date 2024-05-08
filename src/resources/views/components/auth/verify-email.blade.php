@@ -1,43 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Verification Notice</title>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var button = document.querySelector("button[type='submit']");
-            var countdownDisplay = document.getElementById("countdown");
+@extends('layouts.app')
 
-            button.disabled = true; // Initially disable the button
-            var countdownSeconds = 60;
-            countdownDisplay.textContent = countdownSeconds;
+@section('title', 'Email Verification Notice')
 
-            var countdownInterval = setInterval(function() {
-                countdownSeconds--;
-                countdownDisplay.textContent = countdownSeconds;
-                if (countdownSeconds <= 0) {
-                    clearInterval(countdownInterval);
-                    button.disabled = false; // Enable the button after countdown finishes
-                }
-            }, 1000); // Update every second
-        });
-    </script>
-</head>
-<body>
-    <div>
-        <h2>Email Verification Required</h2>
+@section('content')
+<main class="flex justify-center items-center h-screen">
+<div class="form-container">
+    <div class="title">
+        <h3>Email Verification Required</h3>
+    </div>
+
+    <div class="user-details">
         <p>
             Before proceeding, please check your email for a verification link. If you haven't received the email, please click the button below to request another verification link.
         </p>
-        <p>Resend Verification Email in <span id="countdown"></span> seconds</p>
+        <p>Resend Verification Email in <span id="countdown"></span> seconds</p><br>
         <form method="GET" action='/resend-email'>
+            <div class="input-box3">
             @csrf
-            <p>Your Email: </p><br>
+            <p>Your Email: </p>
             <input type="email" value="{{ $userEmail }}" disabled>
             <input type="hidden" name="userEmail" value="{{ $userEmail }}">
-            <button type="submit">Resend Verification Email</button>
+            </div>
+            <div class="input-boxe">
+            <button class="items-center text-mydark bg-mycream box-border cursor-pointer inline-flex text-sm font-medium h-12 max-w-full overflow-hidden relative text-center w-auto px-6 py-0.5 rounded-3xl hover:bg-mygray text-mycream focus:border-2 border-solid border-mydark mt-4" type="submit">Resend Verification Email</button>
+            </div>
         </form>
     </div>
-</body>
-</html>
+</main>

@@ -35,3 +35,4 @@ class CreatePostCommentsTable extends Migration
         Schema::dropIfExists('post_comments');
     }
 }
+

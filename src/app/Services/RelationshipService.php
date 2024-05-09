@@ -3,29 +3,21 @@
 namespace App\Services;
 
 use App\Models\Relationship;
+
 class RelationshipService
 {
     public function follow(int $userToFollowId): void
     {
-        $existingRelationship = Relationship::where('user_id_follower', auth()->user()->id)
-            ->where('user_id_following', $userToFollowId)
-            ->onlyTrashed()
-            ->first();
-
-        if ($existingRelationship) {
-            $existingRelationship->restore();
-        } else {
-            Relationship::create([
-                'user_id_follower' => auth()->user()->id,
-                'user_id_following' => $userToFollowId
-            ]);  
-        }
+        Relationship::updateOrCreate(
+            ['follower_id' => auth()->user()->id, 'following_id' => $userToFollowId],
+            ['status' => true]
+        );
     }
 
     public function unfollow(int $userToUnfollowId): void
     {
-        Relationship::where('user_id_follower', auth()->user()->id)
-            ->where('user_id_following', $userToUnfollowId)
-            ->delete();
+        Relationship::where('follower_id', auth()->user()->id)
+            ->where('following_id', $userToUnfollowId)
+            ->update(['status' => false]);
     }
 }

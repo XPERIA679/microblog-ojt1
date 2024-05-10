@@ -16,11 +16,17 @@ class PostShare extends Model
         'repost_content',
     ];
 
+    /**
+     * Get the post shared by the user.
+     */
     public function post(): BelongsTo 
     {
         return $this->belongsTo(UserPost::class, 'post_id');
     }
 
+    /**
+     * Get the user that shared the post.
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');

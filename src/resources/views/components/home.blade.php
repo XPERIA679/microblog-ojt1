@@ -4,15 +4,21 @@
 
 @section('content')
 
-    <div class="flex flex-col lg:flex-row w-auto h-screen pb-8 overflow-hidden">
+    <div class="flex flex-col lg:flex-row w-auto overflow-hidden">
 
-        <div class="flex h-1/2 lg:h-auto lg:w-2/4 pr-9 justify-center items-center overflow-hidden">
-            <div class="flex h-auto w-full justify-center items-center pl-20 pb-12">
+        <div class="lg:hidden w-full pt-2 justify-center items-center">
+            <div class="flex h-auto w-full justify-center items-center pb-2">
+                <a href="/"><img src="assets/images/logo.png" alt="homelogo" style="max-width: 150px;"></a>
+            </div>
+        </div>
+
+        <div class="hidden lg:block lg:w-2/4 pr-9 pt-7 justify-center items-center overflow-hidden">
+            <div class="flex h-auto w-full justify-center items-center pb-12">
                 <a href="/"><img src="assets/images/logo.png" alt="homelogo"></a>
             </div>
         </div>
 
-        <div class="h-screen lg:h-auto lg:w-2/4 flex flex-col justify-center items-center px-4 lg:pl-24 lg:pt-32">
+        <div class="lg:h-auto lg:w-2/4 flex flex-col pt-7 justify-center items-center px-4">
             <h1 class="text-3xl lg:text-5xl pb-8 text-mywhite mix-blend-overlay text-center">
                 Every person has a backstory.<br>
                 They are the way they are for a reason.<br>
@@ -36,9 +42,11 @@
         </div>
     </div>
 
-
-    <div class="px-2 py-4 text-center">
-        <nav class="flex flex-wrap justify-center items-center mb-2">
+    <footer class="pt-12">
+        <div class="no-underline text-xs lg:text-sm text-mywhite transition-all duration-200 text-center">
+            © 2024 OJT Microblog
+        </div>
+        <div class="flex flex-wrap justify-center items-center text-center">
             <a class="no-underline text-xs lg:text-sm text-mywhite transition-all duration-200 mx-2 my-1 border-b-transparent border-b border-solid"
                 href="">Tertulio C. Labajo</a>
             <a class="no-underline text-xs lg:text-sm text-mywhite transition-all duration-200 mx-2 my-1 border-b-transparent border-b border-solid"
@@ -47,10 +55,6 @@
                 href="https://github.com/jeromes123">Jan Jerome P. Soriano</a>
             <a class="no-underline text-xs lg:text-sm text-mywhite transition-all duration-200 mx-2 my-1 border-b-transparent border-b border-solid"
                 href="https://github.com/XPERIA679">Robin S. Soriano</a>
-        </nav>
-        <div class="no-underline text-xs lg:text-sm text-mywhite transition-all duration-200">
-            © 2024 OJT Microblog
         </div>
-    </div>
-
+    </footer>
 @endsection

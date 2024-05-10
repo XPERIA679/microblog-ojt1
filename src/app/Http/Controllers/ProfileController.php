@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Profile;
+use Illuminate\View\View;
 use App\Services\ProfileService;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\UpdateProfileRequest;
@@ -27,4 +28,14 @@ class ProfileController extends Controller
         $this->profileService->update($request);
         return redirect('/update-profile'); 
     }    
+
+    /**
+     * Displays the page to update profile information.
+     */
+    public function showUpdateProfile(): View
+    {
+        return view('components.create-profile', [
+            'profile' => Profile::where('user_id', auth()->user()->id)->firstOrFail()
+        ]);
+    }
 }

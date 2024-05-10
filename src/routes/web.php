@@ -39,11 +39,7 @@ Route::middleware([AuthenticateWithErrorView::class])->group(function () {
     Route::delete('/unlike-post/{post}', [UserPostController::class, 'unlikePost']);
     Route::get('/logout', [SigninController::class, 'logout']);
     Route::post('/update-profile', [ProfileController::class, 'update']);
-
-    Route::get('/update-profile', function () {
-        $profile = Profile::where('user_id', auth()->user()->id)->firstOrFail();
-        return view('components.create-profile', ['profile' => $profile]);
-    });
+    Route::get('/update-profile', [ProfileController::class, 'showUpdateProfile']);
 });
 
 Route::middleware([RedirectIfAuthenticated::class])->group(function () {

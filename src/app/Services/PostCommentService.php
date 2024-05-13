@@ -19,6 +19,9 @@ class PostCommentService
         ]);
     }
 
+    /**
+     * Edits comment for the post.
+     */
     public function update(PostCommentRequest $request): void
     {
         PostComment::findOrFail($request->postCommentToEditId)->update(['content' => $request->content]);

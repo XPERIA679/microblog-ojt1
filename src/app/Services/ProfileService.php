@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Profile;
+use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\UpdateProfileRequest;
 
@@ -28,5 +29,12 @@ class ProfileService
 
         return redirect('/'); 
     }   
+
+    public function showUpdateProfile(): View
+    {
+        return view('components.create-profile', [
+            'profile' => Profile::where('user_id', auth()->user()->id)->firstOrFail()
+        ]);
+    }
   
 }

@@ -31,4 +31,12 @@ class UserPost extends Model
     {
         return $this->hasMany(PostLike::class, 'post_id');
     }
+
+    /**
+     * Gets all comment records for the user post
+     */
+    public function postComment(): HasMany
+    {
+        return $this->hasMany(PostComment::class, 'post_id');
+    }
 }

@@ -14,6 +14,9 @@ class PostShareController extends Controller
         $this->postShareService = new PostShareService;
     }
 
+    /**
+     * Calls service to create new shared post.
+     */
     public function create(CreatePostShareRequest $request): void
     {
         $this->postShareService->create($request);

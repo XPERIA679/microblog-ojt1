@@ -32,7 +32,7 @@ class UserPostController extends Controller
     }
 
     /**
-     * Gets all the posts and media
+     * Gets all the posts and media, and post shares
      * Displays the posts page
      */
     public function showPostsPage()

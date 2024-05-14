@@ -7,7 +7,6 @@ use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserPostController;
-use App\Http\Controllers\PostCommentController;
 
 
 Route::get('/', [
@@ -69,7 +68,4 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/delete-post/{post}', [UserPostController::class, 'delete']);
     Route::post('/like-post/{post}', [UserPostController::class, 'likePost']);
     Route::delete('/unlike-post/{post}', [UserPostController::class, 'unlikePost']);
-    Route::post('/add-comment', [PostCommentController::class, 'create']);
-    Route::delete('/delete-comment', [PostCommentController::class, 'delete']);
-    Route::put('/edit-comment', [PostCommentController::class, 'update']);
 });

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PostLike;
+use App\Models\UserPost;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Services\UserPostService;
+use App\Services\PostShareService;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\EditUserPostRequest;
 use App\Http\Requests\CreateUserPostRequest;
@@ -13,9 +14,12 @@ use App\Http\Requests\CreateUserPostRequest;
 class UserPostController extends Controller
 {   
     public $userPostService;
+    public $postShareService;
 
     public function __construct() {
         $this->userPostService = new UserPostService;
+        $this->postShareService = new PostShareService;
+
     }
 
     /**
@@ -31,10 +35,10 @@ class UserPostController extends Controller
      * Gets all the posts and media
      * Displays the posts page
      */
-    public function showPostsPage(): View
+    public function showPostsPage()
     {
-        return view('components.create-post', [
-            'postsAndMedia' => $this->userPostService->getAllPostsAndMedia(),
+        return view( 'components.create-post',[
+            'postsMediaAndShares' => collect($this->userPostService->getAllPostsAndMedia())->merge($this->postShareService->getAllPostShares()),
             'allLikedPosts' => $this->userPostService->getAllPostLikes()
         ]);
     }
@@ -80,3 +84,4 @@ class UserPostController extends Controller
         return redirect('/posts-page');
     }
 }
+

@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class UserPost extends Model
 {
@@ -38,5 +39,10 @@ class UserPost extends Model
     public function postComment(): HasMany
     {
         return $this->hasMany(PostComment::class, 'post_id');
+    }
+
+    public function postMedia(): HasOne
+    {
+        return $this->hasOne(PostMedia::class, 'post_id');
     }
 }

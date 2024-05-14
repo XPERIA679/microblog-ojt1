@@ -4,6 +4,7 @@
 <head>
     @include('layouts.head')
     <title>@yield('title')</title>
+    <link rel="icon" type="image/x-icon" href="/assets/images/logo.png">
 </head>
 
 <body>

@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('relationships', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id_following')->unsigned();
-            $table->bigInteger('user_id_follower')->unsigned();
-            $table->foreign('user_id_following')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('user_id_follower')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('following_id')->unsigned();
+            $table->bigInteger('follower_id')->unsigned();
+            $table->foreign('following_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('follower_id')->references('id')->on('users')->onDelete('cascade');
+            $table->boolean('status');
+            $table->unique(['following_id', 'follower_id']);
             $table->timestamps();
         });
     }

@@ -24,7 +24,7 @@ class CreatePostShareRequest extends FormRequest
         return [
             'post_id' => 'required|integer|exists:user_posts,id',
             'user_id' => 'required|integer|exists:users,id',
-            'repost_content' => 'nullable|string',
+            'repost_content' => 'nullable|string|max:255',
         ];
     }
 }

@@ -6,9 +6,10 @@ use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserPostController;
-use App\Http\Middleware\AuthenticateWithErrorView;
-use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Controllers\PostShareController;
 use App\Http\Controllers\PostCommentController;
+use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Middleware\AuthenticateWithErrorView;
 
 Route::get('/', [HomeController::class, 'showHome']);
 Route::get('/email/verify/{id}/{hash}', [SignupController::class, 'verifyEmail'])->middleware(['signed'])->name('verification.verify');
@@ -23,6 +24,7 @@ Route::middleware([AuthenticateWithErrorView::class])->group(function () {
     Route::post('/update-profile', [ProfileController::class, 'update']);
     Route::post('/create-post', [UserPostController::class, 'create']);
     Route::post('/like-post/{post}', [UserPostController::class, 'likePost']);
+    Route::post('/share-post', [PostShareController::class, 'create']);
     Route::put('/edit-post', [UserPostController::class, 'edit']);
     Route::delete('/unlike-post/{post}', [UserPostController::class, 'unlikePost']);
     Route::delete('/delete-post/{post}', [UserPostController::class, 'delete']); 

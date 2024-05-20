@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Services\PostShareService;
 use App\Http\Requests\CreatePostShareRequest;
 
-
 class PostShareController extends Controller
 {   
     public $postShareService;

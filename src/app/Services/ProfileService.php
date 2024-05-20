@@ -36,8 +36,6 @@ class ProfileService
      */
     public function showUpdateProfile(): View
     {
-        return view('components.create-profile', [
-            'profile' => Profile::where('user_id', auth()->user()->id)->firstOrFail()
-        ]);
+        return view('components.create-profile', ['profile' => auth()->user()->profile()->firstOrFail()]);
     }
 }

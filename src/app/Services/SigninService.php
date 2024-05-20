@@ -3,10 +3,16 @@
 namespace App\Services;
 
 use App\Services\SignupService;
-use App\Http\Requests\SigninRequest;
 
 class SigninService
 {
+    public $signupService;
+    
+    public function __construct(SignupService $signupService)
+    {
+        $this->signupService = $signupService;
+    }
+
     /**
      * Verify user credentials and log them in.
      * If the user is not yet verified, redirect to resend verification page
@@ -23,13 +29,12 @@ class SigninService
             $signinData['view'] = 'components.auth.verify-email';
             $signinData['userEmail'] = auth()->user()->email;
 
-            (new SignupService)->sendVerificationNotification($signinData['userEmail']);
+            $this->signupService->sendVerificationNotification($signinData['userEmail']);
             auth()->logout();
         }
 
         return $signinData;
     }
-
 
     /**
      * Logout currently logged in user.
@@ -38,5 +43,4 @@ class SigninService
     {
         auth()->logout();
     }
-    
 }

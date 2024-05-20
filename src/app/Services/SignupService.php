@@ -4,8 +4,6 @@ namespace App\Services;
 
 use App\Models\User;
 use App\Models\Profile;
-use Illuminate\View\View;
-use Illuminate\Support\Facades\Log;
 
 class SignupService
 {
@@ -28,6 +26,7 @@ class SignupService
         ]);
 
         $user->sendEmailVerificationNotification();
+        
         return $user->email;
     }
 

@@ -34,6 +34,6 @@ class ProfileController extends Controller
      */
     public function showUpdateProfile(): View
     {
-        return $this->profileService->getProfileToEdit();
+        return $this->profileService->showUpdateProfile();
     }
 }

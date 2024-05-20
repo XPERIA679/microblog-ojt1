@@ -5,8 +5,6 @@ namespace App\Services;
 use App\Models\PostLike;
 use App\Models\UserPost;
 use App\Models\PostMedia;
-use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 use App\Http\Requests\EditUserPostRequest;
 use App\Http\Requests\CreateUserPostRequest;
 
@@ -59,7 +57,6 @@ class UserPostService
             );
         }
     }
-
 
     /**
      * Get the specific post and media based from the id of post.
@@ -132,6 +129,9 @@ class UserPostService
         }
     }
 
+    /**
+     * Remove a like record with softdelete
+     */
     public function unlikePost(int $userPostToUnlikeId): void
     {
         $postLike = PostLike::where('user_id', auth()->id())

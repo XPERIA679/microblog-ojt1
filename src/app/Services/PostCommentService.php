@@ -30,8 +30,8 @@ class PostCommentService
     /**
      * Deletes a comment.
      */
-    public function delete(int $PostCommentToDeleteId): void 
+    public function delete(int $postCommentToDeleteId): void 
     {
-        PostComment::destroy($PostCommentToDeleteId);
+        PostComment::destroy($postCommentToDeleteId);
     }
 }

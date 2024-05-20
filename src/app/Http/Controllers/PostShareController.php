@@ -28,6 +28,6 @@ class PostShareController extends Controller
      */
     public function delete(Request $request): void
     {
-        $this->postShareService->delete($request->postShareId);
+        $this->postShareService->delete($request->postShareToDeleteId);
     }
 }

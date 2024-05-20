@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
 use Illuminate\View\View;
 use App\Services\ProfileService;
 use Illuminate\Http\RedirectResponse;

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserPost;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Services\UserPostService;
@@ -72,12 +71,18 @@ class UserPostController extends Controller
         return redirect('/');
     }
 
+    /**
+     * Calls the service to create a like record.
+     */
     public function likePost(Request $request):RedirectResponse
     {
         $this->userPostService->likePost($request->post);
         return redirect('/posts-page');
     }
 
+    /**
+     * Calls serivice to unlike a post.
+     */
     public function unlikePost(Request $request):RedirectResponse
     {
         $this->userPostService->unlikePost($request->post);

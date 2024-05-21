@@ -27,4 +27,12 @@ class PostShareService
     {
         return PostShare::all();
     }
+
+    /**
+     * Deletes a shared post
+     */
+    public function delete(int $postShareId): void
+    {
+        PostShare::destroy($postShareId);
+    }
 }

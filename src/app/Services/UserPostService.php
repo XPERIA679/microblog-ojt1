@@ -89,7 +89,7 @@ class UserPostService
     }
 
     /**
-     * Gets all the posts and media from database
+     * Gets all the user posts, posts media, and post shares from database
      */
     public function getAllPostsAndMediaAndShares(): Collection
     {

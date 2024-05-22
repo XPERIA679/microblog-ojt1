@@ -5,7 +5,7 @@
 }
 
 body {
-    @apply min-h-screen overflow-x-hidden justify-center h-body-height bg-center items-center h-screen bg-bgsize bg-ngradient animate-gradient;
+    @apply min-h-screen overflow-x-hidden justify-center bg-center items-center h-screen bg-bgsize bg-ngradient animate-gradient;
 }
 
 nav {
@@ -172,4 +172,19 @@ form .user-details2 .input-box2 {
         background-color: transparent;
         box-shadow: none;
     }
+}
+
+
+/*------- iskrul bar ------*/
+
+::-webkit-scrollbar {
+    @apply w-3
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-mycream
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-mydark
 }

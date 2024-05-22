@@ -36,8 +36,8 @@ class UserPostController extends Controller
      */
     public function showPostsPage(): View
     {
-        return view( 'components.feeds.newsfeeds',[
-            'postsMediaAndShares' => collect($this->userPostService->getAllPostsAndMedia())->merge($this->postShareService->getAllPostShares()),
+        return view( 'components.create-post',[
+            'postsMediaAndShares' => $this->userPostService->getAllPostsAndMediaAndShares(),
             'allLikedPosts' => $this->userPostService->getAllPostLikes()
         ]);
     }

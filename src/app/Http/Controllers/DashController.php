@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class HomeController extends Controller
+class DashController extends Controller
 {
     /**
      * Return view user to homepage.
      */
-    public function showHome(): view
+    public function showDash(): view
     {
         return view('components.newsfeeds');
     }

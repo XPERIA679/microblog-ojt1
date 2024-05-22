@@ -27,7 +27,7 @@ Route::middleware([AuthenticateWithErrorView::class])->group(function () {
     Route::post('/share-post', [PostShareController::class, 'create']);
     Route::put('/edit-post', [UserPostController::class, 'edit']);
     Route::delete('/unlike-post/{post}', [UserPostController::class, 'unlikePost']);
-    Route::delete('/delete-post/{post}', [UserPostController::class, 'delete']); 
+    Route::delete('/delete-post/{post}', [UserPostController::class, 'delete']);
     Route::post('/add-comment', [PostCommentController::class, 'create']);
     Route::delete('/delete-comment', [PostCommentController::class, 'delete']);
     Route::put('/edit-comment', [PostCommentController::class, 'update']);

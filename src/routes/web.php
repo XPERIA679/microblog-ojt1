@@ -23,10 +23,10 @@ Route::middleware([AuthenticateWithErrorView::class])->group(function () {
     Route::get('/update-profile', [ProfileController::class, 'showUpdateProfile']);
     Route::post('/update-profile', [ProfileController::class, 'update']);
     Route::post('/create-post', [UserPostController::class, 'create']);
-    Route::post('/like-post/{post}', [UserPostController::class, 'likePost']);
+    Route::post('/like-post', [UserPostController::class, 'likePost']);
     Route::post('/share-post', [PostShareController::class, 'create']);
     Route::put('/edit-post', [UserPostController::class, 'edit']);
-    Route::delete('/unlike-post/{post}', [UserPostController::class, 'unlikePost']);
+    Route::delete('/unlike-post', [UserPostController::class, 'unlikePost']);
     Route::delete('/delete-post/{post}', [UserPostController::class, 'delete']);
     Route::post('/add-comment', [PostCommentController::class, 'create']);
     Route::delete('/delete-comment', [PostCommentController::class, 'delete']);

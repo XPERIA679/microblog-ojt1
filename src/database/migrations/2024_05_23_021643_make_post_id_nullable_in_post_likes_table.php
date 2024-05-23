@@ -26,8 +26,6 @@ class MakePostIdNullableInPostLikesTable extends Migration
     public function down()
     {
         Schema::table('post_likes', function (Blueprint $table) {
-            // If you need to revert the change, you can make the column non-nullable again.
-            // This will drop any existing NULL values in the column.
             $table->unsignedBigInteger('post_id')->change();
         });
     }

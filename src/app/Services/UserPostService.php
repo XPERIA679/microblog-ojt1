@@ -109,56 +109,26 @@ class UserPostService
     }
 
     /**
-     * Creates a new like record if no record exists.
-     * Restores a like record if soft deleted.
+     * Determines if post to 'like' is original or shared.
+     * Creates a 'like' record if existing or restore if soft deleted.
      */
     public function likePost(array $data): void
     {
-        $userId = auth()->id();
-        
-        if($data['type'] === 'originalPost') {
-            $postLike = PostLike::withTrashed()->where('post_id', $data['id'])
-                ->where('user_id', $userId)
-                ->first();
-            if ($postLike) {
-                $postLike->restore();
-            } else {
-                PostLike::create([
-                    'post_id' => $data['id'],
-                    'user_id' => $userId
-                ]);
-            }
-        } else {
-            $postLike = PostLike::withTrashed()->where('post_share_id', $data['id'])
-                ->where('user_id', $userId)
-                ->first();
-            if ($postLike) {
-                $postLike->restore();
-            } else {
-                PostLike::create([
-                    'post_share_id' => $data['id'],
-                    'user_id' => $userId
-                ]);
-            }
-        }
+        $idToInsertInto = ($data['type'] === 'originalPost') ? 'post_id' : 'post_share_id';
+        PostLike::withTrashed()->firstOrCreate([
+            $idToInsertInto => $data['id'],
+            'user_id' => auth()->id()
+        ])->restore();
     }
 
     /**
-     * Remove a like record with softdelete
+     * Determines if the post to unlike is original or shared.
+     * Deletes the 'like' record.
      */
     public function unlikePost(array $data): void
     {
-        if($data['type'] === 'originalPost') {
-            $postLike = PostLike::where('user_id', auth()->id())
-                    ->where('post_id', $data['id'])
-                    ->first()->id;
-            PostLike::destroy($postLike);
-        } else {
-            $postLike = PostLike::where('user_id', auth()->id())
-                    ->where('post_share_id', $data['id'])
-                    ->first()->id;
-            PostLike::destroy($postLike);
-        }
+        $idToQuery = ($data['type'] === 'originalPost') ? 'post_id' : 'post_share_id';
+        PostLike::where('user_id', auth()->id())->where($idToQuery, $data['id'])->first()->delete();
     }
 
     /**

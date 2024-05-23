@@ -88,12 +88,9 @@ class UserPostService
         ];
     }
 
-    /**
-     * Gets all the user posts, posts media
-     * Combine the all posts and their media into array<UserPost, PostMedia>
-     * Combine array<UserPost, PostMedia> with all PostShares 
-     * Sort the Collection of array<UserPost, PostMedia> and PostShares by date
-     */
+    /** 
+     * Retrieves and combines user posts with media and shares, then sorts by date. 
+     * */
     public function getAllPostsAndMediaAndShares(): Collection
     {
         $userPosts = UserPost::all();

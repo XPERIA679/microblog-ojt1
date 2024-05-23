@@ -89,7 +89,10 @@ class UserPostService
     }
 
     /**
-     * Gets all the user posts, posts media, and post shares from database
+     * Gets all the user posts, posts media
+     * Combine the all posts and their media into array<UserPost, PostMedia>
+     * Combine array<UserPost, PostMedia> with all PostShares 
+     * Sort the Collection of array<UserPost, PostMedia> and PostShares by date
      */
     public function getAllPostsAndMediaAndShares(): Collection
     {
@@ -107,11 +110,10 @@ class UserPostService
         $postsMediaAndShares = collect($postsAndMedia)->merge($this->postShareService->getAllPostShares());
         
         $postsMediaAndShares = $postsMediaAndShares->sortBy(function ($item) {
-            if (is_array($item)) {
-                return $item['post']->updated_at;
-            } elseif ($item instanceof \App\Models\PostShare) {
+        if ($item instanceof \App\Models\PostShare) {
                 return $item->updated_at;
             }
+            return $item['post']->updated_at;
         });
 
         return $postsMediaAndShares ;

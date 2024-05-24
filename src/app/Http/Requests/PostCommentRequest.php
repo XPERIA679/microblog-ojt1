@@ -16,13 +16,22 @@ class PostCommentRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
             'content' => 'required|string|max:255', 
+        ];
+    }
+
+    /**
+     * Get custom error messages for validation rules.
+     */
+    public function messages(): array
+    {
+        return [
+            'content.required' => 'The comment field is empty.',
+            'content.max' => 'The comment must not excceed 255 characters.',
         ];
     }
 }

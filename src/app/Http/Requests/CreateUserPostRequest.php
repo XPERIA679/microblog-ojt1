@@ -16,14 +16,28 @@ class CreateUserPostRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
             'content' => 'required|string|max:255', 
-            'image' => 'nullable|mimes:jpeg,png,jpg|max:2048', 
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', 
+        ];
+    }
+
+    /**
+     * Get custom error messages for validation rules.
+     */
+    public function messages(): array
+    {
+        return [
+            'content.required' => 'The content field is required.',
+            'content.string' => 'The content must be a string.',
+            'content.max' => 'The content may not be greater than 255 characters.',
+            
+            'image.image' => 'The file must be an image.',
+            'image.mimes' => 'The image must be a file of type: jpeg, png, jpg.',
+            'image.max' => 'The image may not be greater than 2048 kb.',
         ];
     }
 }

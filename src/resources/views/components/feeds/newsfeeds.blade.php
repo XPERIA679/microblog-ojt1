@@ -10,7 +10,7 @@
             <x-feeds.edit-profile />
             <section class="lg:col-span-1">
                 {{-- User Profile --}}
-                <div class="shadow rounded-lg p-10 bg-mydark">
+                <div class="rounded-lg p-10 bg-mydark">
                     <x-feeds.user-profile />
                     <div class="flex justify-center items-center gap-6 my-5">
                         <x-feeds.post-count />
@@ -21,22 +21,23 @@
                         <x-feeds.edit-profile-btn />
                     </div>
                 </div>
+
+                {{-- User Account to follow Suggestions --}}
+                <x-feeds.following-suggestions />
+
             </section>
 
             <section class="lg:col-span-2">
                 {{-- Post Creation --}}
                 <x-feeds.create-post />
                 {{-- Posts --}}
-                <div class="bg-mycream shadow rounded-lg mb-6">
-                    <x-feeds.profile-icon />
-                    <hr class="w-auto h-0.5 bg-mygray border-solid md:my-2">
+                <div class="bg-mycream rounded-lg mb-6">
+                    <x-feeds.post-profile-icon />
                     <x-feeds.post />
-                    <hr class="w-auto h-0.5 bg-mygray border-solid md:my-2">
                     <x-feeds.interactions-count />
                 </div>
                 {{-- Comment Creation --}}
-
-                <x-feeds.create-comment />
+                <x-feeds.post-interaction />
             </section>
         </main>
     </div>

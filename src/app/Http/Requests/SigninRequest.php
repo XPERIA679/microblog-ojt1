@@ -17,15 +17,27 @@ class SigninRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            'username' => 'required|min:3|max:25',
+            'username' => [
+                'required',
+                'min:3',
+                'max:25',
+                Rule::exists('users', 'username'),
+            ],
             'password' => 'required|min:8|max:64',
         ];
     }
 
+    /**
+     * Get custom error messages for validation rules.
+    */
+    public function messages(): array
+    {
+        return [
+            'username' => 'The provided username does not exist.',
+        ];
+    }
 }

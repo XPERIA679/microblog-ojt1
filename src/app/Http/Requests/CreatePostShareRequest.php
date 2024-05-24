@@ -19,12 +19,22 @@ class CreatePostShareRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'post_id' => 'required|integer|exists:user_posts,id',
             'user_id' => 'required|integer|exists:users,id',
             'repost_content' => 'nullable|string|max:255',
+        ];
+    }
+
+    /**
+     * Get custom error messages for validation rules.
+     */
+    public function messages(): array
+    {
+        return [
+            'repost_content.max' => 'The repost content may not be greater than 255 characters.',
         ];
     }
 }

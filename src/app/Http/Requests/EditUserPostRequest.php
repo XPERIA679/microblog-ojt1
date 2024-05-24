@@ -22,8 +22,22 @@ class EditUserPostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'editedContent' => 'required|string|max:255', 
-            'editedImage' => 'nullable|mimes:jpeg,png,jpg|max:2048', 
+            'editedContent' => 'required|string|max:255', // Renamed from 'editedContent'
+            'image' => 'nullable|mimes:jpeg,png,jpg|max:2048', // Renamed from 'editedImage'
+        ];
+    }
+
+    /**
+     * Get custom error messages for validation rules.
+     */
+    public function messages(): array
+    {
+        return [
+            'editedContent.required' => 'The content field is required.',
+            'editedContent.max' => 'The content field must not exceed 255 characters.',
+            
+            'image.mimes' => 'The image must be a file of type: jpeg, png, jpg.',
+            'image.max' => 'The image may not be greater than 2048 kb.',
         ];
     }
 }

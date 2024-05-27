@@ -1,4 +1,4 @@
-<div class="w-auto my-3 py-2 hover:shadow-lg rounded-lg shadow-[rgba(0,0,0,0.3)_0px_0px_80px_-44px]">
+<div class="w-auto m-3 py-2 hover:shadow-lg rounded-lg">
     <div class="text-mydark font-medium text-sm m-3 hover:drop-shadow-md">
         Live one day at a time.
     </div>

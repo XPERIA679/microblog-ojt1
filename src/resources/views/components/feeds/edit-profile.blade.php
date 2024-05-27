@@ -1,4 +1,4 @@
-<div onclick="hideDialog()" id="dialog"
+<div onclick="hideProfile()" id="profile"
     class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500">
 
     <div onclick="event.stopImmediatePropagation()" class="bg-mycream rounded-2xl shadow-md p-10 flex">
@@ -50,7 +50,7 @@
                     </div>
                 </form>
                 <div class="mt-12 justify-between flex">
-                    <button onclick="hideDialog()"
+                    <button onclick="hideProfile()"
                         class="justify-center items-center flex text-mydark bg-mywhite box-border cursor-pointer shadow-md text-sm font-medium h-12 max-w-full overflow-hidden text-center w-auto px-6 py-0.5 rounded-2xl hover:bg-mydark hover:text-mywhite border-mydark transition-all">
                         Cancel
                     </button>

@@ -28,14 +28,14 @@
 
             <div class="buttons flex flex-col items-center">
                 <button
-                    class="justify-center items-center text-mydark bg-mycream box-border cursor-pointer inline-flex text-sm lg:text-base font-medium h-12 max-w-full overflow-hidden relative text-center w-full lg:w-80 px-6 py-0.5 rounded-3xl hover:bg-mywhite text-mycream focus:border-2 border-solid border-mydark mb-4">
+                    class="justify-center items-center text-mydark bg-mycream box-border cursor-pointer inline-flex text-sm lg:text-base font-medium h-12 max-w-full overflow-hidden relative text-center w-full lg:w-80 px-6 py-0.5 rounded-3xl hover:bg-mywhite text-mycream  border-mydark mb-4 transition-all">
                     <a href="signup">Create account</a>
                 </button>
 
                 <p class="text-purewhite mix-blend-overlay my-4"><b>Already have an account?</b></p>
 
                 <button
-                    class="justify-center items-center text-mycream bg-mydark box-border cursor-pointer inline-flex text-sm lg:text-base font-medium h-12 max-w-full overflow-hidden relative text-center w-full lg:w-80 px-6 py-0.5 rounded-3xl hover:bg-mywhite text-mycream focus:border-2 border-solid border-mydark">
+                    class="justify-center items-center text-mycream bg-mydark box-border cursor-pointer inline-flex text-sm lg:text-base font-medium h-12 max-w-full overflow-hidden relative text-center w-full lg:w-80 px-6 py-0.5 rounded-3xl hover:bg-mywhite text-mycream border-mydark transition-all">
                     <a href="signin">Sign In</a>
                 </button>
             </div>

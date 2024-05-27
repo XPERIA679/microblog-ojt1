@@ -19,9 +19,7 @@ nav {
 
 .link a {
     @apply text-mywhite no-underline transition-[0.3s] pt-8 p-4 rounded-br rounded-bl hover:bg-mygray;
-  }
-
-
+}
 
 .form-container {
     @apply max-w-2xl w-full overflow-hidden px-8 py-6 rounded-3xl bg-bgsize bg-pgradient animate-gradient;
@@ -60,7 +58,7 @@ form .user-details .input-box {
 }
 
 .user-details .input-boxe {
-    @apply flex justify-center ;
+    @apply flex justify-center;
 }
 
 .user-details .input-box .details {
@@ -174,14 +172,42 @@ form .user-details2 .input-box2 {
     }
 }
 
+.bg-bgsize {
+    background-size: 500% 500%;
+}
+
+.bg-ngradient {
+    background-image: linear-gradient(-60deg, #DAD2BC, #252323, #70798C);
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-gradient {
+    animation: gradient 15s ease infinite;
+}
+
+.bg-pgradient {
+    background-image: linear-gradient(60deg, #DAD2BC, #252323, #70798C);
+}
+
 ::-webkit-scrollbar {
-    @apply w-1
+    @apply w-1;
 }
 
 ::-webkit-scrollbar-track {
-    @apply bg-mycream
+    @apply bg-mycream;
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-mydark
+    @apply bg-mydark;
 }

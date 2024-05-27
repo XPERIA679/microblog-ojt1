@@ -11,6 +11,12 @@ class HomeController extends Controller
      */
     public function showHome(): view
     {
-        return view('components.newsfeeds');
+        return view('components.home');
     }
+
+    public function search(): view
+    {
+        return view('components.search');
+    }
+
 }

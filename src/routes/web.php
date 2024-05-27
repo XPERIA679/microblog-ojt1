@@ -8,8 +8,17 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserPostController;
 use App\Http\Controllers\PostShareController;
 use App\Http\Controllers\PostCommentController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\AuthenticateWithErrorView;
+
+Route::get('/api/usernames', [UserController::class, 'searchUsernames']);
+Route::options('/api/usernames', function() {
+    return response()->json([], 200)
+        ->header('Access-Control-Allow-Origin', '*')
+        ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+        ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+});
 
 Route::get('/', [HomeController::class, 'showHome']);
 Route::get('/email/verify/{id}/{hash}', [SignupController::class, 'verifyEmail'])->middleware(['signed'])->name('verification.verify');
@@ -31,6 +40,7 @@ Route::middleware([AuthenticateWithErrorView::class])->group(function () {
     Route::post('/add-comment', [PostCommentController::class, 'create']);
     Route::delete('/delete-comment', [PostCommentController::class, 'delete']);
     Route::put('/edit-comment', [PostCommentController::class, 'update']);
+    Route::get('/search-page', [HomeController::class, 'search']);
 });
 
 Route::middleware([RedirectIfAuthenticated::class])->group(function () {

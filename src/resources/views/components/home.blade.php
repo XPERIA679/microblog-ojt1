@@ -48,7 +48,7 @@
         </div>
         <div class="flex flex-wrap justify-center items-center text-center">
             <a class="no-underline text-xs lg:text-sm text-mywhite transition-all duration-200 mx-2 my-1 border-b-transparent border-b border-solid"
-                href="">Tertulio C. Labajo</a>
+                href="https://github.com/Khilio1081">Tertulio C. Labajo III</a>
             <a class="no-underline text-xs lg:text-sm text-mywhite transition-all duration-200 mx-2 my-1 border-b-transparent border-b border-solid"
                 href="https://github.com/janrebpol">John Rev Paul Mathew O. Roa</a>
             <a class="no-underline text-xs lg:text-sm text-mywhite transition-all duration-200 mx-2 my-1 border-b-transparent border-b border-solid"

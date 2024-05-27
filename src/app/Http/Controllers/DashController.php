@@ -12,6 +12,6 @@ class DashController extends Controller
      */
     public function showDash(): view
     {
-        return view('components.newsfeeds');
+        return view('components.feeds.newsfeeds');
     }
 }

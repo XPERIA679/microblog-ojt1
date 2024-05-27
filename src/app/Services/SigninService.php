@@ -19,7 +19,7 @@ class SigninService
      */
     public function login(array $credentials): array
     {
-        $signinData = ['view' => 'components.newsfeeds', 'userEmail' => null];
+        $signinData = ['view' => 'components.feeds.newsfeeds', 'userEmail' => null];
 
         if (auth()->attempt($credentials)) {
             if (auth()->user()->hasVerifiedEmail()) {

@@ -4,6 +4,8 @@
 
 @section('content')
 
+@extends('layouts.navbar')
+
     <div class="bg-mycream bg-opacity-0 relative w-full h-full justify-center items-center transition-opacity duration-500">
         <main class="grid lg:grid-cols-3 gap-6 my-12 mx-12 w-2xl p-10 justify-center relative">
             <x-feeds.edit-post />
@@ -25,7 +27,7 @@
                 {{-- User Account to follow Suggestions --}}
                 <x-feeds.follow-suggestions />
 
-            </section>
+        </section>
 
             <section class="lg:col-span-2 ">
                 {{-- Post Creation --}}
@@ -42,4 +44,5 @@
             </section>
         </main>
     </div>
+
 @endsection

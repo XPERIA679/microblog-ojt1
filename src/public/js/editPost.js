@@ -16,35 +16,3 @@ function hidePost() {
         postedit.classList.remove("flex")
     }, 500);
 }
-
-let currentPage = 1;
-
-function nextPage() {
-    if (currentPage < 2) {
-        document.getElementById(`page${currentPage}`).classList.add('opacity-0');
-        setTimeout(() => {
-            document.getElementById(`page${currentPage}`).classList.add('hidden');
-            currentPage++;
-            document.getElementById(`page${currentPage}`).classList.remove('hidden', 'opacity-0');
-        }, 300);
-    }
-}
-
-function prevPage() {
-    if (currentPage > 1) {
-        document.getElementById(`page${currentPage}`).classList.add('opacity-0');
-        setTimeout(() => {
-            document.getElementById(`page${currentPage}`).classList.add('hidden');
-            currentPage--;
-            document.getElementById(`page${currentPage}`).classList.remove('hidden', 'opacity-0');
-        }, 300);
-    }
-}
-
-function submitForm() {
-
-    alert("Post Updated!");
-    setTimeout(() => {
-        hidePost();
-    }, 100);
-}

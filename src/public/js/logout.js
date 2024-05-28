@@ -1,15 +1,16 @@
-document.getElementById('profile-image-container').addEventListener('click', function() {
-    var dropdownMenu = document.getElementById('dropdown-menu');
+const profileImageContainer = document.getElementById('profile-image-container');
+const dropdownMenu = document.getElementById('dropdown-menu');
+const logoutButton = document.getElementById('logout-button');
+const logoutForm = document.getElementById('logout-form');
+
+profileImageContainer.addEventListener('click', function() {
     dropdownMenu.classList.toggle('hidden');
     dropdownMenu.classList.toggle('show');
 });
 
 document.addEventListener('click', function(event) {
-    var profileImageContainer = document.getElementById('profile-image-container');
-    var dropdownMenu = document.getElementById('dropdown-menu');
-
-    var isClickInside = profileImageContainer.contains(event.target) ||
-                        dropdownMenu.contains(event.target);
+    const isClickInside = profileImageContainer.contains(event.target) ||
+                          dropdownMenu.contains(event.target);
 
     if (!isClickInside) {
         dropdownMenu.classList.add('hidden');
@@ -17,6 +18,6 @@ document.addEventListener('click', function(event) {
     }
 });
 
-document.getElementById('logout-button').addEventListener('click', function() {
-    document.getElementById('logout-form').submit();
+logoutButton.addEventListener('click', function() {
+    logoutForm.submit();
 });

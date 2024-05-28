@@ -7,6 +7,10 @@ export default {
     ],
     theme: {
         extend: {
+            height: {
+                '50px': '50px',
+            },
+
             zIndex: {
                 '1000': 1000,
             },
@@ -57,7 +61,9 @@ export default {
             },
             borderRadius: {
                 'none': '0',
+                '20px': '20px',
                 'custom': '30px',
+                'b-half': '50%',
                 'full': '9999px',
             },
             spacing: {

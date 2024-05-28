@@ -4,6 +4,7 @@ function showUserPost() {
     sharepost.classList.add("flex");
     setTimeout(() => {
         sharepost.classList.add("opacity-100");
+        sharepost.classList.remove("opacity-0");
     }, 20);
 }
 

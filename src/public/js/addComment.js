@@ -4,6 +4,7 @@ function showComment() {
     comment.classList.add("flex");
     setTimeout(() => {
         comment.classList.add("opacity-100");
+        comment.classList.remove("opacity-0");
     }, 20);
 }
 

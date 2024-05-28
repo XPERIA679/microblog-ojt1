@@ -4,6 +4,7 @@ function showProfile() {
     profile.classList.add("flex");
     setTimeout(() => {
         profile.classList.add("opacity-100");
+        profile.classList.remove("opacity-0");
     }, 20);
 }
 
@@ -17,7 +18,7 @@ function hideProfile() {
     }, 500);
 }
 
-const currentPage = 1;
+let currentPage = 1;
 
 function nextPage() {
     if (currentPage < 2) {

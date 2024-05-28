@@ -12,14 +12,17 @@ use Illuminate\Http\RedirectResponse;
 class SigninController extends Controller
 {
     protected $signinService;
-    public $userPostService;
-    public $postShareService;
+    protected $userPostService;
+    protected $postShareService;
 
-    public function __construct(SigninService $signinService)
-    {
+    public function __construct(
+        SigninService $signinService,
+        UserPostService $userPostService,
+        PostShareService $postShareService
+    ) {
         $this->signinService = $signinService;
-        $this->userPostService = new UserPostService;
-        $this->postShareService = new PostShareService;
+        $this->userPostService = $userPostService;
+        $this->postShareService = $postShareService;
     }
 
     /**

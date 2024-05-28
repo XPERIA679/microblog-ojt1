@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Services\SignupService;
+use Illuminate\Http\RedirectResponse;
 
 class SigninService
 {
@@ -17,7 +18,7 @@ class SigninService
      * Verify user credentials and log them in.
      * If the user is not yet verified, redirect to resend verification page
      */
-    public function handleLogin(array $credentials): mixed
+    public function handleLogin(array $credentials): RedirectResponse
     {
         if (!auth()->attempt($credentials)) {
             return redirect('/signin')->withErrors(['failed' => 'Wrong username or password']);

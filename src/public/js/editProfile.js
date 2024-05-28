@@ -1,5 +1,5 @@
 function showProfile() {
-    let profile = document.getElementById("profile");
+    const profile = document.getElementById("profile");
     profile.classList.remove("hidden");
     profile.classList.add("flex")
     setTimeout(() => {
@@ -8,7 +8,7 @@ function showProfile() {
 }
 
 function hideProfile() {
-    let profile = document.getElementById("profile");
+    const profile = document.getElementById("profile");
     profile.classList.add("opacity-0")
     profile.classList.remove("opacity-100")
     setTimeout(() => {
@@ -17,7 +17,7 @@ function hideProfile() {
     }, 500);
 }
 
-let currentPage = 1;
+const currentPage = 1;
 
 function nextPage() {
     if (currentPage < 2) {

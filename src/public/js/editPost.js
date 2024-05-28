@@ -1,5 +1,5 @@
 function showPost() {
-    let postedit = document.getElementById("postedit");
+    const postedit = document.getElementById("postedit");
     postedit.classList.remove("hidden");
     postedit.classList.add("flex")
     setTimeout(() => {
@@ -8,7 +8,7 @@ function showPost() {
 }
 
 function hidePost() {
-    let postedit = document.getElementById("postedit");
+    const postedit = document.getElementById("postedit");
     postedit.classList.add("opacity-0")
     postedit.classList.remove("opacity-100")
     setTimeout(() => {

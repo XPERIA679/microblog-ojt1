@@ -1,30 +1,24 @@
 $('textarea').keyup(function () {
-
-    var characterCount = $(this).val().length,
+    const characterCount = $(this).val().length,
         current = $('#current'),
         maximum = $('#maximum'),
         theCount = $('#the-count');
 
     current.text(characterCount);
 
-    if (characterCount < 40) {
-        current.css('color', '#666');
-    }
-    if (characterCount > 40 && characterCount < 79) {
-        current.css('color', '#6d5555');
-    }
+    const styles = [
+        { max: 39, color: '#666', weight: 'normal' },
+        { max: 79, color: '#6d5555', weight: 'normal' },
+        { max: 99, color: '#841c1c', weight: 'strong' },
+        { max: Infinity, color: '#8f0001', weight: 'strong' }
+    ];
 
-    if (characterCount > 80 && characterCount < 99) {
-        current.css('color', '#841c1c');
-    }
+    const style = styles.find(function (style) {
+        return characterCount <= style.max;
+    });
 
-    if (characterCount >= 100) {
-        maximum.css('color', '#8f0001');
-        current.css('color', '#8f0001');
-        theCount.css('font-weight', 'strong');
-    } else {
-        maximum.css('color', '#666');
-        theCount.css('font-weight', 'normal');
-    }
+    current.css('color', style.color);
+    theCount.css('font-weight', style.weight);
 
+    maximum.css('color', characterCount >= 100 ? '#8f0001' : '#666');
 });

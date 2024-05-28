@@ -5,12 +5,12 @@
         Like
     </button>
 
-    <button
+    <button onclick="showComment()" id="comment"
         class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all rounded">
         Comment
     </button>
 
-    <button
+    <button onclick="showUserPost()" id="sharepost"
         class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all rounded">
         Share
     </button>

@@ -1,6 +1,6 @@
 <div class="bg-mycream rounded-lg">
     <form class="bg-mycream shadow-lg rounded-lg mb-6 p-4 items-center">
-        <textarea id="textarea1" maxlength="140" rows="3" placeholder="Share your thoughts.."
+        <textarea id="textarea" maxlength="140" rows="3" placeholder="Share your thoughts.."
             class="w-full rounded-lg p-2 text-sm bg-mywhite border-transparent hover:drop-shadow-md rounded-tg placeholder-mygray resize-none overflow-x-hidden"
             autofocus></textarea>
         <div class="text-sm" id="theCount">

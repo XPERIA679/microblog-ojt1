@@ -3,3 +3,5 @@
 <script src="{{ asset('js/editProfile.js') }}"></script>
 <script src="{{ asset('js/editPost.js') }}"></script>
 <script src="{{ asset('js/charcount.js') }}"></script>
+<script src="{{ asset('js/addComment.js') }}"></script>
+<script src="{{ asset('js/sharePost.js') }}"></script>

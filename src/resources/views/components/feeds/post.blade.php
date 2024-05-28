@@ -6,5 +6,4 @@
         <img class="flex justify-center items-center mx-3 rounded-md w-96 h-96 object-contain"
             src="assets/images/post1.jpeg" alt="post">
     </div>
-
 </div>

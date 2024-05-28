@@ -8,13 +8,8 @@
             <hr class="border shadow-lg border-solid border-opacity-20 border-mygray">
             <form class="w-auto my-3 py-2 rounded-lg">
 
-                <textarea id="textarea2" maxlength="140" rows="3"
-                    class="w-full rounded-lg p-2 text-sm bg-mywhite border-transparent hover:drop-shadow-md rounded-tg placeholder-mygray resize-none overflow-x-hidden"></textarea>
-                <div class="text-sm" id="theCount">
-                    <span id="current">0</span>
-                    <span id="maximum">/ 140</span>
-                </div>
-
+                <textarea maxlength="140" rows="3"
+                    class="w-full rounded-lg p-2 text-sm bg-mywhite border-transparent hover:drop-shadow-md placeholder-mygray resize-none overflow-x-hidden"></textarea>
                 <div class="relative flex justify-center items-center m-3 pb-4 rounded-2xl">
                     <span class="absolute top-1 right-6 cursor-pointer text-2xl text-mywhite ">&times;</span>
                     <img class="flex justify-center items-center mx-3 rounded-xl w-96 h-96 object-contain hover:shadow-lg"

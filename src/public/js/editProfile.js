@@ -1,19 +1,19 @@
 function showProfile() {
     const profile = document.getElementById("profile");
     profile.classList.remove("hidden");
-    profile.classList.add("flex")
+    profile.classList.add("flex");
     setTimeout(() => {
-        profile.classList.add("opacity-100")
+        profile.classList.add("opacity-100");
     }, 20);
 }
 
 function hideProfile() {
     const profile = document.getElementById("profile");
-    profile.classList.add("opacity-0")
-    profile.classList.remove("opacity-100")
+    profile.classList.add("opacity-0");
+    profile.classList.remove("opacity-100");
     setTimeout(() => {
-        profile.classList.add("hidden")
-        profile.classList.remove("flex")
+        profile.classList.add("hidden");
+        profile.classList.remove("flex");
     }, 500);
 }
 

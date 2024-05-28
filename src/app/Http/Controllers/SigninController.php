@@ -2,18 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\SigninService;
 use Illuminate\View\View;
+use App\Services\SigninService;
+use App\Services\UserPostService;
+use App\Services\PostShareService;
 use App\Http\Requests\SigninRequest;
 use Illuminate\Http\RedirectResponse;
 
 class SigninController extends Controller
 {
     protected $signinService;
+    protected $userPostService;
+    protected $postShareService;
 
-    public function __construct(SigninService $signinService)
-    {
+    public function __construct(
+        SigninService $signinService,
+        UserPostService $userPostService,
+        PostShareService $postShareService
+    ) {
         $this->signinService = $signinService;
+        $this->userPostService = $userPostService;
+        $this->postShareService = $postShareService;
     }
 
     /**
@@ -27,10 +36,9 @@ class SigninController extends Controller
     /**
      * Verify user credentials and log them in.
      */
-    public function login(SigninRequest $request): View
+    public function login(SigninRequest $request): RedirectResponse
     {
-        $signinData = $this->signinService->login($request->only('username', 'password'));
-        return view($signinData['view'], ['userEmail' => $signinData['userEmail']]);
+        return $this->signinService->handleLogin($request->only('username', 'password'));
     }
 
     /**

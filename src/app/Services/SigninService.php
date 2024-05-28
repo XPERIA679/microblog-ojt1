@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Services\SignupService;
+use Illuminate\Http\RedirectResponse;
 
 class SigninService
 {
@@ -17,24 +18,23 @@ class SigninService
      * Verify user credentials and log them in.
      * If the user is not yet verified, redirect to resend verification page
      */
-    public function login(array $credentials): array
+    public function handleLogin(array $credentials): RedirectResponse
     {
-        $signinData = ['view' => 'components.newsfeeds', 'userEmail' => null];
-
-        if (auth()->attempt($credentials)) {
-            if (auth()->user()->hasVerifiedEmail()) {
-                return $signinData;
-            }
-
-            $signinData['view'] = 'components.auth.verify-email';
-            $signinData['userEmail'] = auth()->user()->email;
-
-            $this->signupService->sendVerificationNotification($signinData['userEmail']);
-            auth()->logout();
+        if (!auth()->attempt($credentials)) {
+            return redirect('/signin')->withErrors(['failed' => 'Wrong username or password']);
         }
-
-        return $signinData;
-    }
+    
+        $user = auth()->user();
+    
+        if ($user->hasVerifiedEmail()) {
+            return redirect('/posts-page');
+        }
+    
+        $this->signupService->sendVerificationNotification($user->email);
+        auth()->logout();
+    
+        return redirect('/verification-page/' . $user->email);
+    }    
 
     /**
      * Logout currently logged in user.

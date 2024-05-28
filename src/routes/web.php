@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\ProfileController;
@@ -11,10 +10,10 @@ use App\Http\Controllers\PostCommentController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\AuthenticateWithErrorView;
 
-Route::get('/', [HomeController::class, 'showHome']);
 Route::get('/email/verify/{id}/{hash}', [SignupController::class, 'verifyEmail'])->middleware(['signed'])->name('verification.verify');
 Route::get('/resend-email', [SignupController::class, 'sendVerificationNotification']);
 Route::post('/email/verification-notification', [SignupController::class, 'sendVerificationNotification'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+Route::get('/verification-page/{userEmail}', [SignupController::class, 'showVerificationPage']);
 
 Route::middleware([AuthenticateWithErrorView::class])->group(function () {
     Route::get('/posts-page', [UserPostController::class, 'showPostsPage']);

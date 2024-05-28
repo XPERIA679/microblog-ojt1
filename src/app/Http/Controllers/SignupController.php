@@ -56,4 +56,12 @@ class SignupController extends Controller
         }
         return view('components.auth.verify-email', ['userEmail' => $request->userEmail]);
     }
+
+    /**
+     * Show verification page.
+     */
+    public function showVerificationPage(string $email):View
+    {
+        return view('components.auth.verify-email', ['userEmail' => $email]);
+    }
 }

@@ -18,19 +18,18 @@ class SigninService
      * If the user is not yet verified, redirect to resend verification page
      */
     public function login(array $credentials): array
-    {
-        $signinData = ['view' => 'components.newsfeeds', 'userEmail' => null];
+    {   
+        $signinData = ['status' => 'failed'];
 
         if (auth()->attempt($credentials)) {
             if (auth()->user()->hasVerifiedEmail()) {
-                return $signinData;
+                $signinData['status'] = 'verified';
+            } else {
+                $signinData['status'] = 'unverified';
+                $signinData['email'] = auth()->user()->email;
+                $this->signupService->sendVerificationNotification(auth()->user()->email);
+                auth()->logout();
             }
-
-            $signinData['view'] = 'components.auth.verify-email';
-            $signinData['userEmail'] = auth()->user()->email;
-
-            $this->signupService->sendVerificationNotification($signinData['userEmail']);
-            auth()->logout();
         }
 
         return $signinData;

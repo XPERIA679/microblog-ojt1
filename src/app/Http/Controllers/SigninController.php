@@ -33,19 +33,10 @@ class SigninController extends Controller
     /**
      * Verify user credentials and log them in.
      */
-    public function login(SigninRequest $request): mixed
+    public function login(SigninRequest $request): RedirectResponse
     {
-        $signinData = $this->signinService->login($request->only('username', 'password'));
-
-        if ($signinData['status'] === 'verified') {
-            return redirect('/posts-page');
-        } elseif ($signinData['status'] === 'unverified') {
-            return redirect('/verification-page/' . $signinData["email"]);
-        } else {
-            return redirect('/signin')->withErrors('failed', 'Wrong username or password');
-        }
+        return $this->signinService->handleLogin($request->only('username', 'password'));
     }
-
 
     /**
      * Logout currently logged in user.

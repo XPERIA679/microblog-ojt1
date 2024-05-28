@@ -1,23 +1,23 @@
-function showDialog() {
-    let dialog = document.getElementById("dialog");
-    dialog.classList.remove("hidden");
-    dialog.classList.add("flex")
+function showProfile() {
+    const profile = document.getElementById("profile");
+    profile.classList.remove("hidden");
+    profile.classList.add("flex")
     setTimeout(() => {
-        dialog.classList.add("opacity-100")
+        profile.classList.add("opacity-100")
     }, 20);
 }
 
-function hideDialog() {
-    let dialog = document.getElementById("dialog");
-    dialog.classList.add("opacity-0")
-    dialog.classList.remove("opacity-100")
+function hideProfile() {
+    const profile = document.getElementById("profile");
+    profile.classList.add("opacity-0")
+    profile.classList.remove("opacity-100")
     setTimeout(() => {
-        dialog.classList.add("hidden")
-        dialog.classList.remove("flex")
+        profile.classList.add("hidden")
+        profile.classList.remove("flex")
     }, 500);
 }
 
-let currentPage = 1;
+const currentPage = 1;
 
 function nextPage() {
     if (currentPage < 2) {
@@ -45,6 +45,6 @@ function submitForm() {
 
     alert("Profile Updated!");
     setTimeout(() => {
-        hideDialog();
+        hideProfile();
     }, 100);
 }

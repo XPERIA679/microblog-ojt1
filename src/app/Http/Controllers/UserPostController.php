@@ -76,7 +76,7 @@ class UserPostController extends Controller
      */
     public function likePost(Request $request):RedirectResponse
     {
-        $this->userPostService->likePost($request->post);
+        $this->userPostService->likePost(['type' => $request->type, 'id' => $request->id]);
         return redirect('/posts-page');
     }
 
@@ -85,7 +85,7 @@ class UserPostController extends Controller
      */
     public function unlikePost(Request $request):RedirectResponse
     {
-        $this->userPostService->unlikePost($request->post);
+        $this->userPostService->unlikePost(['type' => $request->type, 'id' => $request->id]);
         return redirect('/posts-page');
     }
 }

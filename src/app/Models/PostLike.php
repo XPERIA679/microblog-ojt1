@@ -20,6 +20,7 @@ class PostLike extends Model
     protected $fillable = [
         'user_id',
         'post_id',
+        'post_share_id'
     ];
 
     /**
@@ -30,6 +31,7 @@ class PostLike extends Model
     protected $casts = [
         'user_id' => 'integer',
         'post_id' => 'integer',
+        'post_share_id' => 'integer',
     ];
 
     /**

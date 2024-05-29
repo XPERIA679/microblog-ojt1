@@ -5,11 +5,19 @@ namespace App\Services;
 use App\Models\PostLike;
 use App\Models\UserPost;
 use App\Models\PostMedia;
+use App\Services\PostShareService;
 use App\Http\Requests\EditUserPostRequest;
 use App\Http\Requests\CreateUserPostRequest;
-
+use Illuminate\Support\Collection; 
 class UserPostService
 {
+    protected $postShareService;
+
+    public function __construct() 
+    {
+        $this->postShareService = new PostShareService;
+    }
+
     /**
     * create a new user post
     */
@@ -80,10 +88,10 @@ class UserPostService
         ];
     }
 
-    /**
-     * Gets all the posts and media from database
-     */
-    public function getAllPostsAndMedia(): array
+    /** 
+     * Retrieves and combines user posts with media and shares, then sorts by date. 
+     * */
+    public function getAllPostsAndMediaAndShares(): Collection
     {
         $userPosts = UserPost::all();
         $postsMedia = PostMedia::all();
@@ -96,8 +104,16 @@ class UserPostService
                 'postMedium' => $postMedium ?? null
             ];
         }
+        $postsMediaAndShares = collect($postsAndMedia)->merge($this->postShareService->getAllPostShares());
+        
+        $postsMediaAndShares = $postsMediaAndShares->sortBy(function ($item) {
+        if ($item instanceof \App\Models\PostShare) {
+                return $item->updated_at;
+            }
+            return $item['post']->updated_at;
+        });
 
-        return $postsAndMedia;
+        return $postsMediaAndShares ;
     }
 
     /**

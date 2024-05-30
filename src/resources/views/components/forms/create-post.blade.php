@@ -9,7 +9,7 @@
         </div>
         <div class="flex justify-between mt-2">
             <x-svgs.media-icon />
-            <button
+            <button 
                 class="flex items-center py-2 px-4 rounded-lg text-sm hover:bg-mydark hover:text-mycream bg-mywhite text-mydark shadow-lg transition-all">
                 Post
                 <x-svgs.post-icon />

@@ -4,7 +4,7 @@
     <div onclick="event.stopImmediatePropagation()"
         class="bg-mycream rounded-lg p-2 shadow-md w-1/2">
 
-            <x-feeds.comment-section />
+            <x-sections.comment-section />
 
     </div>
 </div>

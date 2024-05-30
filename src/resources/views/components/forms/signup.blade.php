@@ -1,55 +1,42 @@
-    @extends('layouts.app')
-
-@section('title', 'Sign Up')
-
-@section('content')
-    <div class="form-container">
-        <div class="title">
-            <h3>Sign Up</h3>
-        </div>
-
-        <form action="/register" method="POST" id="signup-form">
-            @csrf
-            <div class="user-details">
-
-                <div class="input-box">
-                    <input name="email" placeholder="example@gmail.com" autocomplete="off" >
-                    <span>Email</span>
-                    @error('email')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="input-box">
-                    <input type="text" name="username" placeholder="juandelacruz" autocomplete="off" >
-                    <span>Username</span>
-                    @error('username')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="input-box">
-                    <input type="password" name="password" >
-                    <span>Password</span>
-                    @error('password')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="input-box">
-                    <input type="password" name="password_confirmation" >
-                    <span>Confirm Password</span>
-                    @error('password_confirmation')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="input-box">
-                    <button class="items-center text-mydark bg-mycream box-border cursor-pointer inline-flex text-sm font-medium h-12 max-w-full overflow-hidden relative text-center w-auto px-6 py-0.5 rounded-3xl hover:bg-mygray text-mycream focus:border-2 border-solid border-mydark" href="signin">Create Account</button>
-                    <hr class="w-3/5 m-2.5">
-                    <button class="items-center text-mycream bg-mydark box-border cursor-pointer inline-flex text-sm font-medium h-12 max-w-full overflow-hidden relative text-center w-auto px-6 py-0.5 rounded-3xl hover:bg-mygray text-mycream focus:border-2 border-solid border-mydark" href="signin">Already have an account?</button>
-                </div>
-            </div>
-        </form>
+<form class="grid grid-cols-1 gap-6 mt-12" method="" action="">
+    <div class="relative my-1">
+        <input name="username" type="text" maxlength="20"
+            class="peer h-10 w-full bg-mydark border-b border-mywhite text-mycream placeholder-transparent focus:outline-none focus:border-mycream"
+            placeholder="Username" autocomplete="off" />
+        <label for="username"
+            class="absolute left-0 -top-3.5 text-mycream text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-mywhite peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-mycream peer-focus:text-sm">
+            Username
+        </label>
     </div>
-@endsection
+
+    <div class="relative my-1">
+        <input name="email" type="email" maxlength="30"
+            class="peer h-10 w-full bg-mydark border-b border-mywhite text-mycream placeholder-transparent focus:outline-none focus:border-mycream"
+            placeholder="Username" autocomplete="off" />
+        <label for="email"
+            class="absolute left-0 -top-3.5 text-mycream text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-mywhite peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-mycream peer-focus:text-sm">
+            Email
+        </label>
+    </div>
+
+    <div class="relative my-1">
+        <input type="password" name="password"
+            class="peer h-10 w-full bg-mydark border-b border-mywhite text-mycream placeholder-transparent focus:outline-none focus:border-mycream"
+            placeholder="Password" autocomplete="off" />
+        <label for="password"
+            class="absolute left-0 -top-3.5 text-mycream text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-mywhite peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-mycream peer-focus:text-sm">
+            Password
+        </label>
+    </div>
+
+    <div class="relative my-1">
+        <input type="password" name="password_confirmation"
+            class="peer h-10 w-full bg-mydark border-b border-mywhite text-mycream placeholder-transparent focus:outline-none focus:border-mycream"
+            placeholder="Password" autocomplete="off" />
+        <label for="password"
+            class="absolute left-0 -top-3.5 text-mycream text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-mywhite peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-mycream peer-focus:text-sm">
+            Password
+        </label>
+    </div>
+
+</form>

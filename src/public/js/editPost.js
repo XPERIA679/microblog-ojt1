@@ -4,6 +4,7 @@ function showPost() {
     postedit.classList.add("flex");
     setTimeout(() => {
         postedit.classList.add("opacity-100");
+        postedit.classList.remove("opacity-0");
     }, 20);
 }
 

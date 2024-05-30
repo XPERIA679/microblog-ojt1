@@ -5,3 +5,5 @@
 <script src="{{ asset('js/charcount.js') }}"></script>
 <script src="{{ asset('js/addComment.js') }}"></script>
 <script src="{{ asset('js/sharePost.js') }}"></script>
+<script src="{{ asset('js/signinModal.js') }}"></script>
+<script src="{{ asset('js/signupModal.js') }}"></script>

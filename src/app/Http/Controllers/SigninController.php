@@ -26,14 +26,6 @@ class SigninController extends Controller
     }
 
     /**
-     * Return view user to sign in page.
-     */
-    public function showSignin(): View
-    {
-        return view('components.forms.signin');
-    }
-
-    /**
      * Verify user credentials and log them in.
      */
     public function login(SigninRequest $request): RedirectResponse
@@ -47,6 +39,6 @@ class SigninController extends Controller
     public function logout(): RedirectResponse
     {
         $this->signinService->logout();
-        return redirect('/signin');
+        return redirect('/');
     }
 }

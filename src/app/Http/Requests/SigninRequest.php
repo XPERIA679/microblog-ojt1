@@ -37,7 +37,9 @@ class SigninRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'username' => 'The provided username does not exist.',
+            'username.required' => 'Please provide a username.',
+            'username.exists' => 'Incorrect Username.',
+            'password.required' => 'Please provide a password.',
         ];
     }
 }

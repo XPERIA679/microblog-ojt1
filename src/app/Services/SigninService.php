@@ -21,20 +21,20 @@ class SigninService
     public function handleLogin(array $credentials): RedirectResponse
     {
         if (!auth()->attempt($credentials)) {
-            return redirect('/signin')->withErrors(['failed' => 'Wrong username or password']);
+            return redirect('/')->withErrors(['failed' => 'Wrong username or password']);
         }
-    
+
         $user = auth()->user();
-    
+
         if ($user->hasVerifiedEmail()) {
             return redirect('/posts-page');
         }
-    
+
         $this->signupService->sendVerificationNotification($user->email);
         auth()->logout();
-    
+
         return redirect('/verification-page/' . $user->email);
-    }    
+    }
 
     /**
      * Logout currently logged in user.

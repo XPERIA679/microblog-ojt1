@@ -35,8 +35,6 @@ Route::middleware([AuthenticateWithErrorView::class])->group(function () {
 });
 
 Route::middleware([RedirectIfAuthenticated::class])->group(function () {
-    Route::get('/signup', [SignupController::class,'showSignup']);
-    Route::get('/signin', [SigninController::class, 'showSignin']);
     Route::post('/register', [SignupController::class, 'register']);
     Route::post('/login', [SigninController::class, 'login']);
 });

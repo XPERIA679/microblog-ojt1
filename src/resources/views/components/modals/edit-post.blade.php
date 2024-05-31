@@ -1,13 +1,11 @@
 <div onclick="hidePost()" id="postedit"
     class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500">
-
     <div onclick="event.stopImmediatePropagation()"
         class="bg-mycream rounded-lg shadow-md p-10 flex justify-center items-center">
         <div id="postedit" class="bg-mycream mx-auto overflow-hidden transition-opacity duration-500">
             <h3 class="font-bold uppercase hover:drop-shadow-md">re-write your thoughts</h3>
             <hr class="border shadow-lg border-solid border-opacity-20 border-mygray">
             <form class="w-auto my-3 py-2 rounded-lg">
-
                 <textarea maxlength="140" rows="3"
                     class="w-full rounded-lg p-2 text-sm bg-mywhite border-transparent hover:drop-shadow-md placeholder-mygray resize-none overflow-x-hidden"></textarea>
                 <div class="relative flex justify-center items-center m-3 pb-4 rounded-2xl">

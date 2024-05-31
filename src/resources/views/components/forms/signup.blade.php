@@ -15,7 +15,7 @@
             @endforeach
         @enderror
     </div>
-   
+
     <div class="relative my-1">
         <input name="email" type="email" maxlength="30"
             class="peer h-10 w-full bg-mydark border-b border-mywhite text-mycream placeholder-transparent focus:outline-none focus:border-mycream"
@@ -30,7 +30,6 @@
             @endforeach
         @enderror
     </div>
-
     <div class="relative my-1">
         <input type="password" name="password"
             class="peer h-10 w-full bg-mydark border-b border-mywhite text-mycream placeholder-transparent focus:outline-none focus:border-mycream"
@@ -45,7 +44,6 @@
             @endforeach
         @enderror
     </div>
-
     <div class="relative my-1">
         <input type="password" name="password_confirmation"
             class="peer h-10 w-full bg-mydark border-b border-mywhite text-mycream placeholder-transparent focus:outline-none focus:border-mycream"

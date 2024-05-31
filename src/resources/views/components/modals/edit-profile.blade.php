@@ -1,13 +1,11 @@
 <div onclick="hideProfile()" id="profile"
     class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500">
-
     <div onclick="event.stopImmediatePropagation()" class="bg-mycream rounded-2xl shadow-md p-10 flex">
         <div class="flex p-0 bg-mycream">
             <div id="page1" class="bg-mycream mx-auto overflow-hidden transition-opacity duration-500">
                 <h1 class="left-0 text-3xl font-bold text-mydark">
                     Profile Information
                 </h1>
-
                 <form class="grid grid-cols-2 gap-6 mt-8" method="" action="">
                     <div class="relative">
                         <input id="first_name" name="firstname" type="text"
@@ -18,7 +16,6 @@
                             First Name
                         </label>
                     </div>
-
                     <div class="relative">
                         <input id="lastname" type="text" name="last_name"
                             class="peer h-10 w-full bg-mycream border-b border-mygray text-mydark placeholder-transparent focus:outline-none focus:border-mydark"
@@ -28,7 +25,6 @@
                             Last Name
                         </label>
                     </div>
-
                     <div class="relative">
                         <input id="bday" type="date" name="birth_date"
                             class="peer h-10 w-full bg-mycream border-b border-mygray text-mydark placeholder-transparent focus:outline-none focus:border-mydark"
@@ -38,7 +34,6 @@
                             Birthdate
                         </label>
                     </div>
-
                     <div class="relative">
                         <input id="contact" type="text" name="contact"
                             class="peer h-10 w-full bg-mycream border-b border-mygray text-mydark placeholder-transparent focus:outline-none focus:border-mydark"
@@ -60,7 +55,6 @@
                     </button>
                 </div>
             </div>
-
             <div id="page2" class="w-fit bg-mycream mx-auto overflow-hidden transition-opacity duration-300 hidden">
                 <h1 class="left-0 text-3xl font-bold text-mydark">
                     Address Information
@@ -75,7 +69,6 @@
                             Lot & Blk
                         </label>
                     </div>
-
                     <div class="relative">
                         <input id="street" name="street" type="text"
                             class="peer h-10 w-full bg-mycream border-b border-mygray text-mydark placeholder-transparent focus:outline-none focus:border-mydark"
@@ -85,7 +78,6 @@
                             Street
                         </label>
                     </div>
-
                     <div class="relative">
                         <input id="city" name="city" type="text"
                             class="peer h-10 w-full bg-mycream border-b border-mygray text-mydark placeholder-transparent focus:outline-none focus:border-mydark"
@@ -95,7 +87,6 @@
                             City
                         </label>
                     </div>
-
                     <div class="relative">
                         <input id="province" name="province" type="text"
                             class="peer h-10 w-full bg-mycream border-b border-mygray text-mydark placeholder-transparent focus:outline-none focus:border-mydark"
@@ -105,7 +96,6 @@
                             Province
                         </label>
                     </div>
-
                     <div class="relative">
                         <input id="country" name="country" type="text"
                             class="peer h-10 w-full bg-mycream border-b border-mygray text-mydark placeholder-transparent focus:outline-none focus:border-mydark"
@@ -115,7 +105,6 @@
                             Country
                         </label>
                     </div>
-
                     <div class="relative">
                         <input id="zip" name="zip" type="text"
                             class="peer h-10 w-full bg-mycream border-b border-mygray text-mydark placeholder-transparent focus:outline-none focus:border-mydark"
@@ -137,7 +126,6 @@
                     </button>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

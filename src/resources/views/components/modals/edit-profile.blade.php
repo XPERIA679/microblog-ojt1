@@ -1,8 +1,9 @@
 <div onclick="hideProfile()" id="profile"
     class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500">
     <div onclick="event.stopImmediatePropagation()" class="bg-mycream rounded-2xl shadow-md p-10 flex">
-        <form method="POST" action="/update-profile">
-            @csrf
+        <form method="POST" action="{{ route('update-profile') }}">
+        @csrf
+        @method('PUT')
         <div class="flex p-0 bg-mycream">
             <div id="page1" class="bg-mycream mx-auto overflow-hidden transition-opacity duration-500">
                 <h1 class="left-0 text-3xl font-bold text-mydark">

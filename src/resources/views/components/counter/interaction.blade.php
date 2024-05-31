@@ -7,7 +7,6 @@
                 likes
             </div>
         </div>
-
         <div
             class="flex font-medium rounded-md mb-2 mr-4 items-center cursor-pointer text-mydark hover:text-mygray hover:drop-shadow-md">
             66k
@@ -15,7 +14,6 @@
                 comments
             </div>
         </div>
-
         <div
             class="flex font-medium rounded-md mb-2 mr-4 items-center cursor-pointer text-mydark hover:text-mygray hover:drop-shadow-md">
             4k

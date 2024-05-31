@@ -41,10 +41,10 @@ class SignupController extends Controller
      * Calls service to send verification email to user's email address.
      * Redirects user to components.auth.verify-email or components.forms.signin
      */
-    public function sendVerificationNotification(Request $request): View
+    public function sendVerificationNotification(Request $request): mixed
     {
         if($this->signupService->sendVerificationNotification($request->userEmail)) {
-            return view('components.forms.signin');    
+            return redirect('/');    
         }
         return view('components.auth.verify-email', ['userEmail' => $request->userEmail]);
     }

@@ -40,11 +40,7 @@ class SignupService
             $user->markEmailAsVerified();
         }
 
-        $view = $user->hasVerifiedEmail() 
-            ? 'components.forms.signin' 
-            : 'components.auth.verify-email';
-
-        return $view;
+        return '/';
     }
 
     /**

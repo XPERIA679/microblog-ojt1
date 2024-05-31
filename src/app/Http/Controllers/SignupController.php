@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Http\Requests\SignupRequest;
+use Illuminate\Http\Request;
 use App\Services\SignupService;
+use App\Http\Requests\SignupRequest;
+use Illuminate\Http\RedirectResponse;
 
 class SignupController extends Controller
 {
@@ -20,14 +21,6 @@ class SignupController extends Controller
     }
 
     /**
-     * Return view user to sign up page.
-     */
-    public function showSignup(): View
-    {
-        return view('components.forms.signup');
-    }
-
-    /**
      * Calls service to register a new user.
      */
     public function register(SignupRequest $request): View
@@ -39,10 +32,9 @@ class SignupController extends Controller
     /**
      *  Calls service to mark the user as verified after clicking 'verify button'.
      */
-    public function verifyEmail(string $id, string $hash): View
+    public function verifyEmail(string $id, string $hash): RedirectResponse
     {
-        $view = $this->signupService->verifyEmail($id, $hash);
-        return view($view);
+        return redirect($this->signupService->verifyEmail($id, $hash));
     }
 
     /**

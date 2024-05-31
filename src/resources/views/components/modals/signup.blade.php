@@ -5,10 +5,7 @@
         <div id="signupForm"
             class="bg-mydark h-full w-full rounded-lg py-8 px-10 m-2 overflow-hidden transition-opacity duration-500">
             <x-logo.logo-form />
-            <x-forms.signup />
-            <div class="mt-6 justify-center flex">
-                <x-svgs.signup-icon />
-            </div>
+            <x-forms.signup />  
         </div>
     </div>
 </div>

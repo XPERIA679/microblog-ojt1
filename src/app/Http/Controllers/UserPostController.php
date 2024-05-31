@@ -11,7 +11,7 @@ use App\Http\Requests\EditUserPostRequest;
 use App\Http\Requests\CreateUserPostRequest;
 
 class UserPostController extends Controller
-{   
+{
     public $userPostService;
     public $postShareService;
 
@@ -24,7 +24,7 @@ class UserPostController extends Controller
     /**
      * Create a new post for the user.
      */
-    public function create(CreateUserPostRequest $request): RedirectResponse 
+    public function create(CreateUserPostRequest $request): RedirectResponse
     {
         $this->userPostService->create($request);
         return redirect('/');
@@ -36,7 +36,7 @@ class UserPostController extends Controller
      */
     public function showPostsPage(): View
     {
-        return view( 'components.create-post',[
+        return view( 'components.feeds.newsfeeds',[
             'postsMediaAndShares' => $this->userPostService->getAllPostsAndMediaAndShares(),
             'allLikedPosts' => $this->userPostService->getAllPostLikes()
         ]);

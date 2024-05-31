@@ -1,6 +1,16 @@
-<form class="grid grid-cols-1 gap-6 mt-12" method="" action="">
+<form class="grid grid-cols-1 gap-6 mt-12" method="POST" action="/login">
+    @csrf
+
+    @if ($errors->any())
+        <div style="color: red;">
+            @foreach ($errors->all() as $error)
+                {{ $error }}<br>
+            @endforeach
+        </div>
+    @endif
+
     <div class="relative my-3">
-        <input name="username" type="text" maxlength="20"
+        <input name="username" value="{{ old('username') }}" type="text" maxlength="20"
             class="peer h-10 w-full bg-mydark border-b border-mywhite text-mycream placeholder-transparent focus:outline-none focus:border-mycream"
             placeholder="Username" autocomplete="off" />
         <label for="username"
@@ -18,5 +28,9 @@
             Password
         </label>
     </div>
-
+    <div class="mt-12 justify-center flex">
+        <button href="submit">
+        <x-svgs.signin-icon />
+        </button>
+    </div>
 </form>

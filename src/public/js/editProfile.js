@@ -43,8 +43,6 @@ function prevPage() {
 }
 
 function submitForm() {
-
-    alert("Profile Updated!");
     setTimeout(() => {
         hideProfile();
     }, 100);

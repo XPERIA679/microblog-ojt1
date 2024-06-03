@@ -29,7 +29,7 @@ class UpdateProfileRequest extends FormRequest
             'city' => 'nullable|string|max:255',
             'province' => 'nullable|string|max:255',
             'country' => 'nullable|string|max:255',
-            'zip_code' => 'nullable|string|max:5|min:4|regex:/^\d{4,5}$/',
+            'zip' => 'nullable|string|max:5|min:4|regex:/^\d{4,5}$/',
             'contact' => ['nullable', 'string', 'max:11', 'regex:/^09?\d{9}$/'],
         ];
     }

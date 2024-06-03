@@ -23,9 +23,9 @@ class ProfileController extends Controller
      * Calls the service that updates user's profile information.
      */
     public function update(UpdateProfileRequest $request): RedirectResponse
-    {       
+    {   
         $this->profileService->update($request);
-        return redirect('/update-profile'); 
+        return redirect('/posts-page'); 
     }    
 
     /**

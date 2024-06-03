@@ -15,7 +15,9 @@
             <p class="text-center text-md font-medium mix-blend-overlay text-mywhite">
                 Sorry, the page you're looking for doesn't exist. Please check the URL or return to the homepage.
             </p>
-            <x-svgs.back-icon />
+            <div class="flex justify-center items-center mt-10">
+                <x-svgs.back-icon />
+            </div>
         </div>
     </div>
 

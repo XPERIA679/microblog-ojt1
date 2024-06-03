@@ -15,7 +15,9 @@
             <p class="text-center text-md font-medium mix-blend-overlay text-mywhite">
                 To create or access a new account, ensure you are logged out first.
             </p>
-            <x-svgs.back-icon />
+            <div class="flex justify-center items-center mt-10">
+                <x-svgs.back-icon />
+            </div>
         </div>
     </div>
 

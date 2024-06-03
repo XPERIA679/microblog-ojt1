@@ -15,7 +15,9 @@
             <p class="text-center text-md font-medium mix-blend-overlay text-mywhite">
                 Please sign in, or create an account if you don't have one.
             </p>
-            <x-svgs.home-icon />
+            <div class="flex justify-center items-center mt-10">
+                <x-svgs.home-icon />
+            </div>
         </div>
     </div>
 

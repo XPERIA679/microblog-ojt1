@@ -7,7 +7,7 @@
         class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all rounded">
         Comment
     </button>
-    <button onclick="showUserPost()" id="sharepost"
+    <button onclick="showUserPost({{ $postsMediumOrShare['post']->id }})"
         class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all rounded">
         Share
     </button>

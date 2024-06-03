@@ -1,5 +1,5 @@
-function showUserPost() {
-    const sharepost = document.getElementById("sharepost");
+function showUserPost(postId) {
+    const sharepost = document.getElementById(`sharepost-${postId}`);
     sharepost.classList.remove("hidden");
     sharepost.classList.add("flex");
     setTimeout(() => {
@@ -8,8 +8,8 @@ function showUserPost() {
     }, 20);
 }
 
-function hideUserPost() {
-    const sharepost = document.getElementById("sharepost");
+function hideUserPost(postId) {
+    const sharepost = document.getElementById(`sharepost-${postId}`);
     sharepost.classList.add("opacity-0");
     sharepost.classList.remove("opacity-100");
     setTimeout(() => {

@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Sections;
 
+use Illuminate\View\View;
 use Illuminate\View\Component;
 
 class CommentSection extends Component

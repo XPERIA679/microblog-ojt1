@@ -12,5 +12,5 @@
             </div>
         </div>
     </div>
-    <x-forms.create-comment />
+    <x-forms.create-comment-form :postsMediumOrShare="$postsMediumOrShare"/>
 </div>

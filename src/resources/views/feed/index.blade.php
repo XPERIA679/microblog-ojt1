@@ -8,7 +8,7 @@
         <main class="grid lg:grid-cols-3 gap-6 my-12 mx-12 w-2xl p-10 justify-center relative">
             <x-modals.edit-post />
             <x-modals.edit-profile />
-            <x-modals.create-comment />
+            <x-modals.create-comment-modal :postsMediumOrShare="$postsMediumOrShare"/>
             <x-modals.share-post />
             <section class="lg:col-span-1 px-6">
                 <div class="rounded-lg p-10 bg-mydark">

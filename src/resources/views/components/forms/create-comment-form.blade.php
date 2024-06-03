@@ -1,7 +1,10 @@
-<form class="bg-mycream p-4 items-center">
+<form class="bg-mycream p-4 items-center" method="POST" action="{{ route('post.comment.create') }}">
+    @csrf
     <textarea maxlength="90" rows="3" placeholder="Thoughts about this post..."
         class="w-full rounded-lg p-2 text-sm bg-mycream border hover:drop-shadow-md rounded-tg placeholder-mygray resize-none overflow-x-hidden"
-        autofocus></textarea>
+        autofocus name="content"></textarea>
+    <input name="user_id" value = {{ auth()->id() }} hidden>
+    <input name="post_id" value = "{{ $postsMediumOrShare['post']->id }}" hidden>
     <button
         class="flex items-center py-2 px-4 rounded-lg text-sm hover:bg-mydark hover:text-mycream bg-mywhite text-mydark shadow-lg transition-all">
         Comment

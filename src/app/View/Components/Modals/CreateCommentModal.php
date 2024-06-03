@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Modals;
 
+use Illuminate\View\View;
 use Illuminate\View\Component;
 
 class CreateCommentModal extends Component
@@ -13,7 +14,10 @@ class CreateCommentModal extends Component
         $this->postsMediumOrShare = $postsMediumOrShare;
     }
 
-    public function render()
+    /**
+     * Render create-component modal
+     */
+    public function render(): View
     {
         return view('components.modals.create-comment-modal');
     }

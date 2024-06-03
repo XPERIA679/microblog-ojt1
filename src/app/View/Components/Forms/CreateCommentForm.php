@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Forms;
 
+use Illuminate\View\View;
 use Illuminate\View\Component;
 
 class CreateCommentForm extends Component
@@ -13,7 +14,10 @@ class CreateCommentForm extends Component
         $this->postsMediumOrShare = $postsMediumOrShare;
     }
 
-    public function render()
+    /**
+     * Render create-component form
+     */
+    public function render(): View
     {
         return view('components.forms.create-comment-form');
     }

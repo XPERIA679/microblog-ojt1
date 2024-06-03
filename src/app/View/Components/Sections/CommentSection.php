@@ -13,7 +13,10 @@ class CommentSection extends Component
         $this->postsMediumOrShare = $postsMediumOrShare;
     }
 
-    public function render()
+    /**
+     * Render component comment section
+     */
+    public function render(): View
     {
         return view('components.sections.comment-section');
     }

@@ -16,7 +16,9 @@
                     </div>
                     @if($showTimerAndEdit)
                     <div class="flex w-full mt-1">
-                        <x-counter.post-time />
+                        <div class="text-mydark flex font-light text-xs gap-2">
+                            {{ $postsMediumOrShare->created_at->diffForHumans() }}
+                        </div>
                         <x-svgs.edit-icon />
                     </div>
                     @endif
@@ -35,7 +37,9 @@
                     </div>
                     @if($showTimerAndEdit)
                     <div class="flex w-full mt-1">
-                        <x-counter.post-time />
+                        <div class="text-mydark flex font-light text-xs gap-2">
+                            {{ $postsMediumOrShare['post']->created_at->diffForHumans() }}
+                        </div>
                         <x-svgs.edit-icon />
                     </div>
                     @endif
@@ -43,7 +47,7 @@
             </div>
 
             <div class="text-mydark font-medium text-sm m-3 hover:drop-shadow-md">
-                @if (!empty($postsMediumOrShare->post->content))
+                @if (!empty($postsMediumOrShare['post']) && !empty($postsMediumOrShare['post']->content))
                 {{ $postsMediumOrShare['post']->content }}
                 @endif
             </div>
@@ -65,7 +69,9 @@
                     </div>
                     @if($showTimerAndEdit)
                     <div class="flex w-full mt-1">
-                        <x-counter.post-time />
+                        <div class="text-mydark flex font-light text-xs gap-2">
+                            {{ $postsMediumOrShare['post']->created_at->diffForHumans() }}
+                        </div>
                         <x-svgs.edit-icon />
                     </div>
                     @endif

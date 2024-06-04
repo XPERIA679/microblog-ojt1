@@ -12,10 +12,12 @@
             <span id="maximum">/ 140</span>
         </div>
         <div class="flex justify-between mt-2">
-            <div class="relative inline-block cursor-pointer">
-                <x-svgs.media-icon />
-                <input type="file" name="image" accept=".jpg, .jpeg, .png" id="fileInput" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
-                <div id="fileName" class="mt-1 text-sm text-gray-500">No file selected</div>
+            <div class="flex items-center">
+                <div class="relative inline-block cursor-pointer mr-4">
+                    <x-svgs.media-icon />
+                    <input type="file" name="image" accept=".jpg, .jpeg, .png" id="fileInput" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                </div>
+                <div id="imagePreview" class="w-20 h-20 rounded-lg overflow-hidden shadow-md hidden"></div>
             </div>
             @error('postMedia')
                 <div class="text-red-500">{{ $message }}</div>

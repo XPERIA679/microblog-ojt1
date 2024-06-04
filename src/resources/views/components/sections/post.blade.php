@@ -6,7 +6,6 @@
 <div class="bg-mycream rounded-lg mb-6">
 
     <div class="w-auto m-3 py-2 hover:shadow-lg rounded-lg">
-
         @if($postsMediumOrShare instanceof App\Models\PostShare)
             <div class="flex flex-row px-2 pb-2 pt-4 mx-3 w-auto">
                 <x-profile-icon.small />
@@ -89,34 +88,12 @@
     </div>
 
     <div class="w-auto border-none mx-3">
-        <div class="mt-1 mx-3 flex flex-row text-xs hover:drop-shadow-md transition-all">
-            <div
-                class="flex font-medium rounded-md mb-2 mr-4 items-center cursor-pointer text-mydark hover:text-mygray hover:drop-shadow-md">
-                6.9m
-                <div class="ml-1 text-mydark hover:text-mygray hover:drop-shadow-md">
-                    likes
-                </div>
-            </div>
-            <div
-                class="flex font-medium rounded-md mb-2 mr-4 items-center cursor-pointer text-mydark hover:text-mygray hover:drop-shadow-md">
-                66k
-                <div class="ml-1 cursor-pointer text-mydark hover:text-mygray hover:drop-shadow-md">
-                    comments
-                </div>
-            </div>
-            <div
-                class="flex font-medium rounded-md mb-2 mr-4 items-center cursor-pointer text-mydark hover:text-mygray hover:drop-shadow-md">
-                4k
-                <div class="ml-1 cursor-pointer text-mydark hover:text-mygray hover:drop-shadow-md">
-                    shares
-                </div>
-            </div>
-        </div>
+        <x-counter.interaction-counter :postsMediumOrShare="$postsMediumOrShare"/>
     </div>
 
     @if($showInteraction)
-    <hr class="border shadow-lg border-solid border-opacity-20 border-mygray">
-    <x-buttons.interaction :postsMediumOrShare="$postsMediumOrShare"/>
+        <hr class="border shadow-lg border-solid border-opacity-20 border-mygray">
+        <x-buttons.interaction :postsMediumOrShare="$postsMediumOrShare"/>
     @endif
 
 </div>

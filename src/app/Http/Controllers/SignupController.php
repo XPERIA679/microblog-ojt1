@@ -44,7 +44,7 @@ class SignupController extends Controller
     public function sendVerificationNotification(Request $request): mixed
     {
         if($this->signupService->sendVerificationNotification($request->userEmail)) {
-            return redirect('/');    
+            return redirect('/');
         }
         return view('components.auth.verify-email', ['userEmail' => $request->userEmail]);
     }
@@ -55,5 +55,13 @@ class SignupController extends Controller
     public function showVerificationPage(string $email):View
     {
         return view('components.auth.verify-email', ['userEmail' => $email]);
+    }
+
+    /**
+     * Return view user after verifying their account in.
+     */
+    public function emailVerified():View
+    {
+        return view('components.verification.verified-landing-page');
     }
 }

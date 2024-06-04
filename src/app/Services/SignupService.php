@@ -26,7 +26,7 @@ class SignupService
         ]);
 
         $user->sendEmailVerificationNotification();
-        
+
         return $user->email;
     }
 
@@ -40,7 +40,7 @@ class SignupService
             $user->markEmailAsVerified();
         }
 
-        return '/';
+        return 'email-verified';
     }
 
     /**
@@ -51,7 +51,7 @@ class SignupService
     {
         $user = User::where('email', $email)->first();
         $user->sendEmailVerificationNotification();
-        
+
         return $user->hasVerifiedEmail();
     }
 }

@@ -1,8 +1,7 @@
 @php
     $profile = auth()->user()->profile;
-    $keys = ['lotBlk', 'street', 'city', 'province', 'country', 'zip'];
     !is_null($profile->address) ? $values =  explode("‎", $profile->address) : $values = ['','','','','',''];
-    $addressInfo = array_combine($keys, $values);
+    $addressInfo = array_combine(['lotBlk', 'street', 'city', 'province', 'country', 'zip'], $values);
 @endphp
 
 <div onclick="hideProfile()" id="profile"

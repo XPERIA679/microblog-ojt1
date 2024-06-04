@@ -43,14 +43,16 @@
             </div>
 
             <div class="text-mydark font-medium text-sm m-3 hover:drop-shadow-md">
-                @if (!empty($postsMediumOrShare['post']) && !empty($postsMediumOrShare['post']->content))
+                @if (!empty($postsMediumOrShare->post->content))
                 {{ $postsMediumOrShare['post']->content }}
                 @endif
             </div>
 
             <div class="w-auto h-auto flex justify-center items-center m-3 pb-4">
+                @if (!empty($postsMediumOrShare->post->postMedia))
                 <img class="flex justify-center items-center mx-3 rounded-md w-96 h-96 object-contain"
                 src="{{ asset($postsMediumOrShare->post->postMedia->image) }}" alt="post image">
+                @endif
             </div>
 
         @else

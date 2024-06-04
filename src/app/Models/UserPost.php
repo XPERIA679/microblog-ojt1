@@ -45,4 +45,9 @@ class UserPost extends Model
     {
         return $this->hasOne(PostMedia::class, 'post_id');
     }
+
+    public function postShare(): HasMany
+    {
+        return $this->hasMany(PostShare::class, 'post_id');
+    }
 }

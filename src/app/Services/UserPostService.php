@@ -8,12 +8,12 @@ use App\Models\PostMedia;
 use App\Services\PostShareService;
 use App\Http\Requests\EditUserPostRequest;
 use App\Http\Requests\CreateUserPostRequest;
-use Illuminate\Support\Collection; 
+use Illuminate\Support\Collection;
 class UserPostService
 {
     protected $postShareService;
 
-    public function __construct() 
+    public function __construct()
     {
         $this->postShareService = new PostShareService;
     }
@@ -26,11 +26,11 @@ class UserPostService
         $userPost = UserPost::create([
             'user_id' => $request['user_id'],
             'content' => $request['content']
-        ]); 
+        ]);
 
         if ($request->hasfile('image')) {
             $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension(); 
+            $extension = $file->getClientOriginalExtension();
 
             $filename = time() . '.' . $extension;
 
@@ -41,9 +41,9 @@ class UserPostService
                 'image' => $path . $filename,
                 'post_id' => $userPost->id,
             ]);
-        }         
+        }
     }
-    
+
     /**
     * Edit a new user post
     */
@@ -70,7 +70,7 @@ class UserPostService
      * Get the specific post and media based from the id of post.
      */
     public function getUserPostAndMediaToEdit(int $post_id): Array
-    {   
+    {
         $userPostToEdit = UserPost::where('id', $post_id)->firstOrFail();
 
         $postsMediaIds = PostMedia::all()->pluck('post_id')->toArray();
@@ -88,8 +88,8 @@ class UserPostService
         ];
     }
 
-    /** 
-     * Retrieves and combines user posts with media and shares, then sorts by date. 
+    /**
+     * Retrieves and combines user posts with media and shares, then sorts by date.
      * */
     public function getAllPostsAndMediaAndShares(): Collection
     {
@@ -105,7 +105,7 @@ class UserPostService
             ];
         }
         $postsMediaAndShares = collect($postsAndMedia)->merge($this->postShareService->getAllPostShares());
-        
+
         $postsMediaAndShares = $postsMediaAndShares->sortBy(function ($item) {
         if ($item instanceof \App\Models\PostShare) {
                 return $item->updated_at;
@@ -119,7 +119,7 @@ class UserPostService
     /**
      * Delete a user post.
      */
-    public function delete(int $userPostToDeleteId): void 
+    public function delete(int $userPostToDeleteId): void
     {
         UserPost::destroy($userPostToDeleteId);
     }

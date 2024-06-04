@@ -29,7 +29,6 @@
                 @foreach ($postsMediaAndShares as $postsMediumOrShare)
                 <x-modals.create-comment-modal :postsMediumOrShare="$postsMediumOrShare"/>
                 <x-modals.edit-post />
-                <x-modals.create-comment-modal :postsMediumOrShare="$postsMediumOrShare" />
                 <x-modals.share-post :postsMediumOrShare="$postsMediumOrShare"/>
                 <x-sections.post :postsMediumOrShare="$postsMediumOrShare"/>
                 @endforeach

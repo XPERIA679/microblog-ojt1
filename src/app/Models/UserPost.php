@@ -41,11 +41,17 @@ class UserPost extends Model
         return $this->hasMany(PostComment::class, 'post_id');
     }
 
+    /**
+     * Gets the post media related to the user post
+     */
     public function postMedia(): HasOne
     {
         return $this->hasOne(PostMedia::class, 'post_id');
     }
 
+    /**
+     * Gets all the post shares related to the user post
+     */
     public function postShare(): HasMany
     {
         return $this->hasMany(PostShare::class, 'post_id');

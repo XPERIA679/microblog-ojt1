@@ -16,7 +16,11 @@
                 Please sign in, or create an account if you don't have one.
             </p>
             <div class="flex justify-center items-center mt-10">
+                <form method="GET" action="/">
+                <button href="submit">
                 <x-svgs.home-icon />
+                </button>
+                </form>
             </div>
         </div>
     </div>

@@ -16,7 +16,9 @@
                 Sorry, the page you're looking for doesn't exist. Please check the URL or return to the homepage.
             </p>
             <div class="flex justify-center items-center mt-10">
+                <button href="#" onclick="goBack()">
                 <x-svgs.back-icon />
+                </button>
             </div>
         </div>
     </div>

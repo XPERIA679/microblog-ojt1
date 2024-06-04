@@ -16,7 +16,11 @@
                 To create or access a new account, ensure you are logged out first.
             </p>
             <div class="flex justify-center items-center mt-10">
+                <form method="GET" action="/">
+                <button href="submit">
                 <x-svgs.back-icon />
+                </button>
+                </form>
             </div>
         </div>
     </div>

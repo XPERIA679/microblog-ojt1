@@ -2,6 +2,9 @@ document.getElementById('fileInput').addEventListener('change', function() {
     const file = this.files[0];
     const previewContainer = document.getElementById('imagePreview');
 
+    previewContainer.innerHTML = '';
+    previewContainer.classList.add('hidden');
+
     if (file) {
         const reader = new FileReader();
         reader.onload = function() {
@@ -9,8 +12,5 @@ document.getElementById('fileInput').addEventListener('change', function() {
             previewContainer.classList.remove('hidden');
         }
         reader.readAsDataURL(file);
-    } else {
-        previewContainer.innerHTML = '';
-        previewContainer.classList.add('hidden');
     }
 });

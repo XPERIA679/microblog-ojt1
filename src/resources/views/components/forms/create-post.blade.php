@@ -1,5 +1,6 @@
 <div class="bg-mycream rounded-lg">
-    <form action="/create-post" method="POST" enctype="multipart/form-data" class="bg-mycream shadow-lg rounded-lg mb-6 p-4 items-center">
+    <form action="/create-post" method="POST" enctype="multipart/form-data"
+        class="bg-mycream shadow-lg rounded-lg mb-6 p-4 items-center">
         @csrf
         <textarea name="content" id="textarea" maxlength="140" rows="3" placeholder="Share your thoughts.."
             class="w-full rounded-lg p-2 text-sm bg-mywhite border-transparent hover:drop-shadow-md rounded-tg placeholder-mygray resize-none overflow-x-hidden"
@@ -13,9 +14,11 @@
         </div>
         <div class="flex justify-between mt-2">
             <div class="flex items-center">
-                <div class="relative inline-block cursor-pointer mr-4">
-                    <x-svgs.media-icon />
-                    <input type="file" name="image" accept=".jpg, .jpeg, .png" id="fileInput" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                <div class="inline-block mr-4">
+                    <label for="fileInput" class="cursor-pointer">
+                        <x-svgs.media-icon />
+                    </label>
+                    <input type="file" name="image" accept=".jpg, .jpeg, .png" id="fileInput" class="hidden">
                 </div>
                 <div id="imagePreview" class="w-20 h-20 rounded-lg overflow-hidden shadow-md hidden"></div>
             </div>

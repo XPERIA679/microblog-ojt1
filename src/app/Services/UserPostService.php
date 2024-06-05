@@ -129,7 +129,7 @@ class UserPostService
      * Creates a 'like' record if existing or restore if soft deleted.
      */
     public function likePost(array $data): void
-    {
+    {   
         $idToInsertInto = ($data['type'] === 'originalPost') ? 'post_id' : 'post_share_id';
         PostLike::withTrashed()->firstOrCreate([
             $idToInsertInto => $data['id'],

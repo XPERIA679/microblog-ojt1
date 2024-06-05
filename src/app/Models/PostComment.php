@@ -14,6 +14,7 @@ class PostComment extends Model
     protected $fillable = [
         'user_id',
         'post_id',
+        'post_share_id',
         'content',
     ];
 

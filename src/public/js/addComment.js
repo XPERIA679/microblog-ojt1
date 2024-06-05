@@ -1,5 +1,5 @@
 function showComment(postId) {
-    const comment = document.getElementById(`comment-${postId}`);
+    const comment = document.getElementById(postId);
     comment.classList.remove("hidden");
     comment.classList.add("flex");
     setTimeout(() => {
@@ -9,7 +9,7 @@ function showComment(postId) {
 }
 
 function hideComment(postId) {
-    const comment = document.getElementById(`comment-${postId}`);
+    const comment = document.getElementById(postId);
     comment.classList.add("opacity-0");
     comment.classList.remove("opacity-100");
     setTimeout(() => {

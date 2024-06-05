@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PostShare extends Model
 {
@@ -14,6 +14,7 @@ class PostShare extends Model
     use SoftDeletes;
     protected $fillable = [
         'post_id',
+        'post_share_id',
         'user_id',
         'repost_content',
     ];
@@ -34,8 +35,16 @@ class PostShare extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    /**
+     * Get all likes for this post share.
+     */
     public function postLike(): HasMany 
     {
         return $this->hasMany(PostLike::class, 'post_share_id');
+    }
+
+    public function postComment(): HasMany 
+    {
+        return $this->hasMany(PostComment::class, 'post_share_id');
     }
 }

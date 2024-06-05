@@ -12,7 +12,6 @@ class PostCommentService
      */
     public function create(PostCommentRequest $request): void
     {   
-        // dd($request);
         $idToInsertInto = $request->has('post_id') ? 'post_id' : 'post_share_id';
         PostComment::create([
             $idToInsertInto => $request[$idToInsertInto],

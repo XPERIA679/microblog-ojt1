@@ -10,3 +10,4 @@
 <script src="{{ asset('js/search.js') }}"></script>
 <script src="{{ asset('js/logout.js') }}"></script>
 <script src="{{ asset('js/goBack.js') }}"></script>
+<script src="{{ asset('js/fileHandler.js') }}"></script>

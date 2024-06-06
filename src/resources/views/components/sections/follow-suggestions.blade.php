@@ -3,6 +3,7 @@
     $unfollowedUsers = 
         App\Models\User::whereKeyNot($authUserId)
         ->whereNotIn('id', auth()->user()->followedUsers->pluck('following_id'))
+        ->take(3)
         ->get();
 @endphp
 

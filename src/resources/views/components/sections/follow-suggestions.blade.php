@@ -13,18 +13,22 @@
         <x-profile-icon.small />
         <div class="flex flex-col my-2 ml-4 pr-12">
             <div class="text-mycream text-sm font-semibold cursor-pointer">
-                {{$unfollowedUser->username}}
+                {{ $unfollowedUser->username }}
             </div>
             <div class="text-mywhite flex font-light text-xs">
-                33k followers
+                {{ $unfollowedUser->followers()->count() }} Followers
             </div>
         </div>
         <div class="flex flex-col my-2 ml-10">
-            <button
-                class="flex items-center justify-center text-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-3 rounded-full transition-all">
-                <x-svgs.follow-icon />
-                Follow
-            </button>
+            <form action="{{ route('relationship.follow') }}" method="POST">
+                @csrf
+                <input name="userToFollowId" value ="{{ $unfollowedUser->id }}" hidden>
+                <button
+                    class="flex items-center justify-center text-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-3 rounded-full transition-all">
+                    <x-svgs.follow-icon />
+                    Follow
+                </button>
+            </form>
         </div>
     </div>
     @endforeach

@@ -9,7 +9,7 @@ class RelationshipService
     /**
      * Creates a new relationship
      */
-    public function follow(int $userToFollowId): void
+    public function follow(int $userToFollowId): string
     {
         Relationship::updateOrCreate(
             [
@@ -20,6 +20,8 @@ class RelationshipService
                 'status' => true
             ]
         );
+
+        return '/posts-page';
     }
 
     /**

@@ -16,6 +16,7 @@ export default {
 
             zIndex: {
                 '1000': 1000,
+                '9999': 9999,
             },
             borderRadius: {
                 'none': '0',

@@ -43,6 +43,8 @@ Route::middleware([AuthenticateWithErrorView::class])->group(function () {
     Route::post('/add-comment', [PostCommentController::class, 'create'])->name('post.comment.create');
     Route::delete('/delete-comment', [PostCommentController::class, 'delete']);
     Route::put('/edit-comment', [PostCommentController::class, 'update']);
+    Route::put('/edit-comment', [PostCommentController::class, 'update']);
+    Route::post('/follow-user', [RelationshipController::class, 'follow'])->name('relationship.follow');
 });
 
 Route::middleware([RedirectIfAuthenticated::class])->group(function () {

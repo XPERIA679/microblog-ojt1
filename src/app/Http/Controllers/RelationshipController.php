@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\RelationshipService;
+use Illuminate\Http\RedirectResponse;
 
 class RelationshipController extends Controller
 {
@@ -17,9 +18,9 @@ class RelationshipController extends Controller
     /**
      * Calls service to follow a user.
      */
-    public function follow(Request $request): void    
+    public function follow(Request $request): RedirectResponse
     {
-        $this->relationshipService->follow($request->user_to_follow);
+        return redirect($this->relationshipService->follow($request->userToFollowId));
     }
 
     /**

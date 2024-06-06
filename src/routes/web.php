@@ -1,17 +1,17 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PostCommentController;
-use App\Http\Controllers\PostShareController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserPostController;
-use App\Http\Middleware\AuthenticateWithErrorView;
+use App\Http\Controllers\PostShareController;
+use App\Http\Controllers\PostCommentController;
+use App\Http\Controllers\RelationshipController;
 use App\Http\Middleware\RedirectIfAuthenticated;
-use Illuminate\Support\Facades\Route;
-
+use App\Http\Middleware\AuthenticateWithErrorView;
 
 Route::get('/api/usernames', [UserController::class, 'searchUsernames']);
 Route::options('/api/usernames', function() {
@@ -43,6 +43,9 @@ Route::middleware([AuthenticateWithErrorView::class])->group(function () {
     Route::post('/add-comment', [PostCommentController::class, 'create'])->name('post.comment.create');
     Route::delete('/delete-comment', [PostCommentController::class, 'delete']);
     Route::put('/edit-comment', [PostCommentController::class, 'update']);
+    Route::put('/edit-comment', [PostCommentController::class, 'update']);
+    Route::post('/follow-user', [RelationshipController::class, 'follow'])->name('relationship.follow');
+    Route::get('/show-profile-page', [ProfileController::class, 'showProfilePage'])->name('profile.show.profile.page');
 });
 
 Route::middleware([RedirectIfAuthenticated::class])->group(function () {

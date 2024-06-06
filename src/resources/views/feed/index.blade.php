@@ -10,8 +10,8 @@
         <main class="grid lg:grid-cols-3 gap-6 my-12 mx-12 w-2xl p-10 justify-center relative">
             <x-modals.edit-profile />
 
-            <section class="lg:col-span-1 px-6">
-                <div class="rounded-lg p-10 bg-mydark">
+            <section class="lg:col-span-1 px-6 sticky top-0 self-start overflow-hidden">
+                <div class="rounded-lg p-10 bg-mydark mt-8">
                     <x-profile-icon.big :user="auth()->user()"/>
                     <div class="flex justify-center items-center gap-6 my-5">
                         <x-counter.post :user="auth()->user()"/>
@@ -24,7 +24,7 @@
                 </div>
                 <x-sections.follow-suggestions />
             </section>
-            <section class="lg:col-span-2 ">
+            <section class="lg:col-span-2 mt-8">
                 <x-forms.create-post />
                 @foreach ($postsMediaAndShares as $postsMediumOrShare)
                 <x-modals.create-comment-modal :postsMediumOrShare="$postsMediumOrShare"/>

@@ -10,10 +10,15 @@
 <div class="rounded-lg my-5 p-6 bg-mydark h-96 overflow-scroll overflow-x-hidden">
     @foreach($unfollowedUsers as $unfollowedUser)
     <div class="flex flex-row px-2 pb-2 pt-4 my-3 w-auto">
-        <x-profile-icon.small />
+        <x-profile-icon.small :user="$unfollowedUser"/>
         <div class="flex flex-col my-2 ml-4 pr-12">
             <div class="text-mycream text-sm font-semibold cursor-pointer">
-                {{ $unfollowedUser->username }}
+                <form action="{{ route('profile.show.profile.page') }}" method="GET">
+                    <input name="userId" value="{{$unfollowedUser->id}}" hidden>
+                    <button class="font-semibold text-mywhite cursor-pointer">
+                        {{ $unfollowedUser->username }}
+                    </button>
+                </form>
             </div>
             <div class="text-mywhite flex font-light text-xs">
                 {{ $unfollowedUser->followers()->count() }} Followers

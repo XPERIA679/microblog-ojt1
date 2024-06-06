@@ -45,6 +45,7 @@ Route::middleware([AuthenticateWithErrorView::class])->group(function () {
     Route::put('/edit-comment', [PostCommentController::class, 'update']);
     Route::put('/edit-comment', [PostCommentController::class, 'update']);
     Route::post('/follow-user', [RelationshipController::class, 'follow'])->name('relationship.follow');
+    Route::get('/show-profile-page', [ProfileController::class, 'showProfilePage'])->name('profile.show.profile.page');
 });
 
 Route::middleware([RedirectIfAuthenticated::class])->group(function () {

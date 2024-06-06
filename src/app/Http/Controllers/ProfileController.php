@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 use App\Services\ProfileService;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\UpdateProfileRequest;
@@ -34,5 +36,16 @@ class ProfileController extends Controller
     public function showUpdateProfile(): View
     {
         return $this->profileService->showUpdateProfile();
+    }
+
+    /**
+     * Displays the profile page of a user.
+     */
+    public function showProfilePage(Request $request): View
+    {   
+        return view('profile.index', 
+        [
+            "user" =>  User::where('id', $request->userId)->firstOrFail()
+        ]);
     }
 }

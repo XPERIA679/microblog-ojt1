@@ -58,7 +58,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get the users who are followed by the user.
      */
-    public function followedUsers()
+    public function followedUsers(): HasMany
     {
         return $this->hasMany(Relationship::class, 'follower_id', 'id');
     }
@@ -66,7 +66,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get the users who are followed by the user.
      */
-    public function followers():HasMany
+    public function followers(): HasMany
     {
         return $this->hasMany(Relationship::class, 'following_id', 'id');
     }
@@ -74,9 +74,17 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get the posts created by the user
      */
-    public function userPost():HasMany
+    public function userPost(): HasMany
     {
         return $this->hasMany(UserPost::class, 'user_id');
+    }
+
+    /**
+     * Get the posts created by the user
+     */
+    public function postShare(): HasMany
+    {
+        return $this->hasMany(PostShare::class, 'user_id');
     }
 }
 

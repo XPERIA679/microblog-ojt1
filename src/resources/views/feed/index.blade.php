@@ -12,11 +12,11 @@
 
             <section class="lg:col-span-1 px-6">
                 <div class="rounded-lg p-10 bg-mydark">
-                    <x-profile-icon.big />
+                    <x-profile-icon.big :user="auth()->user()"/>
                     <div class="flex justify-center items-center gap-6 my-5">
-                        <x-counter.post />
-                        <x-counter.follower />
-                        <x-counter.following />
+                        <x-counter.post :user="auth()->user()"/>
+                        <x-counter.follower :user="auth()->user()"/>
+                        <x-counter.following :user="auth()->user()"/>
                     </div>
                     <div class="flex justify-center items-center">
                         <x-buttons.edit-profile />

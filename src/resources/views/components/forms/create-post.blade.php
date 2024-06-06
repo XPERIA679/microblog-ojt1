@@ -1,5 +1,5 @@
 <div class="bg-mycream rounded-lg">
-    <form action="/create-post" method="POST" enctype="multipart/form-data"
+    <form id="postForm" action="/create-post" method="POST" enctype="multipart/form-data"
         class="bg-mycream shadow-lg rounded-lg mb-6 p-4 items-center">
         @csrf
         <textarea name="content" id="textarea" maxlength="140" rows="3" placeholder="Share your thoughts.."
@@ -26,7 +26,7 @@
                 <div class="text-red-500">{{ $message }}</div>
             @enderror
             <input type="text" name="user_id" value="{{ auth()->id() }}" hidden>
-            <button href="submit"
+            <button href="submit" id="submitBtn"
                 class="flex items-center py-2 px-4 rounded-lg text-sm hover:bg-mydark hover:text-mycream bg-mywhite text-mydark shadow-lg transition-all">
                 Post
                 <x-svgs.post-icon />

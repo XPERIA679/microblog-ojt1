@@ -7,7 +7,7 @@
 <div onclick="hideProfile()" id="profile"
     class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500 z-50">
     <div onclick="event.stopImmediatePropagation()" class="bg-mycream rounded-2xl shadow-md p-10 flex">
-        <form method="POST" action="{{ route('update-profile') }}">
+        <form id="profileForm" method="POST" action="{{ route('update-profile') }}">
         @csrf
         @method('PUT')
         <div class="flex p-0 bg-mycream">
@@ -139,7 +139,7 @@
                         class="justify-center items-center flex text-mywhite bg-mydark box-border cursor-pointer shadow-md text-sm font-medium h-12 max-w-full overflow-hidden text-center w-auto px-8 py-0.5 rounded-2xl hover:bg-mywhite hover:text-mydark border-mydark transition-all">
                         Back
                     </span>
-                    <button onclick="submitForm()"
+                    <button id="saveProfile"
                         class="justify-center items-center flex text-mydark bg-mywhite box-border cursor-pointer shadow-md text-sm font-medium h-12 max-w-full overflow-hidden text-center w-auto px-8 py-0.5 rounded-2xl hover:bg-mydark hover:text-mywhite border-mydark transition-all">
                         Save
                     </button>
@@ -149,3 +149,4 @@
         </form>
     </div>
 </div>
+

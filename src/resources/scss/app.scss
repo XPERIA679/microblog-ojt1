@@ -5,7 +5,7 @@
 }
 
 body {
-    @apply min-h-screen overflow-x-hidden justify-center bg-center items-center h-screen bg-bgsize bg-ngradient animate-gradient;
+    @apply min-h-screen overflow-x-hidden justify-center bg-center items-center h-screen bg-bgsize bg-ngradient animate-gradient box-border;
 }
 
 nav {

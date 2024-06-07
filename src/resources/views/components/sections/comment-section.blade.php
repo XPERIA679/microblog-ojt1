@@ -1,6 +1,11 @@
+@php
+    $post = $postsMediumOrShare instanceof App\Models\PostShare
+        ? $postsMediumOrShare
+        : $postsMediumOrShare['post'];
+@endphp
 <div id="comment" class="w-auto h-auto rounded-lg">
     <div class="rounded p-16 bg-mycream h-96 overflow-scroll overflow-x-hidden">
-    @foreach ($postsMediumOrShare['post']->postComment as $comment)
+    @foreach ($post->postComment as $comment)
         <div class="flex flex-row w-auto mt-4">
             <x-profile-icon.small :user="$comment->user"/>
             <div class="flex flex-col bg-mywhite rounded-2xl overflow-hidden hover:shadow-lg">

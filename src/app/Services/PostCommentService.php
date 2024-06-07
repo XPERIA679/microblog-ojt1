@@ -11,9 +11,10 @@ class PostCommentService
      * Creates a new comment for the post.
      */
     public function create(PostCommentRequest $request): void
-    {
+    {   
+        $idToInsertInto = $request->has('post_id') ? 'post_id' : 'post_share_id';
         PostComment::create([
-            'post_id' => $request['post_id'],
+            $idToInsertInto => $request[$idToInsertInto],
             'user_id' => auth()->id(),
             'content' => $request['content']
         ]);

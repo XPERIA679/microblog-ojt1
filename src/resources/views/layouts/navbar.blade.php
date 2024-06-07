@@ -25,3 +25,5 @@
         </li>
     </ul>
 </header>
+
+<x-modals.logout />

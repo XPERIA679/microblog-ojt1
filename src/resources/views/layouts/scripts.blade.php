@@ -8,7 +8,6 @@
 <script src="{{ asset('js/signinModal.js') }}"></script>
 <script src="{{ asset('js/signupModal.js') }}"></script>
 <script src="{{ asset('js/search.js') }}"></script>
-<script src="{{ asset('js/logout.js') }}"></script>
 <script src="{{ asset('js/goBack.js') }}"></script>
 <script src="{{ asset('js/fileHandler.js') }}"></script>
 <script src="{{ asset('js/postAlert.js') }}"></script>

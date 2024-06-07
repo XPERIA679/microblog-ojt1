@@ -8,26 +8,20 @@ class RemovePostIdForeignKeyFromPostShares extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('post_shares', function (Blueprint $table) {
-            // Drop the foreign key constraint on post_id
             $table->dropForeign(['post_id']);
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('post_shares', function (Blueprint $table) {
-            // Recreate the foreign key constraint on post_id
             $table->foreign('post_id')->references('id')->on('user_posts');
         });
     }

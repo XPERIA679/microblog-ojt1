@@ -36,9 +36,11 @@
     <button onclick="showComment('{{ $type }}-{{ $postId }}')" class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all rounded">
         Comment
     </button>
-    <button onclick="showUserPost({{ $postsMediumOrShare['post']->id }})" class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all rounded">
-        Share
-    </button>
+    @if (!$postsMediumOrShare instanceof App\Models\PostShare)
+        <button onclick="showUserPost({{ $postsMediumOrShare['post']->id }})" class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all rounded">
+            Share
+        </button>
+    @endif
 </div>
 
 <div id="{{ $type }}-{{ $postId }}" class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500 flex">

@@ -44,6 +44,7 @@ Route::middleware([AuthenticateWithErrorView::class])->group(function () {
     Route::delete('/delete-comment', [PostCommentController::class, 'delete']);
     Route::put('/edit-comment', [PostCommentController::class, 'update']);
     Route::put('/edit-comment', [PostCommentController::class, 'update']);
+    Route::delete('/unfollow-user', [RelationshipController::class, 'unfollow'])->name('relationship.unfollow');
     Route::post('/follow-user', [RelationshipController::class, 'follow'])->name('relationship.follow');
     Route::get('/show-profile-page', [ProfileController::class, 'showProfilePage'])->name('profile.show.profile.page');
 });

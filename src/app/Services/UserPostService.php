@@ -94,6 +94,7 @@ class UserPostService
     public function getAllPostsAndMediaAndShares(): Collection
     {   
         $followedUserIds = auth()->user()->followedUsers()->where('status', 1)->pluck('following_id')->toArray();
+        $followedUserIds[] = auth()->user()->id;
         $userPosts = UserPost::whereIn('user_id', $followedUserIds)->get();
         $postsMedia = PostMedia::all();
         $postsAndMedia = [];

@@ -27,10 +27,12 @@ class RelationshipService
     /**
      * Changes the status of relationship to false
      */
-    public function unfollow(int $userToUnfollowId): void
+    public function unfollow(int $userToUnfollowId): string
     {
         Relationship::where('follower_id', auth()->user()->id)
             ->where('following_id', $userToUnfollowId)
             ->update(['status' => false]);
+        
+            return '/posts-page';
     }
 }

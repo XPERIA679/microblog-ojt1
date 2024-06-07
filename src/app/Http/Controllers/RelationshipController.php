@@ -26,8 +26,8 @@ class RelationshipController extends Controller
     /**
      * Calls service to unfollow a user.
      */
-    public function unfollow(Request $request): void
+    public function unfollow(Request $request): RedirectResponse
     {
-        $this->relationshipService->unfollow($request->user_to_unfollow);
+        return redirect($this->relationshipService->unfollow($request->userToUnfollowId));
     }
 }

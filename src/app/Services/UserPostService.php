@@ -92,8 +92,9 @@ class UserPostService
      * Retrieves and combines user posts with media and shares, then sorts by date.
      * */
     public function getAllPostsAndMediaAndShares(): Collection
-    {
-        $userPosts = UserPost::all();
+    {   
+        $followedUserIds = auth()->user()->followedUsers()->where('status', 1)->pluck('following_id')->toArray();
+        $userPosts = UserPost::whereIn('user_id', $followedUserIds)->get();
         $postsMedia = PostMedia::all();
         $postsAndMedia = [];
 

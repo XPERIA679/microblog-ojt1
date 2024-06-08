@@ -22,13 +22,13 @@ nav {
   }
 
 ::-webkit-scrollbar {
-    @apply w-1
+    @apply w-0
 }
 
 ::-webkit-scrollbar-track {
-    @apply bg-mycream
+    @apply bg-transparent
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-mydark
+    @apply bg-transparent
 }

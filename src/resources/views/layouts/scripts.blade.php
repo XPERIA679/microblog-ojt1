@@ -11,3 +11,5 @@
 <script src="{{ asset('js/goBack.js') }}"></script>
 <script src="{{ asset('js/fileHandler.js') }}"></script>
 <script src="{{ asset('js/postAlert.js') }}"></script>
+<script src="{{ asset('js/follower.js') }}"></script>
+<script src="{{ asset('js/following.js') }}"></script>

@@ -14,6 +14,8 @@
 
     <div class="bg-mycream bg-opacity-0 relative w-full h-full justify-center items-center transition-opacity duration-500">
         <main class="grid lg:grid-cols-3 gap-6 my-12 mx-12 w-2xl p-10 justify-center relative">
+            <x-modals.follower :user="$user"/>
+            <x-modals.following :user="$user"/>
             <x-modals.edit-profile />
             <section class="lg:col-span-1 px-6">
                 <div class="rounded-lg p-10 bg-mydark">

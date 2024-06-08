@@ -2,7 +2,7 @@
     $authUserId = auth()->user()->id;
     $unfollowedUsers = 
         App\Models\User::whereKeyNot($authUserId)
-        ->whereNotIn('id', auth()->user()->followedUsers->pluck('following_id'))
+        ->whereNotIn('id', auth()->user()->followedUsers->where('status', 1)->pluck('following_id'))
         ->inRandomOrder()
         ->take(3)
         ->get();

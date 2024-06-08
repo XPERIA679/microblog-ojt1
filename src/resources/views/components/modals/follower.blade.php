@@ -19,7 +19,6 @@
                         </div>
 
                         <div class="text-mydark flex font-light text-xs">
-                            {{-- Follower count --}}
                             33k followers
                         </div>
                     </div>

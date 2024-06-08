@@ -27,14 +27,17 @@
                 </div>
                 <x-sections.follow-suggestions />
             </section>
-            <section class="lg:col-span-2 mt-8">
+            <section class="lg:col-span-2 mt-8">    
                 <x-forms.create-post />
                 @foreach ($postsMediaAndShares as $postsMediumOrShare)
-                <x-modals.create-comment-modal :postsMediumOrShare="$postsMediumOrShare"/>
-                <x-modals.edit-post />
-                <x-modals.share-post :postsMediumOrShare="$postsMediumOrShare"/>
-                <x-sections.post :postsMediumOrShare="$postsMediumOrShare"/>
+                    <x-modals.create-comment-modal :postsMediumOrShare="$postsMediumOrShare"/>
+                    <x-modals.edit-post />
+                    <x-modals.share-post :postsMediumOrShare="$postsMediumOrShare"/>
+                    <x-sections.post :postsMediumOrShare="$postsMediumOrShare"/>
                 @endforeach
+                <div class="mt-4">
+                    {{ $postsMediaAndShares->links('vendor.pagination.feed') }}
+                </div>
             </section>
         </main>
     </div>

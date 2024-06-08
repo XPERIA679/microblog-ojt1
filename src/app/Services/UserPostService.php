@@ -8,7 +8,8 @@ use App\Models\PostMedia;
 use App\Services\PostShareService;
 use App\Http\Requests\EditUserPostRequest;
 use App\Http\Requests\CreateUserPostRequest;
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+
 class UserPostService
 {
     protected $postShareService;
@@ -91,10 +92,11 @@ class UserPostService
     /**
      * Retrieves and combines user posts with media and shares, then sorts by date.
      * */
-    public function getAllPostsAndMediaAndShares(): Collection
-    {   
+    public function getAllPostsAndMediaAndShares(): LengthAwarePaginator
+    {
         $followedUserIds = auth()->user()->followedUsers()->where('status', 1)->pluck('following_id')->toArray();
         $followedUserIds[] = auth()->user()->id;
+
         $userPosts = UserPost::whereIn('user_id', $followedUserIds)->get();
         $postsMedia = PostMedia::all();
         $postsAndMedia = [];
@@ -106,17 +108,30 @@ class UserPostService
                 'postMedium' => $postMedium ?? null
             ];
         }
+
         $postsMediaAndShares = collect($postsAndMedia)->merge($this->postShareService->getAllPostShares());
 
-        $postsMediaAndShares = $postsMediaAndShares->sortBy(function ($item) {
-        if ($item instanceof \App\Models\PostShare) {
+        $postsMediaAndShares = $postsMediaAndShares->sortByDesc(function ($item) {
+            if ($item instanceof \App\Models\PostShare) {
                 return $item->updated_at;
             }
             return $item['post']->updated_at;
         });
 
-        return $postsMediaAndShares ;
+        // Paginate the results
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $perPage = 10; // Set the number of items per page
+        $currentItems = $postsMediaAndShares->slice(($currentPage - 1) * $perPage, $perPage)->all();
+        
+        return new LengthAwarePaginator(
+            $currentItems,
+            $postsMediaAndShares->count(),
+            $perPage,
+            $currentPage,
+            ['path' => LengthAwarePaginator::resolveCurrentPath()]
+        );
     }
+
 
     /**
      * Delete a user post.

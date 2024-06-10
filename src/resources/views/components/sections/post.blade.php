@@ -61,16 +61,16 @@
                             @endif
                         </div>
                     </div>
-                
+
                     <div class="text-mydark font-medium text-sm m-3 hover:drop-shadow-md">
                             {{ $postsMediumOrShare->post->content }}
                     </div>
-                    
+
                     @if (!empty($postsMediumOrShare->post->postMedia))
-                        <div class="w-auto h-auto flex justify-center items-center m-3 pb-4"></div>
+                        <div class="w-auto h-auto flex justify-center items-center m-3 pb-4">
                         <img class="flex justify-center items-center mx-3 rounded-md w-96 h-96 object-contain"
                             src="{{ asset($postsMediumOrShare->post->postMedia->image) }}" alt="post image">
-                            </div>
+                        </div>
                      @endif
                 @else
                     <div class="text-mydark font-medium text-sm m-3 hover:drop-shadow-md">

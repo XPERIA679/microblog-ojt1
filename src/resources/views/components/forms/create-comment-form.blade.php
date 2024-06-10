@@ -16,4 +16,4 @@
     </button>
 </form>
 
-<script src="{{ asset('js/deleteComment.js') }}"></script>
+

@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostCommentRequest;
+use App\Models\PostComment; // Ensure this is imported
+use App\Models\PostShare; // Ensure this is imported
 use App\Services\PostCommentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use App\Models\PostComment; // Ensure this is imported
-use App\Models\PostShare; // Ensure this is imported
+use Illuminate\Support\Facades\Log;
 
 class PostCommentController extends Controller
 {
@@ -18,30 +19,30 @@ class PostCommentController extends Controller
     {
         $this->postCommentService = $postCommentService;
     }
-    /**
-     * Calls service to create a new comment.
-     */
-    public function create(PostCommentRequest $request):RedirectResponse
+
+    public function create(Request $request): RedirectResponse
     {
+        $request->validate([
+            'content' => 'required|string|max:255',
+        ]);
+
         $this->postCommentService->create($request);
-        return redirect('/posts-page');
+        return redirect()->back();
     }
 
-    /**
-     * Calls service to update comment.
-     */
-    public function update(PostCommentRequest $request):RedirectResponse
+    public function delete(Request $request): RedirectResponse
     {
-        $this->postCommentService->update($request);
-        return redirect('/posts-page');
+        $this->postCommentService->delete($request->postCommentToDeleteId);
+        return redirect()->back();
     }
 
-    /**
-     * Calls service to delete a  comment.
-     */
-    public function delete($id)
+    public function update(Request $request, $id): RedirectResponse
     {
-        $this->postCommentService->delete($id);
+        $request->validate([
+            'content' => 'required|string|max:255',
+        ]);
+
+        $this->postCommentService->update($request, $id);
         return redirect()->back();
     }
 }

@@ -30,7 +30,7 @@ class SigninController extends Controller
      */
     public function login(SigninRequest $request): RedirectResponse
     {
-        return $this->signinService->handleLogin($request->only('username', 'password'));
+        return $this->signinService->handleLogin(['username' => $request['loginUsername'], 'password' => $request['loginPassword']]);
     }
 
     /**

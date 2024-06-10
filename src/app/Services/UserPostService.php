@@ -118,9 +118,8 @@ class UserPostService
             return $item['post']->updated_at;
         });
 
-        // Paginate the results
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
-        $perPage = 10; // Set the number of items per page
+        $perPage = 10;
         $currentItems = $postsMediaAndShares->slice(($currentPage - 1) * $perPage, $perPage)->all();
         
         return new LengthAwarePaginator(

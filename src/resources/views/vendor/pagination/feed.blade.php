@@ -1,7 +1,6 @@
 @if ($paginator->hasPages())
     <nav role="navigation" aria-label="Pagination Navigation" class="flex justify-center my-4">
         <ul class="pagination flex items-center list-none">
-            {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
                 <li class="disabled px-3 py-2 mx-1 text-mydark bg-mycream rounded-full">
                     <span>@lang('pagination.previous')</span>
@@ -12,14 +11,11 @@
                 </li>
             @endif
 
-            {{-- Pagination Elements --}}
             @foreach ($elements as $element)
-                {{-- "Three Dots" Separator --}}
                 @if (is_string($element))
                     <li class="disabled px-3 py-2 mx-1 text-mydark bg-mycream rounded-full"><span>{{ $element }}</span></li>
                 @endif
 
-                {{-- Array Of Links --}}
                 @if (is_array($element))
                     @foreach ($element as $page => $url)
                         @if ($page == $paginator->currentPage())
@@ -31,7 +27,6 @@
                 @endif
             @endforeach
 
-            {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
                 <li class="px-3 py-2 mx-1 text-mycream bg-mydark hover:bg-mygray rounded-full">
                     <a href="{{ $paginator->nextPageUrl() }}" rel="next">@lang('pagination.next')</a>

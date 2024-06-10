@@ -21,13 +21,13 @@ class SigninRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => [
+            'loginUsername' => [
                 'required',
                 'min:3',
                 'max:25',
                 Rule::exists('users', 'username'),
             ],
-            'password' => 'required|min:8|max:64',
+            'loginPassword' => 'required|min:8|max:64',
         ];
     }
 
@@ -37,9 +37,11 @@ class SigninRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'username.required' => 'Please provide a username.',
-            'username.exists' => 'Incorrect Username.',
-            'password.required' => 'Please provide a password.',
+            'loginUsername.required' => 'Incorrect username or password.',
+            'loginUsername.exists' => 'Incorrect username or password.',
+            'loginPassword.required' => 'Incorrect username or password',
+            'loginPassword.min' => 'Incorrect username or password',
+            'loginPassword.max' => 'Incorrect username or password',
         ];
     }
 }

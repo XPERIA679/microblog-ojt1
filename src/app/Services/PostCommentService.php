@@ -11,7 +11,7 @@ class PostCommentService
      * Creates a new comment for the post.
      */
     public function create(PostCommentRequest $request): void
-    {   
+    {
         $idToInsertInto = $request->has('post_id') ? 'post_id' : 'post_share_id';
         PostComment::create([
             $idToInsertInto => $request[$idToInsertInto],
@@ -31,7 +31,7 @@ class PostCommentService
     /**
      * Deletes a comment.
      */
-    public function delete(int $postCommentToDeleteId): void 
+    public function delete(int $postCommentToDeleteId): void
     {
         PostComment::destroy($postCommentToDeleteId);
     }

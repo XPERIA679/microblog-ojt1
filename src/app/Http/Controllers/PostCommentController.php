@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\PostCommentRequest;
 use App\Services\PostCommentService;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\PostCommentRequest;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use App\Models\PostComment; // Ensure this is imported
+use App\Models\PostShare; // Ensure this is imported
 
 class PostCommentController extends Controller
-{   
-    public $postCommentService;
+{
+    protected $postCommentService;
 
-    public function __construct()
+    public function __construct(PostCommentService $postCommentService)
     {
-        $this->postCommentService = new PostCommentService();
+        $this->postCommentService = $postCommentService;
     }
-
     /**
      * Calls service to create a new comment.
      */
@@ -29,7 +31,7 @@ class PostCommentController extends Controller
      * Calls service to update comment.
      */
     public function update(PostCommentRequest $request):RedirectResponse
-    {   
+    {
         $this->postCommentService->update($request);
         return redirect('/posts-page');
     }
@@ -37,9 +39,9 @@ class PostCommentController extends Controller
     /**
      * Calls service to delete a  comment.
      */
-    public function delete(Request $request):RedirectResponse
+    public function delete($id)
     {
-        $this->postCommentService->delete($request->postCommentToDeleteId);
-        return redirect('/posts-page');
+        $this->postCommentService->delete($id);
+        return redirect()->back();
     }
 }

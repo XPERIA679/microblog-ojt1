@@ -28,6 +28,9 @@ Route::get('/resend-email', [SignupController::class, 'sendVerificationNotificat
 Route::post('/email/verification-notification', [SignupController::class, 'sendVerificationNotification'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 Route::get('/verification-page/{userEmail}', [SignupController::class, 'showVerificationPage']);
 
+
+
+
 Route::middleware([AuthenticateWithErrorView::class])->group(function () {
     Route::get('/posts-page', [UserPostController::class, 'showPostsPage']);
     Route::get('/edit-post-page/{post}', [UserPostController::class, 'showEditPostPage']);
@@ -47,6 +50,7 @@ Route::middleware([AuthenticateWithErrorView::class])->group(function () {
     Route::delete('/unfollow-user', [RelationshipController::class, 'unfollow'])->name('relationship.unfollow');
     Route::post('/follow-user', [RelationshipController::class, 'follow'])->name('relationship.follow');
     Route::get('/show-profile-page', [ProfileController::class, 'showProfilePage'])->name('profile.show.profile.page');
+    Route::delete('/delete-comment/{id}', [PostCommentController::class, 'delete'])->name('post.comment.delete');
 });
 
 Route::middleware([RedirectIfAuthenticated::class])->group(function () {

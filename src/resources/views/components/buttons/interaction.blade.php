@@ -18,17 +18,17 @@
         <input type="text" name="type" value="{{ $postsMediumOrShare instanceof App\Models\PostShare ? 'share' : 'originalPost' }}" hidden>
         <input type="text" name="id" value="{{ $post->id }}" hidden>
     <button href="submit"
-        class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all focus:bg-mydark focus:text-mycream rounded">
+    class="text-center w-full">
         Unlike
     </button>
     </form>
     @else
-    <form class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all focus:bg-mydark focus:text-mycream rounded" action="/like-post" method="POST">
+    <form class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all rounded" action="/like-post" method="POST">
         @csrf
         <input type="text" name="type" value="{{ $postsMediumOrShare instanceof App\Models\PostShare ? 'share' : 'originalPost' }}" hidden>
         <input type="text" name="id" value="{{ $postsMediumOrShare instanceof App\Models\PostShare ? $postsMediumOrShare->id : $postsMediumOrShare['post']->id }}" hidden>
     <button href="submit"
-        class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all focus:bg-mydark focus:text-mycream rounded">
+    class="text-center w-full">
         Like
     </button>
     </form>

@@ -28,6 +28,7 @@
                             {{ $followedUser->followers->count() . '  Followers' }}
                         </div>
                     </div>
+
                     <div class="flex flex-col my-2 ml-10">
                         <form action="{{ route('relationship.unfollow') }}" method="POST">
                             @csrf
@@ -40,6 +41,7 @@
                             </button>
                         </form>
                     </div>
+                    
                 </div>
                 @empty
                     <div class="text-mydark text-sm font-semibold cursor-pointer">

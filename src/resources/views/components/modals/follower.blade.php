@@ -30,30 +30,19 @@
                     </div>
                     
                     <div class="flex flex-col my-2 ml-10">
-                        @if(auth()->id() != $follower->id)
+                    @if(auth()->id() != $follower->id)
+                        <form action="{{ auth()->user()->followedUsers->contains($follower) ? route('relationship.unfollow') : route('relationship.follow') }}" method="POST">
+                            @csrf
                             @if(auth()->user()->followedUsers->contains($follower))
-                                <form action="{{ route('relationship.follow') }}" method="POST">
-                                    @csrf
-                                    <input name="userToFollowId" value ="{{ $user->id }}" hidden>
-                                    <button
-                                        class="flex items-center justify-center text-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-3 rounded-full transition-all">
-                                        <x-svgs.follow-icon />
-                                        Follow
-                                    </button>
-                                </form>
-                            @else
-                                <form action="{{ route('relationship.unfollow') }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input name="userToUnfollowId" value ="{{ $user->id }}" hidden>
-                                    <button
-                                        class="flex items-center justify-center text-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-3 rounded-full transition-all">
-                                        <x-svgs.follow-icon />
-                                        Unfollow
-                                    </button>
-                                </form>
-                            @endif 
-                        @endif 
+                                @method('DELETE')
+                            @endif
+                            <input name="{{ auth()->user()->followedUsers->contains($follower) ? 'userToUnfollowId' : 'userToFollowId' }}" value="{{ $user->id }}" hidden>
+                            <button class="flex items-center justify-center text-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-3 rounded-full transition-all">
+                                <x-svgs.follow-icon />
+                                {{ auth()->user()->followedUsers->contains($follower) ? 'Unfollow' : 'Follow' }}
+                            </button>
+                        </form>
+                    @endif  
                     </div>
                     
                 </div>

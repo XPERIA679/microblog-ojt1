@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\PostShare;
-use Illuminate\Database\Eloquent\Collection;
 use App\Http\Requests\CreatePostShareRequest;
 
 class PostShareService
@@ -18,14 +17,6 @@ class PostShareService
             'post_id' => $request['post_id'],
             'repost_content' => $request['repost_content']
         ]); 
-    }
-
-    /**
-     * Gets all shared posts.
-     */
-    public function getAllPostShares(): Collection
-    {
-        return PostShare::all();
     }
 
     /**

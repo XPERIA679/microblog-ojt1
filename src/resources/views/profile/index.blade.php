@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'My Thoughts')
+@section('title', $user ? $user->username : 'User Not Found')
 
 @section('content')
+
+@extends('layouts.navbar')
 
 @php
     $userPosts = $user->userPost->map(function ($post) {

@@ -4,6 +4,8 @@
 
 @section('content')
 
+@extends('layouts.navbar')
+
 @php
     $userPosts = $user->userPost->map(function ($post) {
         $postMedia = $post->postMedia()->first();

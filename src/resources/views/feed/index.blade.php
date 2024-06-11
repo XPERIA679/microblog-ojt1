@@ -9,8 +9,8 @@
     <div class="bg-mycream bg-opacity-0 relative w-full h-full justify-center items-center transition-opacity duration-500">
         <main class="grid lg:grid-cols-3 gap-6 my-12 mx-12 w-2xl p-10 justify-center relative">
             <x-modals.edit-profile />
-            <x-modals.follower />
-            <x-modals.following />
+            <x-modals.follower :user="auth()->user()"/>
+            <x-modals.following :user="auth()->user()"/>
             <x-modals.delete-post />
 
             <section class="lg:col-span-1 px-6 lg:sticky top-0 self-start my-4 overflow-hidden">
@@ -27,14 +27,17 @@
                 </div>
                 <x-sections.follow-suggestions />
             </section>
-            <section class="lg:col-span-2 mt-8">
+            <section class="lg:col-span-2 mt-8">    
                 <x-forms.create-post />
                 @foreach ($postsMediaAndShares as $postsMediumOrShare)
-                <x-modals.create-comment-modal :postsMediumOrShare="$postsMediumOrShare"/>
-                <x-modals.edit-post />
-                <x-modals.share-post :postsMediumOrShare="$postsMediumOrShare"/>
-                <x-sections.post :postsMediumOrShare="$postsMediumOrShare"/>
+                    <x-modals.create-comment-modal :postsMediumOrShare="$postsMediumOrShare"/>
+                    <x-modals.edit-post />
+                    <x-modals.share-post :postsMediumOrShare="$postsMediumOrShare"/>
+                    <x-sections.post :postsMediumOrShare="$postsMediumOrShare"/>
                 @endforeach
+                <div class="mt-4">
+                    {{ $postsMediaAndShares->links('vendor.pagination.feed') }}
+                </div>
             </section>
         </main>
     </div>

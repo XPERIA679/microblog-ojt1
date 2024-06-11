@@ -16,6 +16,8 @@
 
     <div class="bg-mycream bg-opacity-0 relative w-full h-full justify-center items-center transition-opacity duration-500">
         <main class="grid lg:grid-cols-3 gap-6 my-12 mx-12 w-2xl p-10 justify-center relative">
+            <x-modals.follower :user="$user"/>
+            <x-modals.following :user="$user"/>
             <x-modals.edit-profile />
             <section class="lg:col-span-1 px-6">
                 <div class="rounded-lg p-10 bg-mydark">
@@ -26,28 +28,20 @@
                         <x-counter.following :user="$user"/>
                     </div>
                     <div class="flex justify-center items-center">
-                    @if(auth()->user()->followedUsers->contains($user))
-                        <form action="{{ route('relationship.follow') }}" method="POST">
+                        @php
+                            $isFollowing = auth()->user()->followings->contains($user);
+                        @endphp
+                        <form action="{{ route($isFollowing ? 'relationship.unfollow' : 'relationship.follow') }}" method="POST">
                             @csrf
-                            <input name="userToFollowId" value ="{{ $user->id }}" hidden>
-                            <button
-                                class="flex items-center justify-center text-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-3 rounded-full transition-all">
+                            @if($isFollowing)
+                                @method('DELETE')
+                            @endif
+                            <input name="{{ $isFollowing ? 'userToUnfollowId' : 'userToFollowId' }}" value="{{ $user->id }}" hidden>
+                            <button class="flex items-center justify-center text-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-3 rounded-full transition-all">
                                 <x-svgs.follow-icon />
-                                Follow
+                                {{ $isFollowing ? 'Unfollow' : 'Follow' }}
                             </button>
                         </form>
-                    @else
-                        <form action="{{ route('relationship.unfollow') }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <input name="userToUnfollowId" value ="{{ $user->id }}" hidden>
-                            <button
-                                class="flex items-center justify-center text-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-3 rounded-full transition-all">
-                                <x-svgs.follow-icon />
-                                Unfollow
-                            </button>
-                        </form>
-                    @endif 
                     </div>
                 </div>
                 @if($user->id === auth()->user()->id)

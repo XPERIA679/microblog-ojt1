@@ -41,9 +41,8 @@ Route::middleware([AuthenticateWithErrorView::class])->group(function () {
     Route::delete('/unlike-post', [UserPostController::class, 'unlikePost']);
     Route::delete('/delete-post/{post}', [UserPostController::class, 'delete']);
     Route::post('/add-comment', [PostCommentController::class, 'create'])->name('post.comment.create');
-    Route::delete('/delete-comment', [PostCommentController::class, 'delete']);
-    Route::put('/edit-comment', [PostCommentController::class, 'update']);
-    Route::put('/edit-comment', [PostCommentController::class, 'update']);
+    Route::post('/post-comment/update', [PostCommentController::class, 'update'])->name('postComment.update');
+    Route::post('/post-comment/delete', [PostCommentController::class, 'delete'])->name('postComment.delete');
     Route::delete('/unfollow-user', [RelationshipController::class, 'unfollow'])->name('relationship.unfollow');
     Route::post('/follow-user', [RelationshipController::class, 'follow'])->name('relationship.follow');
     Route::get('/show-profile-page', [ProfileController::class, 'showProfilePage'])->name('profile.show.profile.page');

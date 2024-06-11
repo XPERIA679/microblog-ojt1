@@ -14,4 +14,4 @@
 <script src="{{ asset('js/follower.js') }}"></script>
 <script src="{{ asset('js/following.js') }}"></script>
 <script src="{{ asset('js/postDelete.js') }}"></script>
-<script src="{{ asset('js/deleteComment.js') }}"></script>
+<script src="{{ asset('js/editComment.js') }}"></script>

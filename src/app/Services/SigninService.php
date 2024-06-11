@@ -19,9 +19,9 @@ class SigninService
      * If the user is not yet verified, redirect to resend verification page
      */
     public function handleLogin(array $credentials): RedirectResponse
-    {
+    {   
         if (!auth()->attempt($credentials)) {
-            return redirect('/')->withErrors(['failed' => 'Wrong username or password']);
+            return redirect('/');
         }
 
         $user = auth()->user();

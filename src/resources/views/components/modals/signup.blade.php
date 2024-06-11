@@ -9,3 +9,11 @@
         </div>
     </div>
 </div>
+
+@if ($errors->has('username') || $errors->has('email') || $errors->has('password') || $errors->has('password_confirmation'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            showsignupForm();
+        });
+    </script>
+@endif

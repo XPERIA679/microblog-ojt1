@@ -12,3 +12,11 @@
         </div>
     </div>
 </div>
+
+@if (($errors->has('loginUsername') || $errors->has('loginPassword')))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            showsigninForm();
+        });
+    </script>
+@endif

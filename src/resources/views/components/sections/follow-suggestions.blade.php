@@ -4,7 +4,7 @@
         App\Models\User::whereKeyNot($authUserId)
         ->whereNotIn('id', auth()->user()->followedUsers->pluck('following_id'))
         ->inRandomOrder()
-        ->take(3)
+        ->take(10)
         ->get();
 @endphp
 

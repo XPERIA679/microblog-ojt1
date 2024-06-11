@@ -7,13 +7,8 @@
                 <h1>Followers</h1>
             </div>
 
-            @php
-                $followerIds = $user->followers()->where('status', 1)->pluck('follower_id')->toArray();
-                $followers = App\Models\User::whereIn('id', array_diff($followerIds, [$user->id]))->get();
-            @endphp
-
             <div class="rounded-lg my-2 p-6 bg-mycream h-96 overflow-scroll overflow-x-hidden">
-                @forelse ($followers as $follower)
+                @forelse ($user->followers as $follower)
                 <div class="flex flex-row p-2 w-auto">
                     <div class="w-auto h-auto rounded-full ml-3">
                         <x-profile-icon.small :user="$follower"/>

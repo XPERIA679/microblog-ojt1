@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -15,8 +16,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
      */
     protected $fillable = [
         'username',
@@ -25,9 +24,15 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
+     * Additional attributes of user
+     */
+    protected $appends = [
+        'followers',
+        'followedUsers'
+    ];
+
+    /**
      * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
      */
     protected $hidden = [
         'password',
@@ -36,8 +41,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
      */
     protected function casts(): array
     {
@@ -85,6 +88,24 @@ class User extends Authenticatable implements MustVerifyEmail
     public function postShare(): HasMany
     {
         return $this->hasMany(PostShare::class, 'user_id');
+    }
+
+    /**
+     * Get the user's followers
+     */
+    public function getFollowersAttribute(): Collection
+    {
+        $followerIds = $this->followers()->where('status', 1)->pluck('follower_id')->toArray();
+        return self::whereIn('id', array_diff($followerIds, [$this->id]))->get();
+    }
+
+    /**
+     * Get the user's followed users
+     */
+    public function getFollowedUsersAttribute(): Collection
+    {
+        $followedUserIds = $this->followedUsers()->where('status', 1)->pluck('following_id')->toArray();
+        return self::whereIn('id', array_diff($followedUserIds, [$this->id]))->get();
     }
 }
 

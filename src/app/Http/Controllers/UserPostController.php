@@ -37,8 +37,7 @@ class UserPostController extends Controller
     public function showPostsPage(): View
     {
         return view( 'feed.index',[
-            'postsMediaAndShares' => $this->userPostService->getAllPostsAndMediaAndShares(),
-            'allLikedPosts' => $this->userPostService->getAllPostLikes()
+            'postsMediaAndShares' => $this->userPostService->getAllPostsAndMediaAndShares()
         ]);
     }
 

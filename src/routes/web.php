@@ -32,7 +32,6 @@ Route::middleware([AuthenticateWithErrorView::class])->group(function () {
     Route::get('/posts-page', [UserPostController::class, 'showPostsPage']);
     Route::get('/edit-post-page/{post}', [UserPostController::class, 'showEditPostPage']);
     Route::get('/logout', [SigninController::class, 'logout']);
-    Route::get('/update-profile', [ProfileController::class, 'showUpdateProfile']);
     Route::put('/update-profile', [ProfileController::class, 'update'])->name('update-profile');
     Route::post('/create-post', [UserPostController::class, 'create']);
     Route::post('/like-post', [UserPostController::class, 'likePost']);

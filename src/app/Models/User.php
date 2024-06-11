@@ -95,7 +95,11 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getFollowersAttribute(): Collection
     {
-        $followerIds = $this->followers()->where('status', 1)->pluck('follower_id')->toArray();
+        $followerIds = $this->followers()
+            ->where('status', 1)
+            ->pluck('follower_id')
+            ->toArray();
+
         return self::whereIn('id', array_diff($followerIds, [$this->id]))->get();
     }
 
@@ -104,7 +108,11 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getFollowedUsersAttribute(): Collection
     {
-        $followedUserIds = $this->followedUsers()->where('status', 1)->pluck('following_id')->toArray();
+        $followedUserIds = $this->followedUsers()
+            ->where('status', 1)
+            ->pluck('following_id')
+            ->toArray();
+
         return self::whereIn('id', array_diff($followedUserIds, [$this->id]))->get();
     }
 }

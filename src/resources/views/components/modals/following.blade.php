@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="text-mydark flex font-light text-xs">
-                            {{ $followedUser->followers()->count() . '  Followers' }}
+                            {{ $followedUser->followers->count() . '  Followers' }}
                         </div>
                     </div>
                     <div class="flex flex-col my-2 ml-10">

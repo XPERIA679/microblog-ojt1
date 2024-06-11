@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $user->username ? $user->username : 'User Not Found')
+@section('title', $user ? $user->username : 'User Not Found')
 
 @section('content')
 

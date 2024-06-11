@@ -26,28 +26,20 @@
                         <x-counter.following :user="$user"/>
                     </div>
                     <div class="flex justify-center items-center">
-                    @if(auth()->user()->followedUsers->contains($user))
-                        <form action="{{ route('relationship.follow') }}" method="POST">
+                        @php
+                            $isFollowing = auth()->user()->followedUsers->contains($user);
+                        @endphp
+                        <form action="{{ route($isFollowing ? 'relationship.unfollow' : 'relationship.follow') }}" method="POST">
                             @csrf
-                            <input name="userToFollowId" value ="{{ $user->id }}" hidden>
-                            <button
-                                class="flex items-center justify-center text-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-3 rounded-full transition-all">
+                            @if($isFollowing)
+                                @method('DELETE')
+                            @endif
+                            <input name="{{ $isFollowing ? 'userToUnfollowId' : 'userToFollowId' }}" value="{{ $user->id }}" hidden>
+                            <button class="flex items-center justify-center text-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-3 rounded-full transition-all">
                                 <x-svgs.follow-icon />
-                                Follow
+                                {{ $isFollowing ? 'Unfollow' : 'Follow' }}
                             </button>
                         </form>
-                    @else
-                        <form action="{{ route('relationship.unfollow') }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <input name="userToUnfollowId" value ="{{ $user->id }}" hidden>
-                            <button
-                                class="flex items-center justify-center text-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-3 rounded-full transition-all">
-                                <x-svgs.follow-icon />
-                                Unfollow
-                            </button>
-                        </form>
-                    @endif 
                     </div>
                 </div>
                 @if($user->id === auth()->user()->id)

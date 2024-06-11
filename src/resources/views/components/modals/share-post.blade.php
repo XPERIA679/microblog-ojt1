@@ -1,5 +1,5 @@
 @if(!$postsMediumOrShare instanceof App\Models\PostShare)
-<div id="sharepost-{{ $postsMediumOrShare['post']->id }}" class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500 z-9999">
+<div onclick="hideUserPost({{ $postsMediumOrShare['post']->id }})" id="sharepost-{{ $postsMediumOrShare['post']->id }}" class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500 z-9999">
     <div onclick="event.stopImmediatePropagation()" class="bg-mycream rounded-2xl shadow-md w-11/12 max-w-lg max-h-[calc(100vh-50px)] overflow-y-auto">
         <form action="/share-post" method="POST">
             @csrf

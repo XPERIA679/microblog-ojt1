@@ -11,8 +11,9 @@
             <x-modals.edit-profile />
             <x-modals.follower />
             <x-modals.following />
+            <x-modals.delete-post />
 
-            <section class="lg:col-span-1 px-6 sticky top-0 self-start overflow-hidden">
+            <section class="lg:col-span-1 px-6 lg:sticky top-0 self-start my-4 overflow-hidden">
                 <div class="rounded-lg p-10 bg-mydark mt-8">
                     <x-profile-icon.big :user="auth()->user()"/>
                     <div class="flex justify-center items-center gap-6 my-5">

@@ -28,7 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $appends = [
         'followers',
-        'followedUsers'
+        'followings'
     ];
 
     /**
@@ -61,7 +61,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get the users who are followed by the user.
      */
-    public function followedUsers(): HasMany
+    public function followings(): HasMany
     {
         return $this->hasMany(Relationship::class, 'follower_id', 'id');
     }
@@ -106,9 +106,9 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get the user's followed users
      */
-    public function getFollowedUsersAttribute(): Collection
+    public function getFollowingsAttribute(): Collection
     {
-        $followedUserIds = $this->followedUsers()
+        $followedUserIds = $this->followings()
             ->where('status', 1)
             ->pluck('following_id')
             ->toArray();

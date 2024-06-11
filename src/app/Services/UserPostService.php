@@ -94,7 +94,7 @@ class UserPostService
      * */
     public function getAllPostsAndMediaAndShares(): LengthAwarePaginator
     {
-        $followedUserIds = auth()->user()->followedUsers()->where('status', 1)->pluck('following_id')->toArray();
+        $followedUserIds = auth()->user()->followings()->where('status', 1)->pluck('following_id')->toArray();
         $followedUserIds[] = auth()->user()->id;
 
         $userPosts = UserPost::whereIn('user_id', $followedUserIds)->get();

@@ -8,7 +8,7 @@
             </div>
 
             <div class="rounded-lg my-2 p-6 bg-mycream h-96 overflow-scroll overflow-x-hidden">
-                @forelse ($user->followedUsers as $followedUser)
+                @forelse ($user->followings as $followedUser)
                     <div class="flex flex-row p-2 w-auto">
                         
                         <div class="w-auto h-auto rounded-full ml-3">

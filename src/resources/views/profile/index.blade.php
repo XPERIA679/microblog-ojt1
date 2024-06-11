@@ -27,7 +27,7 @@
                     </div>
                     <div class="flex justify-center items-center">
                         @php
-                            $isFollowing = auth()->user()->followedUsers->contains($user);
+                            $isFollowing = auth()->user()->followings->contains($user);
                         @endphp
                         <form action="{{ route($isFollowing ? 'relationship.unfollow' : 'relationship.follow') }}" method="POST">
                             @csrf

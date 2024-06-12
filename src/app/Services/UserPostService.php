@@ -112,7 +112,7 @@ class UserPostService
         }
         $postsMediaAndShares = collect($postsAndMedia)->merge(PostShare::all());
 
-        $postsMediaAndShares = $postsMediaAndShares->sortBy(function ($item) {
+        $postsMediaAndShares = $postsMediaAndShares->sortByDesc(function ($item) {
         if ($item instanceof PostShare) {
                 return $item->updated_at;
             }

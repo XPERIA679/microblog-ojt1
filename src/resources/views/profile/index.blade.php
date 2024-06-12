@@ -19,7 +19,7 @@
             <x-modals.follower :user="$user"/>
             <x-modals.following :user="$user"/>
             <x-modals.edit-profile />
-            <section class="lg:col-span-1 px-6">
+            <section class="lg:col-span-1 px-6 lg:sticky top-20 self-start my-4 overflow-hidden">
                 <div class="rounded-lg p-10 bg-mydark">
                     <x-profile-icon.big :user="$user"/>
                     <div class="flex justify-center items-center gap-6 my-5">
@@ -28,6 +28,7 @@
                         <x-counter.following :user="$user"/>
                     </div>
                     <div class="flex justify-center items-center">
+                        @if (!auth()->user()->id === $user->id)
                         @php
                             $isFollowing = auth()->user()->followings->contains($user);
                         @endphp
@@ -42,13 +43,15 @@
                                 {{ $isFollowing ? 'Unfollow' : 'Follow' }}
                             </button>
                         </form>
+                        @endif
                     </div>
                 </div>
                 @if($user->id === auth()->user()->id)
                     <x-sections.follow-suggestions />
                 @endif
             </section>
-            <section class="lg:col-span-2 ">
+            <section class="lg:col-span-2 mt-1">
+                <x-notifications.notification-message />
                 @if($user->id === auth()->user()->id)
                     <x-forms.create-post />
                 @endif

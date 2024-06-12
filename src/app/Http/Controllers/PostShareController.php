@@ -21,15 +21,15 @@ class PostShareController extends Controller
     public function create(CreatePostShareRequest $request): RedirectResponse
     {
         $this->postShareService->create($request);
-
-        return redirect('/posts-page')->with('notifMessage', 'Post Shared Successfully!');
+        return redirect()->back()->with('notifMessage', 'Post Shared Successfully!');
     }
 
     /**
      * Calls service to delete a shared post.
      */
-    public function delete(Request $request): void
+    public function delete(Request $request): RedirectResponse
     {
-        $this->postShareService->delete($request->postShareToDeleteId)->with('notifMessage', 'Shared Post Deleted Successfully!');
+        $this->postShareService->delete($request->postShareToDeleteId);
+        return redirect()->back()->with('notifMessage', 'Shared Post Deleted Successfully!');
     }
 }

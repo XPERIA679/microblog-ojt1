@@ -27,7 +27,7 @@ class ProfileController extends Controller
     public function update(UpdateProfileRequest $request): RedirectResponse
     {   
         $this->profileService->update($request);
-        return redirect('/posts-page')->with('notifMessage', 'Profile Information Updated Successfully!'); 
+        return redirect()->back()->with('notifMessage', 'Profile Information Updated Successfully!'); 
     }    
 
      /**	

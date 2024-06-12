@@ -1,5 +1,5 @@
-<header class="bg-mydark text-white p-1 flex justify-between items-center z-1000 top-0 left-0 w-full fixed rounded-br-20px rounded-bl-20px border-t-0 border-2 border-solid border-mydark">
-    <a href=""><img src="assets/images/logo.png" alt="Logo" class="shrink-0 justify-center items-center max-w-[100px] h-[50px] pl-8 mr-auto py-2"></a>
+<header class="bg-mydark text-white p-2 flex justify-between items-center z-1000 top-0 left-0 w-full fixed rounded-br-20px rounded-bl-20px border-t-0 border-2 border-solid border-mydark">
+    <a href="/posts-page"><img src="assets/images/logo.png" alt="Logo" class="shrink-0 justify-center items-center max-w-[100px] h-[60px] pl-8 mr-auto py-2"></a>
 
     <div class="search-bar-container relative ml-0.5">
         <div class="search-container bg-mywhite rounded-3xl px-5 py-1 flex items-center relative transition-transform duration-300 ease-in-out">

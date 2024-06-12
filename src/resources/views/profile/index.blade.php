@@ -43,6 +43,10 @@
                                 {{ $isFollowing ? 'Unfollow' : 'Follow' }}
                             </button>
                         </form>
+                        @else
+                        <div class="flex justify-center items-center">
+                            <x-buttons.edit-profile />
+                        </div>
                         @endif
                     </div>
                 </div>

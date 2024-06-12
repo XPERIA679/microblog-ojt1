@@ -22,7 +22,7 @@ class PostShareController extends Controller
     {
         $this->postShareService->create($request);
 
-        return redirect('/posts-page');
+        return redirect('/posts-page')->with('notifMessage', 'Post Shared Successfully!');
     }
 
     /**
@@ -30,6 +30,6 @@ class PostShareController extends Controller
      */
     public function delete(Request $request): void
     {
-        $this->postShareService->delete($request->postShareToDeleteId);
+        $this->postShareService->delete($request->postShareToDeleteId)->with('notifMessage', 'Shared Post Deleted Successfully!');
     }
 }

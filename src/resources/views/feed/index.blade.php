@@ -28,6 +28,7 @@
                 <x-sections.follow-suggestions />
             </section>
             <section class="lg:col-span-2 mt-8">    
+                <x-notifications.notification-message />
                 <x-forms.create-post />
                 @foreach ($postsMediaAndShares as $postsMediumOrShare)
                     <x-modals.create-comment-modal :postsMediumOrShare="$postsMediumOrShare"/>

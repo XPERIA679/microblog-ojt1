@@ -1,8 +1,8 @@
 @php
-    $post = $postsMediumOrShare instanceof App\Models\PostShare 
+    $post = $postsMediumOrShare instanceof App\Models\PostShare
         ? $postsMediumOrShare
         : $postsMediumOrShare['post'];
-    $postContent = $post instanceof App\Models\PostShare 
+    $postContent = $post instanceof App\Models\PostShare
         ? $post->repost_content
         : $post->content;
     $postMedia = $post->postMedia->image ?? null;

@@ -8,8 +8,8 @@ function showPost(postId) {
     }, 20);
 }
 
-function hidePost() {
-    const postedit = document.getElementById("postedit");
+function hidePost(postId) {
+    const postedit = document.getElementById(`postedit-${postId}`);
     postedit.classList.add("opacity-0");
     postedit.classList.remove("opacity-100");
     setTimeout(() => {

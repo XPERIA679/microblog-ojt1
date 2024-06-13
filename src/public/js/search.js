@@ -33,7 +33,7 @@ async function filterUsernames() {
     }
 
     try {
-        const response = await fetch(`{{ route('searchUsernames') }}?query=${query}`);
+        const response = await fetch(`/api/usernames?query=${query}`);
         if (!response.ok) {
             throw new Error('Failed to fetch usernames');
         }

@@ -14,6 +14,7 @@ use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\AuthenticateWithErrorView;
 
 Route::get('/api/usernames', [UserController::class, 'searchUsernames']);
+Route::get('/api/userIdByUsername', [UserController::class, 'getUserIdByUsername']);
 Route::options('/api/usernames', function() {
     return response()->json([], 200)
         ->header('Access-Control-Allow-Origin', '*')

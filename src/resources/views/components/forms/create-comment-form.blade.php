@@ -6,7 +6,7 @@
         ? 'post_share_id'
         : 'post_id'
 @endphp
-<form class="bg-mycream p-4 items-center" method="POST" action="{{ route('post.comment.create') }}">
+<form class="bg-mycream p-4 items-center" method="POST" action="{{ route('postComment.create') }}">
     @csrf
     <textarea maxlength="90" rows="3" placeholder="Thoughts about this post..."
         class="w-full rounded-lg p-2 text-sm bg-mycream border hover:drop-shadow-md rounded-tg placeholder-mygray resize-none overflow-x-hidden"

@@ -1,5 +1,5 @@
 <div class="bg-mycream rounded-lg">
-    <form id="postForm" action="/create-post" method="POST" enctype="multipart/form-data"
+    <form id="postForm" action=" {{ route('post.create') }} " method="POST" enctype="multipart/form-data"
         class="bg-mycream shadow-lg rounded-lg mb-6 p-4 items-center">
         @csrf
         <textarea name="content" id="textarea" maxlength="140" rows="3" placeholder="Share your thoughts.."
@@ -8,7 +8,7 @@
         @error('content')
             <div class="error">{{ $message }}</div>
         @enderror
-        <div class="text-sm" id="theCount">
+        <div class="text-sm mt-4" id="theCount">
             <span id="current">0</span>
             <span id="maximum">/ 140</span>
         </div>

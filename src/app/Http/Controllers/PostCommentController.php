@@ -22,7 +22,7 @@ class PostCommentController extends Controller
     public function create(PostCommentRequest $request):RedirectResponse
     {
         $this->postCommentService->create($request);
-        return redirect('/posts-page');
+        return redirect()->back()->with('notifMessage', 'Comment Created Successfully!');
     }
 
     /**
@@ -31,7 +31,7 @@ class PostCommentController extends Controller
     public function update(PostCommentRequest $request):RedirectResponse
     {   
         $this->postCommentService->update($request);
-        return redirect('/posts-page');
+        return redirect()->back()->with('notifMessage', 'Comment Updated Successfully!');
     }
 
     /**
@@ -40,6 +40,6 @@ class PostCommentController extends Controller
     public function delete(Request $request):RedirectResponse
     {
         $this->postCommentService->delete($request->postCommentToDeleteId);
-        return redirect('/posts-page');
+        return redirect()->back()->with('notifMessage', 'Comment Deleted Successfully!');
     }
 }

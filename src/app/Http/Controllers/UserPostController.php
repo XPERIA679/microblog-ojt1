@@ -27,7 +27,7 @@ class UserPostController extends Controller
     public function create(CreateUserPostRequest $request): RedirectResponse
     {
         $this->userPostService->create($request);
-        return redirect('/posts-page');
+        return redirect()->back()->with('notifMessage', 'Post Created Successfully!');
     }
 
     /**
@@ -47,7 +47,7 @@ class UserPostController extends Controller
     public function edit(EditUserPostRequest $request):RedirectResponse
     {
         $this->userPostService->edit($request);
-        return redirect('/');
+        return redirect()->back()->with('notifMessage', 'Post Edited Successfully!');
     }
 
     /**
@@ -67,7 +67,7 @@ class UserPostController extends Controller
     public function delete(Request $request):RedirectResponse
     {
         $this->userPostService->delete($request->userPostToDeleteId);
-        return redirect('/');
+        return redirect()->back()->with('notifMessage', 'Post Edited Successfully!');
     }
 
     /**
@@ -76,7 +76,7 @@ class UserPostController extends Controller
     public function likePost(Request $request):RedirectResponse
     {
         $this->userPostService->likePost(['type' => $request->type, 'id' => $request->id]);
-        return redirect('/posts-page');
+        return redirect()->back()->with('notifMessage', 'Post Liked Successfully!');
     }
 
     /**
@@ -85,7 +85,7 @@ class UserPostController extends Controller
     public function unlikePost(Request $request):RedirectResponse
     {
         $this->userPostService->unlikePost(['type' => $request->type, 'id' => $request->id]);
-        return redirect('/posts-page');
+        return redirect()->back()->with('notifMessage', 'Post Unliked Successfully!');
     }
 }
 

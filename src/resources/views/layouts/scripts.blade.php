@@ -15,3 +15,4 @@
 <script src="{{ asset('js/following.js') }}"></script>
 <script src="{{ asset('js/postDelete.js') }}"></script>
 <script src="{{ asset('js/editComment.js') }}"></script>
+<script src="{{ asset('js/popup.js') }}"></script>

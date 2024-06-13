@@ -5,9 +5,13 @@
         <div id="postedit" class="bg-mycream mx-auto overflow-hidden transition-opacity duration-500">
             <h3 class="font-bold uppercase hover:drop-shadow-md">re-write your thoughts</h3>
             <hr class="border shadow-lg border-solid border-opacity-20 border-mygray">
-            <form class="w-auto my-3 py-2 rounded-lg">
-                <textarea maxlength="140" rows="3"
-                    class="w-full rounded-lg p-2 text-sm bg-mywhite border-transparent hover:drop-shadow-md placeholder-mygray resize-none overflow-x-hidden"></textarea>
+            <form action="/edit-post" method="POST" enctype="multipart/form-data" class="w-auto my-3 py-2 rounded-lg">
+                @csrf
+                @method('PUT')
+                <textarea id="content" name="editedContent" maxlength="140" rows="3"
+                    class="w-full rounded-lg p-2 text-sm bg-mywhite border-transparent hover:drop-shadow-md placeholder-mygray resize-none overflow-x-hidden">
+                    {{ $postsMediumOrShare->post->content }}
+                </textarea>
                 <div class="relative flex justify-center items-center m-3 pb-4 rounded-2xl">
                     <span class="absolute top-1 right-6 cursor-pointer text-2xl text-mywhite ">&times;</span>
                     <img class="flex justify-center items-center mx-3 rounded-xl w-96 h-96 object-contain hover:shadow-lg"

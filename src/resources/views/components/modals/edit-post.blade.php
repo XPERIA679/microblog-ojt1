@@ -2,6 +2,10 @@
     $post = $postsMediumOrShare instanceof App\Models\PostShare 
         ? $postsMediumOrShare
         : $postsMediumOrShare['post'];
+    $postContent = $post instanceof App\Models\PostShare 
+        ? $post->repost_content
+        : $post->content;
+    $postMedia = $post->postMedia->image ?? null;
 @endphp
 
 <div onclick="hidePost('{{$post->id}}')" id="postedit-{{$post->id}}"
@@ -16,13 +20,13 @@
                 @method('PUT')
                 <input id="content" name="editedContent" maxlength="140" rows="3"
                     class="w-full rounded-lg p-2 text-sm bg-mywhite border-transparent hover:drop-shadow-md placeholder-mygray resize-none overflow-x-hidden"
-                    value = "{{ $post->content }}">
+                    value = "{{ $postContent }}">
                 <div class="relative flex justify-center items-center m-3 pb-4 rounded-2xl">
                     <span class="absolute top-1 right-6 cursor-pointer text-2xl text-mywhite ">&times;</span>
-                    @if (!empty($post->postMedia))
+                    @if (!empty($postMedia))
                         <div class="w-auto h-auto flex justify-center items-center m-3 pb-4">
                             <img class="flex justify-center items-center mx-3 rounded-md w-96 h-96 object-contain"
-                                src="{{ asset($post->postMedia->image) }}" alt="post image">
+                                src="{{ asset($postMedia) }}" alt="post image">
                         </div>
                     @endif
                 </div>

@@ -17,8 +17,6 @@ async function setInputValue(username, input) {
         const userId = await queryUserIdByUsername(username);
         if (userId) {
             input.value = userId; 
-        } else {
-            console.error(`User ID for username '${username}' not found.`);
         }
     } catch (error) {
         console.error('Error setting input value:', error);
@@ -35,7 +33,7 @@ async function filterUsernames() {
     }
 
     try {
-        const response = await fetch(`/api/usernames?query=${query}`);
+        const response = await fetch(`{{ route('searchUsernames') }}?query=${query}`);
         if (!response.ok) {
             throw new Error('Failed to fetch usernames');
         }
@@ -71,7 +69,6 @@ async function filterUsernames() {
             div.appendChild(form);
 
             div.addEventListener('click', () => {
-                console.log(`Username is clicked: ${input.value}`);
                 document.getElementById('search-bar').value = username;
                 dropdown.classList.add('hidden');
             });

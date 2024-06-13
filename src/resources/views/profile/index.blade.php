@@ -34,7 +34,7 @@
                         <x-counter.following :user="$user"/>
                     </div>
                     <div class="flex justify-center items-center">
-                        @if (!auth()->user()->id === $user->id)
+                        @if (auth()->user()->id != $user->id)
                         @php
                             $isFollowing = auth()->user()->followings->contains($user);
                         @endphp

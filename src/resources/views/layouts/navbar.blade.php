@@ -17,7 +17,6 @@
 
             <div id="dropdown-menu" class="dropdown-menu hidden absolute right-0 mt-1 mr-2 w-24 bg-mywhite rounded-xl shadow-lg z-10 text-center">
                 <ul>
-                    <li class="p-0.5 flex items-center justify-center h-8 text-mydark text-xs bg-mywhite hover:bg-mycream cursor-pointer rounded-md">Profile</li>
                     <li class="p-0.5 flex items-center justify-center h-8 text-mydark text-xs bg-mywhite hover:bg-mycream cursor-pointer rounded-md" id="logout-button">Log Out</li>
                 </ul>
             </div>

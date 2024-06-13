@@ -8,7 +8,7 @@
         @error('content')
             <div class="error">{{ $message }}</div>
         @enderror
-        <div class="text-sm" id="theCount">
+        <div class="text-sm mt-4" id="theCount">
             <span id="current">0</span>
             <span id="maximum">/ 140</span>
         </div>

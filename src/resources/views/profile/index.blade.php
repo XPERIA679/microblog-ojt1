@@ -12,6 +12,12 @@
         return ['post' => $post, $postMedia];
     });
     $userPosts = $userPosts->merge($user->postShare);
+    $userPosts = $userPosts->sortByDesc(function ($item) {
+    if ($item instanceof App\Models\PostShare) {
+            return $item->updated_at;
+        }
+        return $item['post']->updated_at;
+    });
 @endphp
 
     <div class="bg-mycream bg-opacity-0 relative w-full h-full justify-center items-center transition-opacity duration-500">

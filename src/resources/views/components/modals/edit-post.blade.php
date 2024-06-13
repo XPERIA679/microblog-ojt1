@@ -1,4 +1,10 @@
-<div onclick="hidePost()" id="postedit"
+@php
+    $post = $postsMediumOrShare instanceof App\Models\PostShare
+        ? $postsMediumOrShare
+        : $postsMediumOrShare['post'];
+@endphp
+
+<div onclick="hidePost('{{$post->id}}')" id="postedit-{{$post->id}}"
     class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500 z-9999">
     <div onclick="event.stopImmediatePropagation()"
         class="bg-mycream rounded-lg shadow-md p-10 flex justify-center items-center max-w-lg max-h-[calc(100vh-50px)] overflow-y-auto">
@@ -8,14 +14,17 @@
             <form action="/edit-post" method="POST" enctype="multipart/form-data" class="w-auto my-3 py-2 rounded-lg">
                 @csrf
                 @method('PUT')
-                <textarea id="content" name="editedContent" maxlength="140" rows="3"
-                    class="w-full rounded-lg p-2 text-sm bg-mywhite border-transparent hover:drop-shadow-md placeholder-mygray resize-none overflow-x-hidden">
-                    {{ $postsMediumOrShare->post->content }}
-                </textarea>
+                <input id="content" name="editedContent" maxlength="140" rows="3"
+                    class="w-full rounded-lg p-2 text-sm bg-mywhite border-transparent hover:drop-shadow-md placeholder-mygray resize-none overflow-x-hidden"
+                    value = "{{ $post->content }}">
                 <div class="relative flex justify-center items-center m-3 pb-4 rounded-2xl">
                     <span class="absolute top-1 right-6 cursor-pointer text-2xl text-mywhite ">&times;</span>
-                    <img class="flex justify-center items-center mx-3 rounded-xl w-96 h-96 object-contain hover:shadow-lg"
-                        src="assets/images/post1.jpeg" alt="post">
+                    @if (!empty($post->postMedia))
+                        <div class="w-auto h-auto flex justify-center items-center m-3 pb-4">
+                            <img class="flex justify-center items-center mx-3 rounded-md w-96 h-96 object-contain"
+                                src="{{ asset($post->postMedia->image) }}" alt="post image">
+                        </div>
+                    @endif
                 </div>
                 <div class="flex justify-between mt-2">
                     <x-svgs.media-icon />

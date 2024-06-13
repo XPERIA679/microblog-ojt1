@@ -110,7 +110,7 @@ class UserPostService
                 'postMedium' => $postMedium ?? null
             ];
         }
-        $postsMediaAndShares = collect($postsAndMedia)->merge(PostShare::all());
+        $postsMediaAndShares = collect($postsAndMedia)->merge(PostShare::with('post')->get());
 
         $postsMediaAndShares = $postsMediaAndShares->sortByDesc(function ($item) {
         if ($item instanceof PostShare) {
@@ -122,7 +122,7 @@ class UserPostService
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
         $perPage = 4;
         $currentItems = $postsMediaAndShares->slice(($currentPage - 1) * $perPage, $perPage)->all();
-        
+
         return new LengthAwarePaginator(
             $currentItems,
             $postsMediaAndShares->count(),

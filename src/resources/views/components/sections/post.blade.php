@@ -122,7 +122,7 @@
                                     <div id="dropdown-post"
                                         class="dropdown-post hidden absolute right-0 mt-1 mr-2 w-24 bg-mywhite rounded-xl shadow-lg z-10 text-center">
                                         <ul>
-                                            <li onclick="showPost()" id="postedit"
+                                            <li onclick="showPost({{ $postsMediumOrShare['post']->id }})" id="postedit-{{ $postsMediumOrShare['post']->id }}"
                                                 class="p-0.5 flex items-center justify-center h-8 text-mydark text-xs bg-mywhite hover:bg-mydark hover:text-mycream cursor-pointer rounded-md">
                                                 Edit Post</li>
                                             <li class="p-0.5 flex items-center justify-center h-8 text-mydark text-xs bg-mywhite hover:bg-mydark hover:text-mycream cursor-pointer rounded-md"

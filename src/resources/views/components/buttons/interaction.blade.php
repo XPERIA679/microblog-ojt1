@@ -43,12 +43,3 @@
         </button>
     @endif
 </div>
-
-<div id="{{ $type }}-{{ $postId }}" class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500 flex">
-    <div onclick="event.stopPropagation()" class="bg-mycream rounded-lg p-2 shadow-md w-1/2">
-        <x-sections.comment-section :postsMediumOrShare="$postsMediumOrShare" />
-        <button onclick="hideComment('{{ $type }}-{{ $postId }}')" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            Close
-        </button>
-    </div>
-</div>

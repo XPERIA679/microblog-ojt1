@@ -120,7 +120,7 @@ class UserPostService
         });
 
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
-        $perPage = 10;
+        $perPage = 4;
         $currentItems = $postsMediaAndShares->slice(($currentPage - 1) * $perPage, $perPage)->all();
         
         return new LengthAwarePaginator(

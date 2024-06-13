@@ -1,5 +1,5 @@
-function showPost() {
-    const postedit = document.getElementById("postedit");
+function showPost(postId) {
+    const postedit = document.getElementById(`postedit-${postId}`);
     postedit.classList.remove("hidden");
     postedit.classList.add("flex");
     setTimeout(() => {

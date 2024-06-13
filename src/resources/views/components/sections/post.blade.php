@@ -38,8 +38,15 @@
                                                 <li onclick="showPost('{{$postsMediumOrShare->id }}')" id="postedit-{{ $postsMediumOrShare->id }}"
                                                     class="p-0.5 flex items-center justify-center h-8 text-mydark text-xs bg-mywhite hover:bg-mydark hover:text-mycream cursor-pointer rounded-md">
                                                     Edit Post</li>
-                                                <li class="p-0.5 flex items-center justify-center h-8 text-mydark text-xs bg-mywhite hover:bg-mydark hover:text-mycream cursor-pointer rounded-md"
-                                                    id="delete-btn">Delete Post</li>
+                                                <li class="p-0.5 flex items-center justify-center h-8 text-mydark text-xs bg-mywhite hover:bg-mydark hover:text-mycream cursor-pointer rounded-md" id="delete-btn">
+                                                <form action="{{ route('post.delete') }}" method="POST" class="ml-2">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <input type="text" name ="type" value="sharedPost" hidden>
+                                                    <input type="hidden" name="userPostToDeleteId" value="{{ $postsMediumOrShare->id }}">
+                                                    <button href="submit" class="text-red-500 hover:text-red-700">Delete Post</button>
+                                                </form>
+                                                </li>
                                             </ul>
                                         </div>
                                     </li>
@@ -126,8 +133,15 @@
                                             <li onclick="showPost({{ $postsMediumOrShare['post']->id }})" id="postedit-{{ $postsMediumOrShare['post']->id }}"
                                                 class="p-0.5 flex items-center justify-center h-8 text-mydark text-xs bg-mywhite hover:bg-mydark hover:text-mycream cursor-pointer rounded-md">
                                                 Edit Post</li>
-                                            <li class="p-0.5 flex items-center justify-center h-8 text-mydark text-xs bg-mywhite hover:bg-mydark hover:text-mycream cursor-pointer rounded-md"
-                                                id="delete-btn">Delete Post</li>
+                                            <li class="p-0.5 flex items-center justify-center h-8 text-mydark text-xs bg-mywhite hover:bg-mydark hover:text-mycream cursor-pointer rounded-md" id="delete-btn">
+                                            <form action="{{ route('post.delete') }}" method="POST" class="ml-2">
+                                                @csrf
+                                                @method('DELETE')
+                                                <input type="text" name="type" value="originalPost" hidden>
+                                                <input type="hidden" name="userPostToDeleteId" value="{{ $postsMediumOrShare['post']->id }}">
+                                                <button href="submit" class="text-red-500 hover:text-red-700">Delete Post</button>
+                                            </form>
+                                            </li>
                                         </ul>
                                     </div>
                                 </li>

@@ -66,8 +66,8 @@ class UserPostController extends Controller
      */
     public function delete(Request $request):RedirectResponse
     {
-        $this->userPostService->delete($request->userPostToDeleteId);
-        return redirect()->back()->with('notifMessage', 'Post Edited Successfully!');
+        $this->userPostService->delete($request->userPostToDeleteId, $request->type);
+        return redirect()->back()->with('notifMessage', 'Post Deleted Successfully!');
     }
 
     /**

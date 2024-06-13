@@ -136,9 +136,11 @@ class UserPostService
     /**
      * Delete a user post.
      */
-    public function delete(int $userPostToDeleteId): void
+    public function delete(int $userPostToDeleteId, string $type): void
     {
-        UserPost::destroy($userPostToDeleteId);
+        $type instanceof App\Models\PostShare
+        ? PostShare::destroy($userPostToDeleteId)
+        : UserPost::destroy($userPostToDeleteId);
     }
 
     /**

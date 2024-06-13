@@ -20,7 +20,7 @@
                     <li class="p-0.5 flex items-center justify-center h-8 text-mydark text-xs bg-mywhite hover:bg-mycream cursor-pointer rounded-md" id="logout-button">Log Out</li>
                 </ul>
             </div>
-            <form id="logout-form" action="/logout" method="GET" class="hidden"></form>
+            <form id="logout-form" action=" {{ route('logout') }} " method="GET" class="hidden"></form>
         </li>
     </ul>
 </header>

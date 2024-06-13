@@ -1,4 +1,4 @@
-<form class="grid grid-cols-1 gap-6 mt-12" method="POST" action="/register">
+<form class="grid grid-cols-1 gap-6 mt-12" method="POST" action=" {{ route('register') }} ">
     @csrf
 
     <div class="relative my-1">

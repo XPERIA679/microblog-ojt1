@@ -30,17 +30,17 @@ Route::post('/email/verification-notification', [SignupController::class, 'sendV
 Route::get('/verification-page/{userEmail}', [SignupController::class, 'showVerificationPage']);
 
 Route::middleware([AuthenticateWithErrorView::class])->group(function () {
-    Route::get('/posts-page', [UserPostController::class, 'showPostsPage']);
+    Route::get('/posts-page', [UserPostController::class, 'showPostsPage'])->name('post.show');
     Route::get('/edit-post-page/{post}', [UserPostController::class, 'showEditPostPage']);
-    Route::get('/logout', [SigninController::class, 'logout']);
+    Route::get('/logout', [SigninController::class, 'logout'])->name('logout');
     Route::put('/update-profile', [ProfileController::class, 'update'])->name('update-profile');
-    Route::post('/create-post', [UserPostController::class, 'create']);
-    Route::post('/like-post', [UserPostController::class, 'likePost']);
-    Route::post('/share-post', [PostShareController::class, 'create']);
+    Route::post('/create-post', [UserPostController::class, 'create'])->name('post.create');
+    Route::post('/like-post', [UserPostController::class, 'likePost'])->name('post.like');
+    Route::post('/share-post', [PostShareController::class, 'create'])->name('postShare.create');
     Route::put('/edit-post', [UserPostController::class, 'edit']);
-    Route::delete('/unlike-post', [UserPostController::class, 'unlikePost']);
+    Route::delete('/unlike-post', [UserPostController::class, 'unlikePost'])->name('post.unlike');
     Route::delete('/delete-post/{post}', [UserPostController::class, 'delete']);
-    Route::post('/add-comment', [PostCommentController::class, 'create'])->name('post.comment.create');
+    Route::post('/add-comment', [PostCommentController::class, 'create'])->name('postComment.create');
     Route::post('/post-comment/update', [PostCommentController::class, 'update'])->name('postComment.update');
     Route::post('/post-comment/delete', [PostCommentController::class, 'delete'])->name('postComment.delete');
     Route::delete('/unfollow-user', [RelationshipController::class, 'unfollow'])->name('relationship.unfollow');
@@ -49,10 +49,8 @@ Route::middleware([AuthenticateWithErrorView::class])->group(function () {
 });
 
 Route::middleware([RedirectIfAuthenticated::class])->group(function () {
-    Route::get('/signup', [SignupController::class,'showSignup']);
-    Route::get('/signin', [SigninController::class, 'showSignin']);
-    Route::post('/register', [SignupController::class, 'register']);
-    Route::post('/login', [SigninController::class, 'login']);
+    Route::post('/register', [SignupController::class, 'register'])->name('register');
+    Route::post('/login', [SigninController::class, 'login'])->name('login');
 });
 
 Route::fallback(fn() => view('components.errors.not-found'));

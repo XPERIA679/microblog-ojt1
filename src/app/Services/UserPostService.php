@@ -138,7 +138,7 @@ class UserPostService
      */
     public function delete(int $userPostToDeleteId, string $type): void
     {
-        $type instanceof App\Models\PostShare
+        $type === 'sharedPost'
         ? PostShare::destroy($userPostToDeleteId)
         : UserPost::destroy($userPostToDeleteId);
     }

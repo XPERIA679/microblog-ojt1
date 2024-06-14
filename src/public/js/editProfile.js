@@ -1,36 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('saveProfile');
-    const form = document.getElementById('profileForm');
-
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-right',
-        iconColor: '#252323',
-        customClass: {
-            popup: 'rounded-md shadow-lg',
-            title: 'text-mydark font-semibold',
-        },
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-    });
-
-    btn.addEventListener('click', (event) => {
-        event.preventDefault();
-
-        Toast.fire({
-            icon: 'success',
-            title: 'Profile Saved!',
-        });
-
-        hideProfile();
-
-        setTimeout(() => {
-            form.submit();
-        }, 1500);
-    });
-});
-
 function showProfile() {
     const profile = document.getElementById("profile");
     profile.classList.remove("hidden");

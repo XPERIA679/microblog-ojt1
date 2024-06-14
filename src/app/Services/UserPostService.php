@@ -70,11 +70,6 @@ class UserPostService
         }
     }
 
-    public function editShare(EditPostShareRequest $request): void
-    {
-        PostShare::findOrFail($request->postToEditId)->update(['repost_content' => $request->editedContent]);
-    }
-
     /**
      * Get the specific post and media based from the id of post.
      */

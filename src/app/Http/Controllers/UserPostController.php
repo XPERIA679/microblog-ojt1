@@ -51,9 +51,12 @@ class UserPostController extends Controller
         return redirect()->back()->with('notifMessage', 'Post Edited Successfully!');
     }
 
+    /**
+     * Updates a shared post's  repost content.
+     */
     public function editShare(EditPostShareRequest $request):RedirectResponse
     {
-        $this->userPostService->editShare($request);
+        $this->postShareService->editShare($request);
         return redirect()->back()->with('notifMessage', 'Post Edited Successfully!');
     }
 

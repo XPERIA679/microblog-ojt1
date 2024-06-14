@@ -55,7 +55,7 @@ class UserPostService
     {
         UserPost::findOrFail($request->postToEditId)->update(['content' => $request->editedContent]);
 
-        if ($request->shouldRemoveImage) {
+        if ($request->shouldRemoveImage === 'true') {
             PostMedia::destroy($request->postMediaToEditId);
         }
 

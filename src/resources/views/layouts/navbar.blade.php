@@ -1,4 +1,4 @@
-<header class="bg-mydark text-white p-2 flex justify-between items-center z-1000 top-0 left-0 w-full fixed rounded-br-20px rounded-bl-20px border-t-0 border-2 border-solid border-mydark">
+<header class="bg-mydark text-white p-2 flex justify-between items-center z-1000 top-0 left-0 w-full fixed">
     <a href="/posts-page"><img src="assets/images/logo.png" alt="Logo" class="shrink-0 justify-center items-center max-w-[100px] h-[60px] pl-8 mr-auto py-2"></a>
 
     <div class="search-bar-container relative ml-0.5">

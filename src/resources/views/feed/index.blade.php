@@ -13,7 +13,7 @@
             <x-modals.following :user="auth()->user()" />
             <x-modals.delete-post />
 
-            <section class="lg:col-span-1 px-6 lg:sticky top-12 self-start overflow-hidden">
+            <section class="mt-8 lg:col-span-1 px-6 lg:sticky top-12 self-start overflow-hidden">
                 <div class="rounded-lg p-10 bg-mydark mt-8">
                     <x-profile-icon.big :user="auth()->user()" />
                     <div class="flex justify-center items-center gap-6 my-5">
@@ -27,7 +27,7 @@
                 </div>
                 <x-sections.follow-suggestions />
             </section>
-            <section class="lg:col-span-2 mt-12">
+            <section class="lg:col-span-2 mt-16">
                 <x-notifications.notification-message />
                 <x-forms.create-post />
                 @foreach ($postsMediaAndShares as $postsMediumOrShare)

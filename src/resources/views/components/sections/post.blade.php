@@ -22,10 +22,10 @@
                         @if ($showTimerAndEdit)
                             <div class="flex w-full mt-1">
                                 <div class="text-mydark flex font-light text-xs gap-2">
-                                    {{ $postsMediumOrShare->created_at->diffForHumans() }}
+                                    {{ $postsMediumOrShare->updated_at == $postsMediumOrShare->created_at ? $postsMediumOrShare->created_at->diffForHumans() : "Edited " . $postsMediumOrShare->updated_at->diffForHumans() }}
                                 </div>
             
-                                @if (auth()->user()->id === $postsMediumOrShare->user->id)
+                                @if (auth()->user()->id == $postsMediumOrShare->user->id)
                                 <ul class="absolute right-16">
                                     <li class="relative">
                                         <div data-dropdown-id="dropdown-post-{{$postsMediumOrShare->id}}" class="menu-btn size-6 text-bold text-mydark hover:text-mygray cursor-pointer transition-all mx-5">
@@ -79,7 +79,7 @@
                                 <div class="flex w-full mt-1">
                                     <div class="text-mydark flex font-light text-xs gap-2">
                                         @if (!empty($postsMediumOrShare->post))
-                                            {{ $postsMediumOrShare->post->created_at->diffForHumans() }}
+                                            {{ $postsMediumOrShare->post->updated_at == $postsMediumOrShare->post->created_at ? $postsMediumOrShare->post->created_at->diffForHumans() : "Edited " . $postsMediumOrShare->updated_at->diffForHumans() }}
                                         @endif
                                     </div>
                                 </div>
@@ -118,9 +118,9 @@
                     @if ($showTimerAndEdit)
                         <div class="flex w-full mt-1">
                             <div class="text-mydark flex font-light text-xs gap-2">
-                                {{ $postsMediumOrShare['post']->created_at->diffForHumans() }}
+                                {{ $postsMediumOrShare['post']->updated_at == $postsMediumOrShare['post']->created_at ? $postsMediumOrShare['post']->created_at->diffForHumans() : "Edited " . $postsMediumOrShare['post']->updated_at->diffForHumans() }}
                             </div>
-                            @if (auth()->user()->id === $postsMediumOrShare['post']->user->id)
+                            @if (auth()->user()->id == $postsMediumOrShare['post']->user->id)
                             <ul class="absolute right-16">
                                 <li class="relative">
                                     <div data-dropdown-id="dropdown-post-{{$postsMediumOrShare['post']->id}}" class="menu-btn size-6 text-bold text-mydark hover:text-mygray cursor-pointer transition-all mx-5">

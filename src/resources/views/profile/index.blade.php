@@ -66,7 +66,7 @@
                     <x-forms.create-post />
                 @endif
                 @foreach ($userPosts as $userPost)
-                    <x-modals.edit-post />
+                    <x-modals.edit-post :postsMediumOrShare="$userPost"/>
                     <x-modals.share-post :postsMediumOrShare="$userPost"/>
                     <x-sections.post :postsMediumOrShare="$userPost"/>
                 @endforeach

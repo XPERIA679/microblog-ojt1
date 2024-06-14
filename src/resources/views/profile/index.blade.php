@@ -9,7 +9,7 @@
 @php
     $userPosts = $user->userPost->map(function ($post) {
         $postMedia = $post->postMedia()->first();
-        return ['post' => $post, $postMedia];
+        return ['post' => $post, 'postMedium' => $postMedia];
     });
     $userPosts = $userPosts->merge($user->postShare);
     $userPosts = $userPosts->sortByDesc(function ($item) {

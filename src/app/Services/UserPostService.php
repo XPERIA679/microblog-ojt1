@@ -9,6 +9,7 @@ use App\Models\PostShare;
 use App\Services\PostShareService;
 use Illuminate\Support\Collection;
 use App\Http\Requests\EditUserPostRequest;
+use App\Http\Requests\EditPostShareRequest;
 use App\Http\Requests\CreateUserPostRequest;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -52,7 +53,7 @@ class UserPostService
     */
     public function edit(EditUserPostRequest $request): void
     {
-        UserPost::findOrFail($request->userPostToEditId)->update(['content' => $request->editedContent]);
+        UserPost::findOrFail($request->postToEditId)->update(['content' => $request->editedContent]);
 
         if ($request->shouldRemoveImage) {
             PostMedia::destroy($request->postMediaToEditId);
@@ -67,6 +68,11 @@ class UserPostService
                 ['image' => 'uploads/images/' . $filename]
             );
         }
+    }
+
+    public function editShare(EditPostShareRequest $request): void
+    {
+        PostShare::findOrFail($request->postToEditId)->update(['repost_content' => $request->editedContent]);
     }
 
     /**

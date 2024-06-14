@@ -8,6 +8,7 @@ use App\Services\UserPostService;
 use App\Services\PostShareService;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\EditUserPostRequest;
+use App\Http\Requests\EditPostShareRequest;
 use App\Http\Requests\CreateUserPostRequest;
 
 class UserPostController extends Controller
@@ -47,6 +48,12 @@ class UserPostController extends Controller
     public function edit(EditUserPostRequest $request):RedirectResponse
     {
         $this->userPostService->edit($request);
+        return redirect()->back()->with('notifMessage', 'Post Edited Successfully!');
+    }
+
+    public function editShare(EditPostShareRequest $request):RedirectResponse
+    {
+        $this->userPostService->editShare($request);
         return redirect()->back()->with('notifMessage', 'Post Edited Successfully!');
     }
 

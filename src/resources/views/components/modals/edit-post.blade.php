@@ -31,8 +31,20 @@
                     @endif
                 </div>
                 <div class="flex justify-between mt-2">
-                    <x-svgs.media-icon />
-                    <button
+                    <div class="flex items-center">
+                        <div class="inline-block mr-4">
+                            <label for="fileInput" class="cursor-pointer">
+                                <x-svgs.media-icon />
+                            </label>
+                            <input type="file" name="image" accept=".jpg, .jpeg, .png" id="fileInput" class="hidden">
+                        </div>
+                        <div id="imagePreview2" class="w-20 h-20 rounded-lg overflow-hidden shadow-md hidden"></div>
+                    </div>
+                    @error('postMedia')
+                        <div class="text-red-500">{{ $message }}</div>
+                    @enderror
+                    <input type="text" name="user_id" value="{{ auth()->id() }}" hidden>
+                    <button href="submit" value="Update"
                         class="flex items-center py-2 px-4 rounded-lg text-sm hover:bg-mydark hover:text-mycream bg-mywhite text-mydark shadow-lg transition-all">
                         Post
                         <x-svgs.post-icon />

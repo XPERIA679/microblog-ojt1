@@ -11,7 +11,7 @@
     $postMedia = $post->postMedia ?? null;
 @endphp
 
-<div onclick="hidePost('{{$post->id}}')" id="postedit-{{$post->id}}"
+<div onclick="hidePost('{{$post->id}}''{{$post->id}}')" id="postedit-{{$post->id}}-{{$post->id}}"
     class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500">
     <div onclick="event.stopImmediatePropagation()"
         class="bg-mycream rounded-lg shadow-md p-10 flex justify-center items-center max-w-lg max-h-[calc(100vh-50px)] overflow-y-auto">

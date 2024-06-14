@@ -8,6 +8,7 @@ use App\Services\UserPostService;
 use App\Services\PostShareService;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\EditUserPostRequest;
+use App\Http\Requests\EditPostShareRequest;
 use App\Http\Requests\CreateUserPostRequest;
 
 class UserPostController extends Controller
@@ -51,6 +52,15 @@ class UserPostController extends Controller
     }
 
     /**
+     * Updates a shared post's  repost content.
+     */
+    public function editShare(EditPostShareRequest $request):RedirectResponse
+    {
+        $this->postShareService->editShare($request);
+        return redirect()->back()->with('notifMessage', 'Post Edited Successfully!');
+    }
+
+    /**
      * Gets the post and media to Edit.
      * Displays edit page.
      */
@@ -66,8 +76,8 @@ class UserPostController extends Controller
      */
     public function delete(Request $request):RedirectResponse
     {
-        $this->userPostService->delete($request->userPostToDeleteId);
-        return redirect()->back()->with('notifMessage', 'Post Edited Successfully!');
+        $this->userPostService->delete($request->userPostToDeleteId, $request->type);
+        return redirect()->back()->with('notifMessage', 'Post Deleted Successfully!');
     }
 
     /**

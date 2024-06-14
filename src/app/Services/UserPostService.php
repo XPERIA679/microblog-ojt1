@@ -9,6 +9,7 @@ use App\Models\PostShare;
 use App\Services\PostShareService;
 use Illuminate\Support\Collection;
 use App\Http\Requests\EditUserPostRequest;
+use App\Http\Requests\EditPostShareRequest;
 use App\Http\Requests\CreateUserPostRequest;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -52,7 +53,7 @@ class UserPostService
     */
     public function edit(EditUserPostRequest $request): void
     {
-        UserPost::findOrFail($request->userPostToEditId)->update(['content' => $request->editedContent]);
+        UserPost::findOrFail($request->postToEditId)->update(['content' => $request->editedContent]);
 
         if ($request->shouldRemoveImage) {
             PostMedia::destroy($request->postMediaToEditId);
@@ -110,7 +111,7 @@ class UserPostService
                 'postMedium' => $postMedium ?? null
             ];
         }
-        $postsMediaAndShares = collect($postsAndMedia)->merge(PostShare::all());
+        $postsMediaAndShares = collect($postsAndMedia)->merge(PostShare::with('post')->get());
 
         $postsMediaAndShares = $postsMediaAndShares->sortByDesc(function ($item) {
         if ($item instanceof PostShare) {
@@ -122,7 +123,7 @@ class UserPostService
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
         $perPage = 4;
         $currentItems = $postsMediaAndShares->slice(($currentPage - 1) * $perPage, $perPage)->all();
-        
+
         return new LengthAwarePaginator(
             $currentItems,
             $postsMediaAndShares->count(),
@@ -136,9 +137,11 @@ class UserPostService
     /**
      * Delete a user post.
      */
-    public function delete(int $userPostToDeleteId): void
+    public function delete(int $userPostToDeleteId, string $type): void
     {
-        UserPost::destroy($userPostToDeleteId);
+        $type === 'sharedPost'
+        ? PostShare::destroy($userPostToDeleteId)
+        : UserPost::destroy($userPostToDeleteId);
     }
 
     /**

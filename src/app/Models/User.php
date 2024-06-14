@@ -63,7 +63,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function followings(): HasMany
     {
-        return $this->hasMany(Relationship::class, 'follower_id', 'id');
+        return $this->hasMany(Relationship::class, 'follower_id', 'id')->where('status', 1);
     }
 
     /**
@@ -71,7 +71,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function followers(): HasMany
     {
-        return $this->hasMany(Relationship::class, 'following_id', 'id');
+        return $this->hasMany(Relationship::class, 'following_id', 'id')->where('status', 1);
     }
 
     /**

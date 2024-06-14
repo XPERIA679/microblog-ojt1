@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\PostShare;
 use App\Http\Requests\CreatePostShareRequest;
+use App\Http\Requests\EditPostShareRequest;
 
 class PostShareService
 {
@@ -19,6 +20,14 @@ class PostShareService
         ]); 
     }
 
+    /**
+     * Edits a shared post
+     */
+    public function editShare(EditPostShareRequest $request): void
+    {
+        PostShare::findOrFail($request->postToEditId)->update(['repost_content' => $request->editedContent]);
+    }
+    
     /**
      * Deletes a shared post
      */

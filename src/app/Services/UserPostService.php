@@ -59,12 +59,12 @@ class UserPostService
             PostMedia::destroy($request->postMediaToEditId);
         }
 
-        if ($request->hasFile('editedImage')) {
-            $filename = time() . '.' . $request->file('editedImage')->getClientOriginalExtension();
-            $request->file('editedImage')->move('uploads/images/', $filename);
+        if ($request->hasFile('image')) {
+            $filename = time() . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move('uploads/images/', $filename);
 
             PostMedia::updateOrCreate(
-                ['post_id' => $request->userPostToEditId],
+                ['post_id' => $request->postToEditId],
                 ['image' => 'uploads/images/' . $filename]
             );
         }

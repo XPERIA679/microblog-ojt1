@@ -8,7 +8,7 @@
     $route = $post instanceof App\Models\PostShare
         ? route('post.share.edit')
         : route('post.edit');
-    $postMedia = $post->postMedia->image ?? null;
+    $postMedia = $post->postMedia ?? null;
 @endphp
 
 <div onclick="hidePost('{{$post->id}}')" id="postedit-{{$post->id}}"
@@ -25,10 +25,12 @@
                 <input name="postToEditId" value="{{$post->id}}" hidden>
                 <div class="relative flex justify-center items-center m-3 pb-4 rounded-2xl">
                     @if (!empty($postMedia))
-                    <span class="absolute top-1 right-6 cursor-pointer text-2xl text-mywhite ">&times;</span>
+                    <input type="hidden" name="shouldRemoveImage" id="shouldRemoveImage" value="false">
+                    <input name="postMediaToEditId" value="{{$postMedia->id}}" hidden>
+                    <span id="removeImageButton" class="absolute top-1 right-6 cursor-pointer text-2xl text-mywhite ">&times;</span>
                         <div class="w-auto h-auto flex justify-center items-center m-3 pb-4">
-                            <img class="flex justify-center items-center mx-3 rounded-md w-96 h-96 object-contain"
-                                src="{{ asset($postMedia) }}" alt="post image">
+                            <img id="postImage" class="flex justify-center items-center mx-3 rounded-md w-96 h-96 object-contain"
+                                src="{{ asset($postMedia->image) }}" alt="post image">
                         </div>
                     @endif
                 </div>
@@ -36,10 +38,10 @@
                     <div class="flex items-center">
                         @if(!$post instanceof App\Models\PostShare)
                         <div class="inline-block mr-4">
-                            <label for="fileInput" class="cursor-pointer">
+                            <label for="fileInput2" class="cursor-pointer">
                                 <x-svgs.media-icon />
                             </label>
-                            <input type="file" name="image" accept=".jpg, .jpeg, .png" id="fileInput" class="hidden">
+                            <input type="file" name="image" accept=".jpg, .jpeg, .png" id="fileInput2" class="hidden">
                         </div>
                         <div id="imagePreview2" class="w-20 h-20 rounded-lg overflow-hidden shadow-md hidden"></div>
                         @endif

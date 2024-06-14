@@ -6,15 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const dropdownPost = document.getElementById(dropdownId);
             dropdownPost.classList.toggle('hidden');
             dropdownPost.classList.toggle('show');
-        } else {
-            // Close all dropdowns if click is outside
-            document.querySelectorAll('.dropdown-post').forEach(dropdown => {
-                if (!dropdown.classList.contains('hidden')) {
-                    dropdown.classList.add('hidden');
-                    dropdown.classList.remove('show');
-                }
-            });
         }
+
+        // Close all dropdowns if click is outside
+        document.querySelectorAll('.dropdown-post').forEach(dropdown => {
+            if (!dropdown.classList.contains('hidden')) {
+                dropdown.classList.add('hidden');
+                dropdown.classList.remove('show');
+            }
+        });
     });
 
     document.addEventListener('click', function(event) {

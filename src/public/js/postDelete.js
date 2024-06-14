@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
             dropdownPost.classList.toggle('show');
             return;
         }
-        
+
         document.querySelectorAll('.dropdown-post').forEach(dropdown => {
             if (!dropdown.classList.contains('hidden')) {
                 dropdown.classList.add('hidden');

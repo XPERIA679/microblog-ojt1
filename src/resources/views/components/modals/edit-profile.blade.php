@@ -5,8 +5,8 @@
 @endphp
 
 <div onclick="hideProfile()" id="profile"
-    class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500 z-50">
-    <div onclick="event.stopImmediatePropagation()" class="bg-mycream rounded-2xl shadow-md p-10 flex">
+    class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500 z-9999">
+    <div onclick="event.stopImmediatePropagation()" class="bg-mycream rounded-2xl shadow-md p-10 flex max-w-lg max-h-[calc(100vh-50px)] overflow-y-auto">
         <form id="profileForm" method="POST" action="{{ route('update-profile') }}">
         @csrf
         @method('PUT')

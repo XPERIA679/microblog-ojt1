@@ -2,14 +2,14 @@
     $post = $postsMediumOrShare instanceof App\Models\PostShare
         ? $postsMediumOrShare
         : $postsMediumOrShare['post'];
-    $postContent = $post instanceof App\Models\PostShare 
+    $postContent = $post instanceof App\Models\PostShare
         ? $post->repost_content
         : $post->content;
     $postMedia = $post->postMedia->image ?? null;
 @endphp
 
-<div onclick="hidePost('{{$post->id}}')" id="postedit-{{$post->id}}"
-    class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500 z-9999">
+<div onclick="hidePost()" id="postedit"
+    class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500 z-9999 z-9999">
     <div onclick="event.stopImmediatePropagation()"
         class="bg-mycream rounded-lg shadow-md p-10 flex justify-center items-center max-w-lg max-h-[calc(100vh-50px)] overflow-y-auto">
         <div id="postedit" class="bg-mycream mx-auto overflow-hidden transition-opacity duration-500 max-w-lg max-h-[calc(100vh-50px)] overflow-y-auto">

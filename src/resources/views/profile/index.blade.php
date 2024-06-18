@@ -64,7 +64,7 @@
                     <x-sections.follow-suggestions />
                 @endif
             </section>
-            <section class="lg:col-span-2 mt-1">
+            <section class="lg:col-span-2 mt-4">
                 <x-notifications.notification-message />
                 @if($user->id === auth()->user()->id)
                     <x-forms.create-post />
@@ -75,9 +75,15 @@
                     <x-modals.share-post :postsMediumOrShare="$userPost"/>
                     <x-sections.post :postsMediumOrShare="$userPost"/>
                 @empty
-                    <div class="flex justify-center items-center h-5/6 text-2xl text-mywhite">
-                        You need to follow the user first to view the posts.
-                    </div>
+                    @if($user->id === auth()->user()->id)
+                        <div class="flex justify-center items-center h-5/6 text-2xl text-mywhite">
+                            No posts to display. Why not create your first post now?
+                        </div>
+                    @else
+                        <div class="flex justify-center items-center h-5/6 text-2xl text-mywhite">
+                            You need to follow the user first to view the posts.
+                        </div>
+                    @endif
                 @endforelse
             </section>
         </main>

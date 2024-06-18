@@ -49,7 +49,7 @@
                     @error('postMedia')
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror
-                    <button href="submit" value="Update"
+                    <button onclick="preventButtonMashing(this)" href="submit" value="Update"
                         class="flex items-center py-2 px-4 rounded-lg text-sm hover:bg-mydark hover:text-mycream bg-mywhite text-mydark shadow-lg transition-all">
                         Post
                         <x-svgs.post-icon />

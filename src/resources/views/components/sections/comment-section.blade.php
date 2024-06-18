@@ -16,7 +16,7 @@
                                 <form action="{{ route('postComment.delete') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="postCommentToDeleteId" value="{{ $comment->id }}">
-                                    <button href="submit"
+                                    <button onclick="preventButtonMashing(this)" href="submit"
                                         class="text-mygray text-sm hover:text-mydark font-medium transition-all">Delete</button>
                                 </form>
                             @endif

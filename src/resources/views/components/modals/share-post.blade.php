@@ -10,7 +10,7 @@
                 <input type="text" name="post_id" value="{{$postsMediumOrShare['post']->id}}" hidden>
                 <input type="text" name="user_id" value="{{auth()->id()}}" hidden>
                 <textarea name="repost_content" maxlength="45" rows="2" class="bg-mycream p-2 w-11/12 focus:outline-none text-md m-2 font-medium text-mydark rounded-2xl placeholder-mygray resize-none overflow-x-hidden"></textarea>
-                <button class="flex items-center py-2 px-4 rounded-lg text-sm text-mydark transition-all">
+                <button onclick="preventButtonMashing(this)" class="flex items-center py-2 px-4 rounded-lg text-sm text-mydark transition-all">
                     <x-svgs.post-icon />
                 </button>
             </div>

@@ -44,7 +44,7 @@
                                 @method('DELETE')
                             @endif
                             <input name="{{ $isFollowing ? 'userToUnfollowId' : 'userToFollowId' }}" value="{{ $user->id }}" hidden>
-                            <button class="flex items-center justify-center text-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-3 rounded-full transition-all">
+                            <button onclick="preventButtonMashing(this)" class="flex items-center justify-center text-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-3 rounded-full transition-all">
                                 <x-svgs.follow-icon />
                                 {{ $isFollowing ? 'Unfollow' : 'Follow' }}
                             </button>
@@ -67,6 +67,7 @@
                 @endif
                 @foreach ($userPosts as $userPost)
                     <x-modals.edit-post :postsMediumOrShare="$userPost"/>
+                    <x-modals.create-comment-modal :postsMediumOrShare="$userPost" />
                     <x-modals.share-post :postsMediumOrShare="$userPost"/>
                     <x-sections.post :postsMediumOrShare="$userPost"/>
                 @endforeach

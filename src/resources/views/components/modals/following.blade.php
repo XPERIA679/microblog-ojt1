@@ -19,7 +19,7 @@
                             <div class="text-mydark text-sm font-semibold cursor-pointer">
                                 <form action="{{ route('profile.show.profile.page') }}" method="GET">
                                     <input name="userId" value="{{$followedUser->id}}" hidden>
-                                    <button class="font-semibold text-mydark cursor-pointer">
+                                    <button onclick="preventButtonMashing(this)" class="font-semibold text-mydark cursor-pointer">
                                         {{ $followedUser->username }}
                                     </button>
                                 </form>
@@ -34,7 +34,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <input name="userToUnfollowId" value="{{ $followedUser->id }}" hidden>
-                                <button class="flex items-center justify-center text-xs font-semibold bg-mydark text-mywhite hover:bg-mydark hover:text-mycream p-2 rounded-full transition-all">
+                                <button onclick="preventButtonMashing(this)" class="flex items-center justify-center text-xs font-semibold bg-mydark text-mywhite hover:bg-mydark hover:text-mycream p-2 rounded-full transition-all">
                                     Unfollow
                                 </button>
                             </form>

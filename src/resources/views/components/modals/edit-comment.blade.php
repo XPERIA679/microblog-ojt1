@@ -10,7 +10,7 @@
             <textarea maxlength="90" rows="3" name="content" id="editCommentContent"
                 class="w-full rounded-lg p-2 text-sm bg-mycream border hover:drop-shadow-md rounded-tg focus:outline-none resize-none overflow-x-hidden"
                 autofocus></textarea>
-            <div class="flex-col justify-center items-center mt-2">
+            <div onclick="preventButtonMashing(this)" class="flex-col justify-center items-center mt-2">
                 <x-buttons.comment-btn />
             </div>
         </form>

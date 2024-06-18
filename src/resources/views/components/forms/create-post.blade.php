@@ -6,7 +6,7 @@
             class="w-full rounded-lg p-2 text-sm bg-mywhite border-transparent hover:drop-shadow-md rounded-tg placeholder-mygray resize-none overflow-x-hidden"
             autofocus></textarea>
         @error('content')
-            <div class="error">{{ $message }}</div>
+            <div class="mt-4 text-red-500">{{ $message }}</div>
         @enderror
         <div class="text-sm mt-4" id="theCount">
             <span id="current">0</span>
@@ -26,11 +26,16 @@
                 <div class="text-red-500">{{ $message }}</div>
             @enderror
             <input type="text" name="user_id" value="{{ auth()->id() }}" hidden>
-            <button href="submit" id="submitBtn"
-                class="flex items-center py-2 px-4 rounded-lg text-sm hover:bg-mydark hover:text-mycream bg-mywhite text-mydark shadow-lg transition-all">
-                Post
-                <x-svgs.post-icon />
+            <button onclick="preventButtonMashing(this)" href="submit" id="submitBtn"
+                class="flex items-center justify-center py-2 px-4 rounded-lg text-sm hover:bg-mydark hover:text-mycream bg-mywhite text-mydark shadow-lg transition-all w-20">
+                <span id="buttonContent" class="flex justify-center items-center">
+                    Post
+                    <x-svgs.post-icon />
+                </span>
             </button>
+            <style>
+
+            </style>
         </div>
     </form>
 </div>

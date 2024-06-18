@@ -42,7 +42,7 @@
     </div>
 
     <div class="mt-12 justify-center flex">
-        <button href="submit">
+        <button class="text-mywhite"onclick="preventButtonMashing(this)" href="submit">
             <x-svgs.signin-icon />
         </button>
     </div>

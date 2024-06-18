@@ -60,7 +60,7 @@
     </div>
 
     <div class="mt-6 justify-center flex">
-        <button href="submit">
+        <button class="text-mywhite" onclick="preventButtonMashing(this)" href="submit">
             <x-svgs.signup-icon />
         </button>
     </div>

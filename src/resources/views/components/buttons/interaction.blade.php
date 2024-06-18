@@ -18,7 +18,7 @@
             @method('DELETE')
             <input type="text" name="type" value="{{ $postsMediumOrShare instanceof App\Models\PostShare ? 'share' : 'originalPost' }}" hidden>
             <input type="text" name="id" value="{{ $post->id }}" hidden>
-            <button href="submit" class="text-center w-full">
+            <button onclick="preventButtonMashing(this)" href="submit" class="text-center w-full">
                 Unlike
             </button>
         </form>
@@ -27,7 +27,7 @@
             @csrf
             <input type="text" name="type" value="{{ $postsMediumOrShare instanceof App\Models\PostShare ? 'share' : 'originalPost' }}" hidden>
             <input type="text" name="id" value="{{ $postsMediumOrShare instanceof App\Models\PostShare ? $postsMediumOrShare->id : $postsMediumOrShare['post']->id }}" hidden>
-            <button href="submit" class="text-center w-full">
+            <button onclick="preventButtonMashing(this)" href="submit" class="text-center w-full">
                 Like
             </button>
         </form>

@@ -16,3 +16,4 @@
 <script src="{{ asset('js/editComment.js') }}"></script>
 <script src="{{ asset('js/popup.js') }}"></script>
 <script src="{{ asset('js/newsfeedRedirect.js') }}"></script>
+<script src="{{ asset('js/preventButtonMashing.js') }}"></script>

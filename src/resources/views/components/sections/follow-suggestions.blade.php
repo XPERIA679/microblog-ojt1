@@ -31,7 +31,7 @@
                 <form action="{{ route('relationship.follow') }}" method="POST">
                     @csrf
                     <input name="userToFollowId" value ="{{ $unfollowedUser->id }}" hidden>
-                    <button
+                    <button onclick="preventButtonMashing(this)"
                         class="flex items-center justify-center text-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-3 rounded-full transition-all mx-3">
                         <x-svgs.follow-icon />
                         Follow

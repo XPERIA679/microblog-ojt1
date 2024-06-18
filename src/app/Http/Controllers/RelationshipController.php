@@ -20,14 +20,16 @@ class RelationshipController extends Controller
      */
     public function follow(Request $request): RedirectResponse
     {
-        return redirect($this->relationshipService->follow($request->userToFollowId))->with('notifMessage', 'Followed User Successfully!');
+        $this->relationshipService->follow($request->userToFollowId);
+        return redirect()->back()->with('notifMessage', 'Followed User Successfully!');
     }
 
     /**
      * Calls service to unfollow a user.
      */
     public function unfollow(Request $request): RedirectResponse
-    {
-        return redirect($this->relationshipService->unfollow($request->userToUnfollowId))->with('notifMessage', 'Unfollowed User Successfully!');
+    {   
+        $this->relationshipService->unfollow($request->userToUnfollowId);
+        return redirect()->back()->with('notifMessage', 'Unfollowed User Successfully!');
     }
 }

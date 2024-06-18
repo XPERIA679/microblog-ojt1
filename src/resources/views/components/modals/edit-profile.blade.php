@@ -139,7 +139,7 @@
                         class="justify-center items-center flex text-mywhite bg-mydark box-border cursor-pointer shadow-md text-sm font-medium h-12 max-w-full overflow-hidden text-center w-auto px-8 py-0.5 rounded-2xl hover:bg-mywhite hover:text-mydark border-mydark transition-all">
                         Back
                     </span>
-                    <button id="saveProfile"
+                    <button onclick="preventButtonMashing(this)" id="saveProfile"
                         class="justify-center items-center flex text-mydark bg-mywhite box-border cursor-pointer shadow-md text-sm font-medium h-12 max-w-full overflow-hidden text-center w-auto px-8 py-0.5 rounded-2xl hover:bg-mydark hover:text-mywhite border-mydark transition-all">
                         Save
                     </button>

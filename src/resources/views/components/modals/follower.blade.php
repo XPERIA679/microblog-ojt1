@@ -37,7 +37,7 @@
                                         @method('DELETE')
                                     @endif
                                     <input name="{{ auth()->user()->followings->contains($follower) ? 'userToUnfollowId' : 'userToFollowId' }}" value="{{ $follower->id }}" hidden>
-                                    <button class="flex items-center justify-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-2 rounded-full transition-all">
+                                    <button onclick="preventButtonMashing(this)" class="flex items-center justify-center text-xs font-semibold bg-mycream text-mydark hover:bg-mygray hover:text-mycream p-2 rounded-full transition-all">
                                         <x-svgs.follow-icon />
                                         {{ auth()->user()->followings->contains($follower) ? 'Unfollow' : 'Follow' }}
                                     </button>

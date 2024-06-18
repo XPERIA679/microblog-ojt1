@@ -1,4 +1,4 @@
-<div class="grid grid-cols-{{ $postsMediumOrShare instanceof App\Models\PostShare ? '2' : '3' }} justify-center items-center divide-x-2 divide-mydark divide-solid">
+<div class="grid grid-cols-3 justify-center items-center divide-x-2 divide-mydark divide-solid">
     @php
         $post = $postsMediumOrShare instanceof App\Models\PostShare
             ? $postsMediumOrShare
@@ -13,7 +13,7 @@
     @endphp
 
     @if (in_array(auth()->id(), $post->postLike->whereNotNull($idField)->pluck('user_id')->toArray()))
-        <form class="col-span-{{ $postsMediumOrShare instanceof App\Models\PostShare ? '1' : '2' }} hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all focus:bg-mydark focus:text-mycream rounded" action="{{ route('post.unlike') }}" method="POST">
+        <form class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all focus:bg-mydark focus:text-mycream rounded" action="{{ route('post.unlike') }}" method="POST">
             @csrf
             @method('DELETE')
             <input type="text" name="type" value="{{ $postsMediumOrShare instanceof App\Models\PostShare ? 'share' : 'originalPost' }}" hidden>
@@ -23,7 +23,7 @@
             </button>
         </form>
     @else
-        <form class="col-span-{{ $postsMediumOrShare instanceof App\Models\PostShare ? '1' : '2' }} hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all rounded" action="{{ route('post.like') }}" method="POST">
+        <form class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all rounded" action="{{ route('post.like') }}" method="POST">
             @csrf
             <input type="text" name="type" value="{{ $postsMediumOrShare instanceof App\Models\PostShare ? 'share' : 'originalPost' }}" hidden>
             <input type="text" name="id" value="{{ $postsMediumOrShare instanceof App\Models\PostShare ? $postsMediumOrShare->id : $postsMediumOrShare['post']->id }}" hidden>
@@ -33,13 +33,11 @@
         </form>
     @endif
 
-    <button onclick="showComment('{{ $type }}-{{ $postId }}')" class="col-span-{{ $postsMediumOrShare instanceof App\Models\PostShare ? '1' : '2' }} hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all rounded">
+    <button onclick="showComment('{{ $type }}-{{ $postId }}')" class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all rounded">
         Comment
     </button>
 
-    @if (!$postsMediumOrShare instanceof App\Models\PostShare)
-        <button onclick="showUserPost({{ $postsMediumOrShare['post']->id }})" class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all rounded">
-            Share
-        </button>
-    @endif
+    <button onclick="showUserPost({{ $postsMediumOrShare['post']->id }})" class="col-span-1 hover:bg-mydark hover:text-mycream font-semibold justify-center items-center p-2 transition-all rounded">
+        Share
+    </button>
 </div>

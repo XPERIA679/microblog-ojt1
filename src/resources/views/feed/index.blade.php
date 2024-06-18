@@ -30,12 +30,16 @@
             <section class="lg:col-span-2 mt-16">
                 <x-notifications.notification-message />
                 <x-forms.create-post />
-                @foreach ($postsMediaAndShares as $postsMediumOrShare)
+                @forelse ($postsMediaAndShares as $postsMediumOrShare)
                     <x-modals.create-comment-modal :postsMediumOrShare="$postsMediumOrShare" />
                     <x-modals.edit-post :postsMediumOrShare="$postsMediumOrShare" />
                     <x-modals.share-post :postsMediumOrShare="$postsMediumOrShare" />
                     <x-sections.post :postsMediumOrShare="$postsMediumOrShare" />
-                @endforeach
+                @empty
+                    <div class="flex justify-center items-center h-5/6 text-xl text-mywhite">
+                        Nothing to see here! Start exploring by creating your own post or following other users.
+                    </div>
+                @endforelse
             </section>
         </main>
     <div class="mt-px">

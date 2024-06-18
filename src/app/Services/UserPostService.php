@@ -99,7 +99,6 @@ class UserPostService
     {
         $followedUserIds = auth()->user()->followings()->where('status', 1)->pluck('following_id')->toArray();
         $followedUserIds[] = auth()->user()->id;
-
         $userPosts = UserPost::whereIn('user_id', $followedUserIds)->get();
         $postsMedia = PostMedia::all();
         $postsAndMedia = [];
@@ -111,8 +110,8 @@ class UserPostService
                 'postMedium' => $postMedium ?? null
             ];
         }
-        $postsMediaAndShares = collect($postsAndMedia)->merge(PostShare::with('post')->get());
-
+        
+        $postsMediaAndShares = collect($postsAndMedia)->merge(PostShare::where('user_id', $followedUserIds)->get());
         $postsMediaAndShares = $postsMediaAndShares->sortByDesc(function ($item) {
         if ($item instanceof PostShare) {
                 return $item->updated_at;

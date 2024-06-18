@@ -12,7 +12,7 @@
     <ul>
         <li class="relative pr-8">
             <div id="profile-image-container" class="profile-image-container overflow-hidden shadow-custom-boxshadow cursor-pointer">
-                <img src="profile.jpg" alt="Profile Picture" class="w-10 h-10 rounded-b-half border-2 border-solid border-mywhite object-cover">
+            <img class="mt-2 h-12 w-12 object-cover rounded-full shadow mb-4 cursor-pointer" src="assets/images/moon.jpg" alt="moon" class="w-10 h-10 rounded-b-half border-2 border-solid border-mywhite object-cover">
             </div>
 
             <div id="dropdown-menu" class="dropdown-menu hidden absolute right-0 mt-1 mr-2 w-24 bg-mywhite rounded-xl shadow-lg z-10 text-center">

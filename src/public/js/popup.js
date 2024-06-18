@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
             notifMessage.classList.add('opacity-0');
             setTimeout(function () {
                 notifMessage.style.display = 'none';
-            }, 500); 
+            }, 3000);
         }
-    }, 4000);
+    }, 3000);
 });

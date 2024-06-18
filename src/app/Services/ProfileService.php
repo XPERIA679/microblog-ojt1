@@ -13,7 +13,7 @@ class ProfileService
     */
     public function update(UpdateProfileRequest $request): RedirectResponse
     {   
-        
+        $validatedData = $request->validated();
         if ($request->hasfile('profile_picture')) {
             $file = $request->file('profile_picture');
             $extension = $file->getClientOriginalExtension();
@@ -22,8 +22,6 @@ class ProfileService
             $file->move($path, $filename);
             $validatedData['profile_picture'] = $path . $filename;
         }
-
-        $validatedData = $request->validated();
         
         $addressComponents = [
             trim($validatedData['lotBlk']), trim($validatedData['street']),

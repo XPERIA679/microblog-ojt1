@@ -7,17 +7,21 @@
 @extends('layouts.navbar')
 
 @php
-    $userPosts = $user->userPost->map(function ($post) {
-        $postMedia = $post->postMedia()->first();
-        return ['post' => $post, 'postMedium' => $postMedia];
-    });
-    $userPosts = $userPosts->merge($user->postShare);
-    $userPosts = $userPosts->sortByDesc(function ($item) {
-    if ($item instanceof App\Models\PostShare) {
-            return $item->updated_at;
-        }
-        return $item['post']->updated_at;
-    });
+    $userPosts = [];
+    if (auth()->user()->followings->pluck('id')->contains($user->id)) 
+    {
+        $userPosts = $user->userPost->map(function ($post) {
+            $postMedia = $post->postMedia()->first();
+            return ['post' => $post, 'postMedium' => $postMedia];
+        });
+        $userPosts = $userPosts->merge($user->postShare);
+        $userPosts = $userPosts->sortByDesc(function ($item) {
+        if ($item instanceof App\Models\PostShare) {
+                return $item->updated_at;
+            }
+            return $item['post']->updated_at;
+        });
+    }
 @endphp
 
     <div class="bg-mycream bg-opacity-0 relative w-full h-full justify-center items-center transition-opacity duration-500">
@@ -65,12 +69,16 @@
                 @if($user->id === auth()->user()->id)
                     <x-forms.create-post />
                 @endif
-                @foreach ($userPosts as $userPost)
+                @forelse ($userPosts as $userPost)
                     <x-modals.edit-post :postsMediumOrShare="$userPost"/>
                     <x-modals.create-comment-modal :postsMediumOrShare="$userPost" />
                     <x-modals.share-post :postsMediumOrShare="$userPost"/>
                     <x-sections.post :postsMediumOrShare="$userPost"/>
-                @endforeach
+                @empty
+                    <div class="flex justify-center items-center h-5/6 text-2xl text-mywhite">
+                        You need to follow the user first to view the posts.
+                    </div>
+                @endforelse
             </section>
         </main>
     </div>

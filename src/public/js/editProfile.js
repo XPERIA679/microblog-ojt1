@@ -18,26 +18,16 @@ function hideProfile() {
     }, 500);
 }
 
-let currentPage = 1;
-
-function nextPage() {
-    if (currentPage < 2) {
-        document.getElementById(`page${currentPage}`).classList.add('opacity-0');
-        setTimeout(() => {
-            document.getElementById(`page${currentPage}`).classList.add('hidden');
-            currentPage++;
-            document.getElementById(`page${currentPage}`).classList.remove('hidden', 'opacity-0');
-        }, 300);
-    }
+function nextPage(pageId) {
+    document.getElementById('page1').classList.add('hidden');
+    document.getElementById('page2').classList.add('hidden');
+    document.getElementById('page3').classList.add('hidden');
+    document.getElementById(pageId).classList.remove('hidden');
 }
 
-function prevPage() {
-    if (currentPage > 1) {
-        document.getElementById(`page${currentPage}`).classList.add('opacity-0');
-        setTimeout(() => {
-            document.getElementById(`page${currentPage}`).classList.add('hidden');
-            currentPage--;
-            document.getElementById(`page${currentPage}`).classList.remove('hidden', 'opacity-0');
-        }, 300);
-    }
+function prevPage(pageId) {
+    document.getElementById('page1').classList.add('hidden');
+    document.getElementById('page2').classList.add('hidden');
+    document.getElementById('page3').classList.add('hidden');
+    document.getElementById(pageId).classList.remove('hidden');
 }

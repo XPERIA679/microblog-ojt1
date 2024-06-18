@@ -18,7 +18,8 @@ class Profile extends Model
         'email',
         'birth_date',
         'address',
-        'contact'
+        'contact',
+        'profile_picture',
     ];
 
     /**

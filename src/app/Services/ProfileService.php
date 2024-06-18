@@ -12,7 +12,16 @@ class ProfileService
     * Update the user's profile.
     */
     public function update(UpdateProfileRequest $request): RedirectResponse
-    {       
+    {   
+        
+        if ($request->hasfile('profile_picture')) {
+            $file = $request->file('profile_picture');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $path = 'uploads/images/';
+            $file->move($path, $filename);
+        }
+
         $validatedData = $request->validated();
         
         $addressComponents = [
@@ -20,9 +29,8 @@ class ProfileService
             trim($validatedData['city']), trim($validatedData['province']),
             trim($validatedData['country']), trim($validatedData['zip'])
         ];
-
+        $validatedData['profile_picture'] = $path . $filename;
         $validatedData['address'] = implode(" ‎", $addressComponents);
-
         $profile = Profile::where('user_id', auth()->id())->firstOrFail();        
         $profile->update($validatedData);
 

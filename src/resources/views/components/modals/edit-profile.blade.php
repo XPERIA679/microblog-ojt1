@@ -1,20 +1,28 @@
 @php
     $profile = auth()->user()->profile;
-    !is_null($profile->address) ? $values =  explode("‎", $profile->address) : $values = ['','','','','',''];
+    $values = !is_null($profile->address) ? explode("‎", $profile->address) : ['','','','','',''];
     $addressInfo = array_combine(['lotBlk', 'street', 'city', 'province', 'country', 'zip'], $values);
 @endphp
+@if ($errors->any())
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+        <strong class="font-bold">Whoops! Something went wrong.</strong>
+        <span class="block sm:inline">Please check the following errors:</span>
+        <ul class="mt-3 list-disc list-inside text-sm">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
-<div onclick="hideProfile()" id="profile"
-    class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500 z-9999">
+<div onclick="hideProfile()" id="profile" class="fixed left-0 top-0 bg-mydark bg-opacity-50 w-full h-full justify-center items-center opacity-0 hidden transition-opacity duration-500 z-9999">
     <div onclick="event.stopImmediatePropagation()" class="bg-mycream rounded-2xl shadow-md p-10 flex max-w-lg max-h-[calc(100vh-50px)] overflow-y-auto">
-        <form id="profileForm" method="POST" action="{{ route('update-profile') }}">
+        <form id="profileForm" method="POST" action="{{ route('update-profile') }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="flex p-0 bg-mycream">
-            <div id="page1" class="bg-mycream mx-auto overflow-hidden transition-opacity duration-500">
-                <h1 class="left-0 text-3xl font-bold text-mydark">
-                    Profile Information
-                </h1>
+            <div id="page1" class="w-fit bg-mycream mx-auto overflow-hidden transition-opacity duration-500">
+                <h1 class="left-0 text-3xl font-bold text-mydark">Profile Information</h1>
                 <div class="grid grid-cols-2 gap-6 mt-8">
                     <div class="relative">
                         <input id="first_name" name="first_name" type="text"
@@ -62,16 +70,14 @@
                         class="justify-center items-center flex text-mydark bg-mywhite box-border cursor-pointer shadow-md text-sm font-medium h-12 max-w-full overflow-hidden text-center w-auto px-6 py-0.5 rounded-2xl hover:bg-mydark hover:text-mywhite border-mydark transition-all">
                         Cancel
                     </span>
-                    <span onclick="nextPage()"
+                    <span onclick="nextPage('page2')"
                         class="justify-center items-center flex text-mywhite bg-mydark box-border cursor-pointer shadow-md text-sm font-medium h-12 max-w-full overflow-hidden text-center w-auto px-8 py-0.5 rounded-2xl hover:bg-mywhite hover:text-mydark border-mydark transition-all">
                         Next
                     </span>
                 </div>
             </div>
             <div id="page2" class="w-fit bg-mycream mx-auto overflow-hidden transition-opacity duration-300 hidden">
-                <h1 class="left-0 text-3xl font-bold text-mydark">
-                    Address Information
-                </h1>
+                <h1 class="left-0 text-3xl font-bold text-mydark">Address Information</h1>
                 <div class="grid grid-cols-3 mt-8 gap-6">
                     <div class="relative">
                         <input id="lotBlk" name="lotBlk" type="text"
@@ -135,7 +141,28 @@
                     </div>
                 </div>
                 <div class="mt-12 justify-between flex">
-                    <span onclick="prevPage()"
+                    <span onclick="prevPage('page1')"
+                        class="justify-center items-center flex text-mywhite bg-mydark box-border cursor-pointer shadow-md text-sm font-medium h-12 max-w-full overflow-hidden text-center w-auto px-8 py-0.5 rounded-2xl hover:bg-mywhite hover:text-mydark border-mydark transition-all">
+                        Back
+                    </span>
+                    <span onclick="nextPage('page3')"
+                        class="justify-center items-center flex text-mywhite bg-mydark box-border cursor-pointer shadow-md text-sm font-medium h-12 max-w-full overflow-hidden text-center w-auto px-8 py-0.5 rounded-2xl hover:bg-mywhite hover:text-mydark border-mydark transition-all">
+                        Next
+                    </span>
+                </div>
+            </div>
+
+            <div id="page3" class="w-fit bg-mycream mx-auto overflow-hidden transition-opacity duration-300 hidden">
+                <h1 class="left-0 text-3xl font-bold text-mydark">Profile Picture</h1>
+                <label for="fileInput" class="mt-12 cursor-pointer">
+                    <x-svgs.media-icon />
+                </label>
+                <div class="flex flex-col gap-1 text-center items-center text-mydark">
+                    <img class="h-32 w-32 object-cover rounded-full shadow mb-4 cursor-pointer" src="{{asset(auth()->user()->profile->profile_picture)}}" alt="moon">
+                </div>
+                <input type="file" name="profile_picture" accept=".jpg, .jpeg, .png" id="fileInput" class="hidden">
+                <div class="mt-12 justify-between flex">
+                    <span onclick="prevPage('page2')"
                         class="justify-center items-center flex text-mywhite bg-mydark box-border cursor-pointer shadow-md text-sm font-medium h-12 max-w-full overflow-hidden text-center w-auto px-8 py-0.5 rounded-2xl hover:bg-mywhite hover:text-mydark border-mydark transition-all">
                         Back
                     </span>
@@ -149,4 +176,3 @@
         </form>
     </div>
 </div>
-

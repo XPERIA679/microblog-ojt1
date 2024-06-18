@@ -8,7 +8,7 @@
 
 @php
     $userPosts = [];
-    if (auth()->user()->followings->pluck('id')->contains($user->id)) 
+    if (auth()->user()->followings->pluck('id')->contains($user->id) || auth()->user()->id == $user->id) 
     {
         $userPosts = $user->userPost->map(function ($post) {
             $postMedia = $post->postMedia()->first();

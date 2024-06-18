@@ -1,6 +1,6 @@
 <section class="lg:col-span-1">
     <div class="py-16">
-        <h1 class="text-3xl lg:text-5xl pb-8 text-mywhite text-center">
+        <h1 class="mt-8 text-3xl lg:text-5xl pb-8 text-mywhite text-center">
             Every person has a backstory.<br>
             They are the way they are for a reason.<br>
             Consider it and show them appreciation for who they are.
